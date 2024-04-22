@@ -1,3 +1,4 @@
+
 import { ImageResponse } from 'next/og';
 export const size = {
     width: 20,
@@ -22,7 +23,7 @@ export default function Icon() {
           color: 'white',
         }}
       >
-        📷
+        
       </div>
     ),
     
