@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { MuiRtlProvider } from "@/Context/muiRtlContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={inter.className}>{children}</body>
+      <MuiRtlProvider>
+        <body className={inter.className}>
+          {children}
+        </body>
+      </MuiRtlProvider>
     </html>
   );
 }
