@@ -1,21 +1,42 @@
-import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
-import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
+'use client'
+import { BottomNavigation, BottomNavigationAction, Box, Skeleton } from '@mui/material';
+// import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
 import AutoStoriesRoundedIcon from '@mui/icons-material/AutoStoriesRounded';
 import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
 import styles from './header.module.css';
+import dynamic from 'next/dynamic';
 
-
+const CategoryIcon = dynamic(() => import('@mui/icons-material/GridViewRounded'), {
+    ssr: false,
+    loading: () => (<Skeleton variant='circular' width={25} height={25} />)
+});
+const MagezineIcon =
+    dynamic(() => import('@mui/icons-material/AutoStoriesRounded'), {
+        ssr: false,
+        loading: () => (<Skeleton variant='circular' width={18} height={18} />)
+    });
+const StoreIcon = dynamic(() => import('@mui/icons-material/StoreRounded'), {
+    ssr: false,
+    loading: () => (<Skeleton variant='circular' width={18} height={18} />)
+});
 export default function Header() {
     return (
         <header className={styles.header}>
             <section>
-                <Box sx={{ width: '70%' ,height:'100%',marginRight:'1rem'}}>
-                    <BottomNavigation showLabels sx={{background:'transparent'}}>
-                        <BottomNavigationAction label="دسته بندی ویدیو" sx={{color:'#fff',flexDirection:'row'}} icon={<GridViewRoundedIcon sx={{marginLeft:'1rem'}} />} />
-                        <BottomNavigationAction label="مجله آموزشی" sx={{color:'#fff',flexDirection:'row'}} icon={<AutoStoriesRoundedIcon sx={{marginLeft:'1rem'}}/>} />
-                        <BottomNavigationAction label="فروشگاه" sx={{color:'#fff',flexDirection:'row'}} icon={<StoreRoundedIcon sx={{marginLeft:'1rem'}}/>} />
-                    </BottomNavigation>
-                </Box>
+                <div>
+                    <div>
+                        <CategoryIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
+                        <p>دسته بندی ویدیو</p>
+                    </div>
+                    <div>
+                        <MagezineIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
+                        <p>مجله آموزشی</p>
+                    </div>
+                    <div>
+                        <StoreIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
+                        <p>فروشگاه</p>
+                    </div>
+                </div>
             </section>
             <section></section>
         </header>
