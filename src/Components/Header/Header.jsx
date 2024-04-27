@@ -1,10 +1,10 @@
 'use client'
-import { BottomNavigation, BottomNavigationAction, Box, Skeleton } from '@mui/material';
-// import GridViewRoundedIcon from '@mui/icons-material/GridViewRounded';
-import AutoStoriesRoundedIcon from '@mui/icons-material/AutoStoriesRounded';
-import StoreRoundedIcon from '@mui/icons-material/StoreRounded';
+import { Skeleton } from '@mui/material';
 import styles from './header.module.css';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import Logo from '../../../public/image/logo.png'
+import Link from 'next/link';
 
 const CategoryIcon = dynamic(() => import('@mui/icons-material/GridViewRounded'), {
     ssr: false,
@@ -38,7 +38,13 @@ export default function Header() {
                     </div>
                 </div>
             </section>
-            <section></section>
+            <section>
+                <div>
+                    <Link href='/'>
+                        <Image src={Logo} priority={true} width={130} height={50} />
+                    </Link>
+                </div>
+            </section>
         </header>
     )
 }
