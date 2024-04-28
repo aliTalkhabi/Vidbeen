@@ -22,29 +22,31 @@ const StoreIcon = dynamic(() => import('@mui/icons-material/StoreRounded'), {
 export default function Header() {
     return (
         <header className={styles.header}>
-            <section>
-                <div>
+            <nav>
+                <section>
                     <div>
-                        <CategoryIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
-                        <p>دسته بندی ویدیو</p>
+                        <div>
+                            <CategoryIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
+                            <p>دسته بندی ویدیو</p>
+                        </div>
+                        <div>
+                            <MagezineIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
+                            <p>مجله آموزشی</p>
+                        </div>
+                        <div>
+                            <StoreIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
+                            <p>فروشگاه</p>
+                        </div>
                     </div>
+                </section>
+                <section>
                     <div>
-                        <MagezineIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
-                        <p>مجله آموزشی</p>
+                        <Link href='/'>
+                            <Image src={Logo} priority={true} width={130} height={50} />
+                        </Link>
                     </div>
-                    <div>
-                        <StoreIcon sx={{ marginLeft: '1rem', color: '#fff', fontSize: '25px' }} />
-                        <p>فروشگاه</p>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <div>
-                    <Link href='/'>
-                        <Image src={Logo} priority={true} width={130} height={50} />
-                    </Link>
-                </div>
-            </section>
+                </section>
+            </nav>
         </header>
     )
 }
