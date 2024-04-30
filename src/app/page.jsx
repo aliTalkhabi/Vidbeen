@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 const SideBarDynamic = dynamic(() => import("@/Components/rightList/RightList"), {
   ssr: false,
   loading: () => (
-    <div style={{gridColumn: "2 span" }}>
+    <div >
       <Skeleton
         animation="wave"
         variant="rectangular"
