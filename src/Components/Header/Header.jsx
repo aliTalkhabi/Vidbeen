@@ -42,7 +42,7 @@ export default function Header() {
                 <section>
                     <div>
                         <Link href='/'>
-                            <Image src={Logo} priority={true} width={130} height={50} />
+                            <Image src={Logo} priority={true} width={130} height={50} alt='لگوی ویدبین' />
                         </Link>
                     </div>
                 </section>

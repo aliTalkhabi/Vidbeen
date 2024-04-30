@@ -1,9 +1,12 @@
-.contain{
-    width: 20%;
+.asideContainer{
+    width: 25%;
     background: #F5F4F9;
     margin-top: 1rem;
     border-radius: 10px;
     border: 1px solid #0000001a;
     box-shadow: 0 0 4px #00000040;
     padding: 0 1rem;
+}
+.asideContainer *::before{
+    display: none;
 }

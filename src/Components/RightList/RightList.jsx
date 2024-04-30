@@ -1,56 +1,45 @@
-import { Accordion, AccordionDetails, AccordionSummary, MenuItem, MenuList } from '@mui/material'
-import React from 'react'
+'use client'
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material'
+import React, { useState } from 'react'
 import styles from './rightlist.module.css'
-import { ExpandMore } from '@mui/icons-material'
-import Link from 'next/link'
+import { ExpandMore, Padding } from '@mui/icons-material'
+import Link from 'next/link';
+import { RightListItems } from '@/constants/Constans';
+import StickyBox from 'react-sticky-box'
 
-export default function RightList() {
+
+const RightList = (data) => {
     return (
-        <aside className={styles.contain}>
-            <MenuList>
-                <Accordion sx={{background:'none',border:'none',boxShadow:'none'}}>
-                    <AccordionSummary  expandIcon={<ExpandMore />}>
-                        <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                            <Link href='/'>دوربین مدار بسته</Link>
-                        </MenuItem>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                            <Link href='/'>آیفون تصویری</Link>
-                        </MenuItem>
-                        <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                            <Link href='/'>جک درب پارکینگ</Link>
-                        </MenuItem>
-                        <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                            <Link href='/'>سقف متحرک برقی</Link>
-                        </MenuItem>
-                    </AccordionDetails>
-                </Accordion>
-                <Accordion sx={{background:'none',border:'none',boxShadow:'none'}}>
-                    <AccordionSummary  expandIcon={<ExpandMore />}>
-                        <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                            <Link href='/'>دوربین مدار بسته</Link>
-                        </MenuItem>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                            <Link href='/'>آیفون تصویری</Link>
-                        </MenuItem>
-                        <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                            <Link href='/'>جک درب پارکینگ</Link>
-                        </MenuItem>
-                        <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                            <Link href='/'>سقف متحرک برقی</Link>
-                        </MenuItem>
-                    </AccordionDetails>
-                </Accordion>
-                <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                    <Link href='/'>جک درب پارکینگ</Link>
-                </MenuItem>
-                <MenuItem sx={{ padding: '0.5rem 0.25rem' }}>
-                    <Link href='/'>سقف متحرک برقی</Link>
-                </MenuItem>
-            </MenuList>
+        <aside className={styles.asideContainer}>
+            <StickyBox offsetTop={70} offsetBottom={2}>
+                {RightListItems.map(item => {
+                    return (
+                        <Accordion sx={{background:'#fff0',border:'none',boxShadow:'none',padding:'0'}}>
+                            <AccordionSummary expandIcon={item.subMenu.length > 0 ? <ExpandMore /> : ''} >
+                                <Link href={item.link}>{item.title}</Link>
+                            </AccordionSummary>
+                            {
+                                item.subMenu.length > 0 && (
+                                    <AccordionDetails sx={{padding:'0 1rem'}}>
+                                        {item.subMenu.map((subMenuItem, i) => (
+                                            <Typography key={i} sx={{margin: '1rem 0'}}>
+                                                <Link href={subMenuItem.link}>{subMenuItem.title}</Link>
+                                            </Typography>
+                                        ))}
+                                    </AccordionDetails>
+                                )
+                            }
+                            {/* {
+                                item.subMenu.length > 0 && (
+                                    <AccordionDetails>
+                                        
+                                    </AccordionDetails>
+                        )} */}
+                        </Accordion>)
+                })
+                }
+            </StickyBox>
         </aside >
     )
 }
+export default RightList
