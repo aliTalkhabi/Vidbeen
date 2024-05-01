@@ -2,11 +2,11 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
-import RightList from "@/Components/rightList/RightList";
+
 import { Container } from "@mui/material";
 import dynamic from "next/dynamic";
 
-const SideBarDynamic = dynamic(() => import("@/Components/rightList/RightList"), {
+const SideBarDynamic = dynamic(() => import("@/components/rightList/rightList"), {
   ssr: false,
   loading: () => (
     <div >
