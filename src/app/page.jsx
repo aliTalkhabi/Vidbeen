@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Header from "@/Components/header/Header";
-import Footer from "@/Components/footer/Footer";
+import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer";
 import RightList from "@/Components/rightList/RightList";
 import { Container } from "@mui/material";
 import dynamic from "next/dynamic";

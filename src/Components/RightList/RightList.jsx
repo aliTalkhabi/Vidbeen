@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import styles from './rightlist.module.css'
 import { ExpandMore, Padding } from '@mui/icons-material'
 import Link from 'next/link';
-import { RightListItems } from '@/constants/Constans';
+import { RightListItems } from '@/constants/constans';
 import StickyBox from 'react-sticky-box'
 
 
