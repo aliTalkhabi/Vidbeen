@@ -1,8 +1,6 @@
-
-
 .main {
   width: 100%;
-  min-height: 100vh;  
+  min-height: 100vh;
   font-family: 'Dana-Regular';
+  margin: 1rem 0;
 }
-
