@@ -1,0 +1,30 @@
+.span{
+    font-weight: 400;
+}
+.topparagraph{
+    position: relative;
+}
+.topparagraph::before{
+    content: '';
+    background: #E3E3E3;
+    width: 95%;
+    display: block;
+    height: 2px;
+    margin: 0 auto;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    top: 50%;
+    transform: translateY(50%);
+}
+.topparagraph::after {
+    content: '';
+    background: #fff;
+    display: block;
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
