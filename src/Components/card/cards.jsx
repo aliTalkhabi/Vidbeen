@@ -25,6 +25,7 @@ export default function Cards(dataCards) {
                                     <CardMedia
                                         component='img'
                                         height='120'
+                                        width='120'
                                         image={topcardinfo.image}
                                         alt={topcardinfo.title}
                                     />

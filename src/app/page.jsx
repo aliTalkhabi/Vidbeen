@@ -55,7 +55,7 @@ export default function Home() {
       <Header />
       <main className={styles.main}>
         <Stack component="section" sx={{ margin: '0 auto', marginTop: { xs: 0, sm: 0, lg: '4rem' } }}>
-          <ContainerDynamic component="section" maxWidth='lg' sx={{ display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: { xs: '1fr', sm: '1fr', md: '1fr', lg: '1fr 3fr' }, gap: '10px 10px', height: '100%' }}>
+          <ContainerDynamic component="section" fixed sx={{ display: 'grid', gridAutoFlow: 'column', gridTemplateColumns: { xs: '1fr', sm: '1fr', md: '1fr', lg: '1fr 3fr' }, gap: '10px 10px', height: '100%' }}>
             <BoxDynamic sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'block' } }}>
               <SideBarDynamic />
             </BoxDynamic>
