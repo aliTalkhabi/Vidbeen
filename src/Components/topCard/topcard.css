@@ -1,10 +1,13 @@
-.span{
+.span {
     font-weight: 400;
 }
-.topparagraph{
+
+.topparagraph {
     position: relative;
+    margin: 1rem 0;
 }
-.topparagraph::before{
+
+.topparagraph::before {
     content: '';
     background: #E3E3E3;
     width: 95%;
@@ -17,6 +20,7 @@
     top: 50%;
     transform: translateY(50%);
 }
+
 .topparagraph::after {
     content: '';
     background: #fff;
@@ -27,4 +31,17 @@
     top: 0;
     right: 0;
     z-index: -1;
+}
+
+@media(max-width:480px) {
+    .topparagraph {
+        margin-top: 0;
+        padding: 0 .5rem;
+    }
+    .topparagraph::before{
+        width: 100%;
+    }
+    .topparagraph::after{
+        width: 50%;
+    }
 }
