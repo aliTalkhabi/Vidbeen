@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
-import Cards from "../card/cards";
-import { TopCardsInfo } from "@/constants/constants";
+import Cards from "../card/Cards";
+import { TopCardsInfo } from "@/constants/Constants";
 import './topcard.css';
 
 export default function TopCard() {

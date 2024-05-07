@@ -1,7 +1,7 @@
 
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
-import { TopCardsInfo } from "@/constants/constants";
+import { TopCardsInfo } from "@/constants/Constants";
 import Link from "next/link";
 import { Padding } from "@mui/icons-material";
 
@@ -30,7 +30,7 @@ export default function Cards(dataCards) {
                                         alt={topcardinfo.title}
                                     />
                                     <CardContent sx={{padding:'0'}}>
-                                        <Typography  variant="p" component="div" sx={{fontSize:'16px',height:{xs:'45px',sm:'45px',md:'60px'},textAlign:'justify',color:"#111010",margin:'10px auto',fontWeight:'400',lineHeight:'1.5',padding:'0 10px'}}>
+                                        <Typography  variant="p" component="div" sx={{fontSize:'16px',height:{xs:'45px',sm:'60px',md:'60px'},textAlign:'justify',color:"#111010",margin:'10px auto',fontWeight:'400',lineHeight:'1.5',padding:'0 10px'}}>
                                             {topcardinfo.title}
                                         </Typography>
                                         <Typography variant="span" color="#00000080">

@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { MuiRtlProvider } from "@/context/muiRtlContext";
+import { MuiRtlProvider } from "@/context/MuiRtlContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
