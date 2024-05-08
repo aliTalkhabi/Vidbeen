@@ -20,7 +20,7 @@ export default function Cards(dataCards) {
                 TopCardsInfo.map(topcardinfo => {
                     return (
                         <Link key={topcardinfo.id} href={topcardinfo.link}>
-                            <Card  sx={{ maxWidth: '240px',height:'100%',background:'none',boxShadow:'none' }}>
+                            <Card component='article' sx={{ maxWidth: '240px',height:'100%',background:'none',boxShadow:'none' }}>
                                 <CardActionArea>
                                     <CardMedia
                                         component='img'
@@ -28,6 +28,7 @@ export default function Cards(dataCards) {
                                         width='120'
                                         image={topcardinfo.image}
                                         alt={topcardinfo.title}
+                                        sx={{borderRadius:'.25rem'}}
                                     />
                                     <CardContent sx={{padding:'0'}}>
                                         <Typography  variant="p" component="div" sx={{fontSize:'16px',height:{xs:'45px',sm:'60px',md:'60px'},textAlign:'justify',color:"#111010",margin:'10px auto',fontWeight:'400',lineHeight:'1.5',padding:'0 10px'}}>

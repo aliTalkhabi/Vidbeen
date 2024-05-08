@@ -1,4 +1,7 @@
 .asideContainer{
+    height: 100%;
+}
+.asideContainer>div{
     width: 100%;
     background: #F5F4F9;
     border-radius: 10px;

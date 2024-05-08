@@ -91,30 +91,53 @@ export const TopCardsInfo = [
         view: '104'
     }
 ]
-export const SampleBranchItems = [
+export const CategoryItems = [
     {
         id: 114,
         title: 'آیفون تصویری',
-        image: '/images/branches-banner/taba-1040-video-cover.jpg',
+        image: '/image/branches-banner/taba-1040-video-cover.jpg',
         link: '/video-door-phone/taba/taba-1040m',
         description: 'معرفی آیفون تصویری اقتصادی تابا 1040M'
     }, {
         id: 115,
         title: 'دوربین مدار بسته',
-        image: '/images/branches-banner/imou-cruiser-video-cover.jpg',
+        image: '/image/branches-banner/imou-cruiser-video-cover.jpg',
         link: '/cctv/imou-cctv/Imou-dual-cruiser',
         description: 'معرفی دوربین آیمو با دو لنز مجزا'
     }, {
         id: 116,
         title: 'جک درب پارکینگ',
-        image: '/images/branches-banner/automatic-gate-suzuki-sz400.jpg',
+        image: '/image/branches-banner/automatic-gate-suzuki-sz400.jpg',
         link: '/automatic-gate/suzuki-sz400',
         description: 'معرفی جک پارکینگ سوزوکی sz400'
     }, {
         id: 117,
         title: 'کرکره برقی',
-        image: '/images/branches-banner/automatic-gate-suzuki-sz400.jpg',
+        image: '/image/branches-banner/rolling-shutter-for-windows.jpg',
         link: '/automatic-gate/suzuki-sz400',
-        description: 'معرفی جک پارکینگ سوزوکی sz400'
+        description: 'معرفی ویدویی انواع کرکره برقی'
+    }
+]
+export const NewVideosItems =[
+    {
+        id:118,
+        image:'/image/new-videos-images/taba-4070-video-cover-2.jpg',
+        description:'آیفون تصویری تابا 4070'
+    },{
+        id:119,
+        image:'/image/new-videos-images/73m-simaran.jpg',
+        description:'آیفون سیماران 73M حافظه دار'
+    },{
+        id:120,
+        image:'/image/new-videos-images/hs-78-m100-wifi.jpg',
+        description:'آیفون تصویری سیماران Hs-78W وای فای دار'
+    },{
+        id:121,
+        image:'/image/new-videos-images/simaran-46tkm.jpg',
+        description:'آیفون تصویری سیماران Hs-46TKM'
+    },{
+        id:122,
+        image:'/image/new-videos-images/simaran-hs-43tkm100-video-cover.jpg',
+        description:'آیفون تصویری سیماران Hs-43TKM'
     }
 ]
