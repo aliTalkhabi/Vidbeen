@@ -1,11 +1,16 @@
 .cards-area>span{
-    font-weight: 400;
+    font-weight: 900;
     color: #1B2CC1;
     position: relative;
     margin: 1rem 0;
     width: 100%;
     display: inline-block;
+    font-size: 14px;
 }
+.span {
+    font-weight: 400;
+}
+
 .cards-area>span::before {
     content: '';
     background: #E3E3E3;
@@ -30,4 +35,21 @@
     top: 0;
     right: 0;
     z-index: -1;
+}
+.cards-area.new-type>span::after{
+    width: 85%;
+}
+@media (min-width:300px) {
+    .cards-area>span::after,.cards-area.new-type>span::after{
+        width: 10%;
+    } 
+    
+}
+@media (min-width:900px){
+   .cards-area.new-type>span::after{
+        width: 75%;
+    }   
+    .cards-area>span::after{
+        width: 20%;
+    }
 }

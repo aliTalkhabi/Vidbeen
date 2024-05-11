@@ -122,22 +122,27 @@ export const NewVideosItems =[
     {
         id:118,
         image:'/image/new-videos-images/taba-4070-video-cover-2.jpg',
+        link:'/video-door-phone/taba/taba-4070',
         description:'آیفون تصویری تابا 4070'
     },{
         id:119,
         image:'/image/new-videos-images/73m-simaran.jpg',
+        link:'/video-door-phone/simaran/73M',
         description:'آیفون سیماران 73M حافظه دار'
     },{
         id:120,
         image:'/image/new-videos-images/hs-78-m100-wifi.jpg',
+        link:'/video-door-phone/simaran/hs-78w',
         description:'آیفون تصویری سیماران Hs-78W وای فای دار'
     },{
         id:121,
         image:'/image/new-videos-images/simaran-46tkm.jpg',
+        link:'/video-door-phone/simaran/46tkm',
         description:'آیفون تصویری سیماران Hs-46TKM'
     },{
         id:122,
         image:'/image/new-videos-images/simaran-hs-43tkm100-video-cover.jpg',
+        link:'/video-door-phone/simaran/hs-43tkm',
         description:'آیفون تصویری سیماران Hs-43TKM'
     }
 ]

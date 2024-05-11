@@ -1,4 +1,4 @@
-import { CategoryItems } from "@/constants/Constants";
+import { CategoryItems, NewVideosItems } from "@/constants/Constants";
 import {
   Box,
   Card,
@@ -17,14 +17,90 @@ export default function MainContent() {
     <Grid
       sx={{
         display: "grid",
-        gridTemplateColumns: "2fr .5fr",
+        gridTemplateColumns: { xs: "1fr", sm: "1fr", md: "2fr .5fr" },
         gridTemplateRows: "1fr",
         gap: "0em 1em",
-        width: "100%",
-        padding: "0 2rem",
+        width: { xs: "93vw", sm: "100%" },
+        padding: { xs: "0", sm: "0", md: '"0 2rem"' },
+        margin: "1rem 0",
       }}
     >
-      <Box sx={{ border: "1px solid blue" }}>
+      <Box
+        sx={{
+          
+          display: { xs: "inherit", sm: "inherit", md: "none" },
+          padding: { xs: "0 0.5rem" },
+        }}
+      >
+        <div className="cards-area new-type">
+          <span>
+            جدید ترین <span className="span">ویدیو ها</span>
+          </span>
+        </div>
+
+        <Box
+          sx={{
+    
+            width: { xs: "100%", sm: "100%", md: "100%" },
+            position: { xs: "unset", sm: "unset", md: "sticky" },
+            top: { md: "50px" },
+            overflowY: { xs: "hidden" },
+          }}
+        >
+          <Box
+            sx={{
+              
+              width: { xs: "max-content", sm: "max-content", md: "100%" },
+              display: { xs: "grid", sm: "grid", md: "inherit" },
+              gridTemplateColumns: { xs: "repeat(5,1fr)" },
+              gap: { xs: "20px" },
+            }}
+          >
+            {NewVideosItems.map((newvideositem) => {
+              return (
+                <Link key={newvideositem.id} href={newvideositem.link}>
+                  <Card
+                    sx={{
+                      maxWidth: { xs: "250px", sm: "350px", md: "100%" },
+                      background: "none",
+                      boxShadow: "none",
+                      margin: "1rem 0",
+                    }}
+                    component="article"
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        component="img"
+                        height="auto"
+                        image={newvideositem.image}
+                        alt={newvideositem.description}
+                        sx={{ borderRadius: ".25rem" }}
+                      />
+                      <CardContent sx={{ padding: "4px" }}>
+                        <Typography
+                          component="p"
+                          sx={{ color: "#111010", fontSize: "16px",height:'45px',lineHeight:'1.5',margin:'10px auto' }}
+                        >
+                          {newvideositem.description}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Link>
+              );
+            })}
+          </Box>
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          
+          padding: ".5rem",
+          position: { sx: "unset", xs: "unset", md: "sticky" },
+          top: "50px",
+          height: "fit-content",
+        }}
+      >
         {CategoryItems.map((categoryitem) => {
           return (
             <div key={categoryitem.id} className="cards-area">
@@ -41,13 +117,13 @@ export default function MainContent() {
                   <CardActionArea>
                     <CardMedia
                       component="img"
-                      height="200"
+                      height="auto"
                       image={categoryitem.image}
                       alt={categoryitem.description}
-                      sx={{ borderRadius: ".25rem" }}
+                      sx={{ borderRadius: ".25rem", width: { xs: "100%" } }}
                     />
                     <CardContent>
-                      <Typography component="p" sx={{ color: "#111010" }}>
+                      <Typography component="p" sx={{ color: "#111010",fontSize:'16px' }}>
                         {categoryitem.description}
                       </Typography>
                     </CardContent>
@@ -58,12 +134,68 @@ export default function MainContent() {
           );
         })}
       </Box>
-      <Box sx={{ border: "1px solid red", padding: "1rem" }}>
-        <StickyBox>
-          <Box sx={{border:'1pxx solid green'}}>
+      <Box
+        sx={{
+          display: { xs: "none", sm: "none", md: "inline-block" },
+          height: "100%",
+        }}
+      >
+        <div className="cards-area new-type">
+          <span>
+            جدید ترین <span className="span">ویدیو ها</span>
+          </span>
+        </div>
 
+        <Box
+          sx={{
+            width: { md: "100%" },
+            position: { xs: "unset", sm: "unset", md: "sticky" },
+            top: { md: "0px" },
+            overflowY: { xs: "hidden" },
+          }}
+        >
+          <Box
+            sx={{
+              width: { xs: "max-content", sm: "100%" },
+              gridTemplateColumns: { xs: "repeat(5,1fr)" },
+              gap: { xs: "20px" },
+            }}
+          >
+            {NewVideosItems.map((newvideositem) => {
+              return (
+                <Link key={newvideositem.id} href={newvideositem.link}>
+                  <Card
+                    sx={{
+                      maxWidth: { xs: "350px", sm: "250px", md: "100%" },
+                      background: "none",
+                      boxShadow: "none",
+                      margin: "1rem 0",
+                    }}
+                    component="article"
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        component="img"
+                        height="auto"
+                        image={newvideositem.image}
+                        alt={newvideositem.description}
+                        sx={{ borderRadius: ".25rem" }}
+                      />
+                      <CardContent sx={{ padding: "4px" }}>
+                        <Typography
+                          component="p"
+                          sx={{ color: "#111010", fontSize: "12px" }}
+                        >
+                          {newvideositem.description}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Card>
+                </Link>
+              );
+            })}
           </Box>
-        </StickyBox>
+        </Box>
       </Box>
     </Grid>
   );

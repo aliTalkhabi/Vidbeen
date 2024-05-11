@@ -20,12 +20,12 @@ export default function Cards(dataCards) {
                 TopCardsInfo.map(topcardinfo => {
                     return (
                         <Link key={topcardinfo.id} href={topcardinfo.link}>
-                            <Card component='article' sx={{ maxWidth: '240px',height:'100%',background:'none',boxShadow:'none' }}>
+                            <Card component='article' sx={{ maxWidth: '250px',height:'100%',background:'none',boxShadow:'none' }}>
                                 <CardActionArea>
                                     <CardMedia
                                         component='img'
-                                        height='120'
-                                        width='120'
+                                        height='auto'
+                                        
                                         image={topcardinfo.image}
                                         alt={topcardinfo.title}
                                         sx={{borderRadius:'.25rem'}}
@@ -35,7 +35,7 @@ export default function Cards(dataCards) {
                                             {topcardinfo.title}
                                         </Typography>
                                         <Typography variant="span" color="#00000080">
-                                            <VisibilityRoundedIcon sx={{float:'left',marginRight:'.5rem'}} /> تعداد بازدید : {topcardinfo.view}
+                                            <VisibilityRoundedIcon sx={{float:'left',marginRight:'.5rem',marginLeft:'.5rem'}} /> تعداد بازدید : {topcardinfo.view}
                                         </Typography>
                                     </CardContent>
                                 </CardActionArea>

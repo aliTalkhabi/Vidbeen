@@ -8,7 +8,7 @@ export default function TopCard() {
     <Grid
       container
       wrap="wrap"
-      sx={{ justifyContent: "space-evenly", alignItems: "center" }}
+      sx={{ display:'grid' }}
     >
       <Typography
         className="topparagraph"
@@ -23,7 +23,7 @@ export default function TopCard() {
       </Typography>
       <Box
         sx={{
-          width: { xs: "370px", sm: "100%", md: "100%" },
+          width: { xs: "100%", sm: "100%", md: "100%" },
           overflowY: { xs: "hidden" },
         }}
       >
@@ -33,7 +33,7 @@ export default function TopCard() {
             width: { xs: "max-content", sm: "100%", md: "100%" },
             gridTemplateColumns: "repeat(3,1fr)",
             padding: { xs: "0 .5rem", sm: "0rem", md: "0 2rem" },
-            gap: "10px",
+            gap: "20px",
           }}
         >
           <Cards dataCards={TopCardsInfo} />
