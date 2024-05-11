@@ -41,7 +41,7 @@
 }
 @media (min-width:300px) {
     .cards-area>span::after,.cards-area.new-type>span::after{
-        width: 10%;
+        width:35%;
     } 
     
 }
