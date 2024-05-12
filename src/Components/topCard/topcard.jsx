@@ -36,7 +36,7 @@ export default function TopCard() {
             gap: "20px",
           }}
         >
-          <Cards dataCards={TopCardsInfo} />
+          <Cards typeCards='top-pages' />
         </Box>
       </Box>
     </Grid>

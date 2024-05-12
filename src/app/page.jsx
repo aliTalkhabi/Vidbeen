@@ -11,7 +11,7 @@ import MainContent from "@/components/maincontent/MainContent";
 const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
   ssr: false,
   loading: () => {
-    <Skeleton animation="wave" variant="rectangular" width={1000} />;
+    <Skeleton animation="wave" variant="rectangular" width={1200} />;
   },
 });
 const SideBarDynamic = dynamic(
