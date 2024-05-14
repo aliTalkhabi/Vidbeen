@@ -47,9 +47,15 @@
 }
 @media (min-width:900px){
    .cards-area.new-type>span::after{
-        width: 75%;
+        width: 60%;
     }   
     .cards-area>span::after{
         width: 20%;
+    }
+    .cards-area{
+        padding: 0 2rem;
+    }
+    .cards-area.new-type{
+        padding: 0;
     }
 }

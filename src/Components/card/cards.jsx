@@ -10,16 +10,16 @@ import {
   CategoryItems,
   NewVideosItems,
   TopCardsInfo,
+  TrainingItems,
 } from "@/constants/Constants";
 import Link from "next/link";
 import { Padding } from "@mui/icons-material";
 
-export default function Cards({typeCards}) {
+export default function Cards({ typeCards }) {
   return (
     <>
       {typeCards === "top-pages"
-        ? 
-        TopCardsInfo.map((topcardinfo) => {
+        ? TopCardsInfo.map((topcardinfo) => {
             return (
               <Link key={topcardinfo.id} href={topcardinfo.link}>
                 <Card
@@ -136,7 +136,13 @@ export default function Cards({typeCards}) {
                     <CardContent sx={{ padding: "5px" }}>
                       <Typography
                         component="p"
-                        sx={{ color: "#111010", fontSize: "14px",padding:'.5rem 0',textAlign:'center',borderBottom:'2px solid #E3E3E3' }}
+                        sx={{
+                          color: "#111010",
+                          fontSize: "14px",
+                          padding: ".5rem 0",
+                          textAlign: "center",
+                          borderBottom: "2px solid #E3E3E3",
+                        }}
                       >
                         {newvideositem.description}
                       </Typography>
@@ -180,6 +186,50 @@ export default function Cards({typeCards}) {
                   </Card>
                 </Link>
               </div>
+            );
+          })
+        : typeCards === "training-items"
+        ? TrainingItems.map((trainingitems) => {
+            return (
+              <Link href={trainingitems.link}>
+                <Card
+                  component="article"
+                  sx={{
+                    maxWidth: "250px",
+                    height: "100%",
+                    background: "none",
+                    boxShadow: "none",
+                  }}
+                >
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="auto"
+                      image={trainingitems.image}
+                      alt={trainingitems.title}
+                      sx={{ borderRadius: ".25rem" }}
+                    />
+                    <CardContent sx={{ padding: "0" }}>
+                      <Typography
+                        variant="p"
+                        component="div"
+                        sx={{
+                          fontSize: "16px",
+                          height: { xs: "45px", sm: "60px", md: "60px" },
+                          textAlign: "justify",
+                          color: "#111010",
+                          margin: "10px auto",
+                          fontWeight: "400",
+                          lineHeight: "1.5",
+                          padding: "0 10px",
+                        }}
+                      >
+                        {trainingitems.description}
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Link>
             );
           })
         : null}

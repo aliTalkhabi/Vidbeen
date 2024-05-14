@@ -146,3 +146,21 @@ export const NewVideosItems =[
         description:'آیفون تصویری سیماران Hs-43TKM'
     }
 ]
+export const TrainingItems = [
+    {
+        id:123,
+        image:'/image/training-images/tvd-1090-m200.jpg',
+        link:'/video-door-phone/taba/1090m',
+        description:'آیفون تصویری تابا 1090'
+    },{
+        id:124,
+        image:'/image/training-images/hs-72tk-m100.jpg',
+        link:'/video-door-phone/simaran/hs-43tkm',
+        description:'آیفون تصویری Hs-72TKM سیماران'
+    },{
+        id:125,
+        image:'/image/training-images/taba-4070-video-cover-2.jpg',
+        link:'/video-door-phone/taba/taba-4070m',
+        description:'آیفون تصویری تابا 4070M'
+    }
+]
