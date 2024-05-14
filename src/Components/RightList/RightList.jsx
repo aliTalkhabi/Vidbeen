@@ -21,9 +21,10 @@ export default function RightList() {
                             </AccordionSummary>
                             {
                                 rightListItem.subMenu.length > 0 && (
-                                    <AccordionDetails  key={rightListItem.subMenu.id} sx={{ padding: '0 1rem' }}>
+                                    <AccordionDetails sx={{ padding: '0 1rem' }}>
                                         {rightListItem.subMenu.map((subMenuItem) => (
                                             <Typography key={subMenuItem.id} sx={{ margin: '1rem 0',fontSize:{md:'12px',lg:'16px'}}}>
+                                                
                                                 <Link href={subMenuItem.link}>{subMenuItem.title}</Link>
                                             </Typography>
                                         ))}

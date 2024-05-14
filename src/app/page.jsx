@@ -56,7 +56,6 @@ export default function Home() {
         >
           <ContainerDynamic
             component="section"
-            
             sx={{
               display: "grid",
               gridAutoFlow: "column",

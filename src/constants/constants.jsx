@@ -1,4 +1,4 @@
-import { Description } from '@mui/icons-material'
+import {  Facebook, Instagram, LinkedIn, Twitter, YouTube } from '@mui/icons-material'
 import React from 'react'
 
 export const RightListItems = [
@@ -162,5 +162,28 @@ export const TrainingItems = [
         image:'/image/training-images/taba-4070-video-cover-2.jpg',
         link:'/video-door-phone/taba/taba-4070m',
         description:'آیفون تصویری تابا 4070M'
+    }
+]
+export const SocialMediaItems = [
+    {
+        id:126,
+        link:'/',
+        icon:<Twitter sx={{fontSize:'3rem',color:'#fff',margin:'1rem 0'}} />
+    },{
+        id:127,
+        link:'/',
+        icon:<Facebook sx={{fontSize:'3rem',color:'#fff',margin:'1rem 0'}}/>
+    },{
+        id:128,
+        link:'/',
+        icon:<LinkedIn sx={{fontSize:'3rem',color:'#fff',margin:'1rem 0'}} />
+    },{
+        id:129,
+        link:'/',
+        icon:<YouTube sx={{fontSize:'3rem',color:'#fff',margin:'1rem 0'}} />
+    },{
+        id:130,
+        link:'/',
+        icon:<Instagram sx={{fontSize:'3rem',color:'#fff',margin:'1rem 0'}} />
     }
 ]

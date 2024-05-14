@@ -191,7 +191,7 @@ export default function Cards({ typeCards }) {
         : typeCards === "training-items"
         ? TrainingItems.map((trainingitems) => {
             return (
-              <Link href={trainingitems.link}>
+              <Link key={trainingitems.id} href={trainingitems.link}>
                 <Card
                   component="article"
                   sx={{

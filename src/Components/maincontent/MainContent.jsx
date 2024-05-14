@@ -30,6 +30,7 @@ export default function MainContent() {
         sx={{
           display: { xs: "inherit", sm: "inherit", md: "none" },
           padding: { xs: "0 0.5rem" },
+          
         }}
       >
         <div className="cards-area new-type">
@@ -69,11 +70,12 @@ export default function MainContent() {
         }}
       >
         <Cards typeCards="category-items" />
-        <Box>
+        <Box sx={{width:'100%',
+          overflowY:'hidden'}}>
           <div className="cards-area">
             <span>آموزشی</span>
           </div>
-          <Box sx={{padding: "0 2rem",overflowY:{xs:'hidden',sm:'hidden',md:'unset'} }}>
+          <Box sx={{padding:{ xs:'0 0',sm:'0 0',md:"0 2rem"},overflowY:{xs:'hidden',sm:'hidden',md:'unset'} }}>
             <Box
               sx={{
                 
