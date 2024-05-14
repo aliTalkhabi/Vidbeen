@@ -6,9 +6,8 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <Box
-        border="1px solid red"
-        sx={{ display: "grid", gridTemplateColumns:{xs:'1fr',sm:'1fr',md:'"repeat(3, 1fr)"'} ,padding:{md:"1rem 0rem",lg:"1rem 2rem"}}}
-        
+      component="section"
+        sx={{ display: "grid", gridTemplateColumns:{xs:'1fr',sm:'1fr',md:"repeat(3, 1fr)"} ,padding:{md:"1rem 0rem",lg:"1rem 2rem"}}}
       >
         <Box
           component="div"
