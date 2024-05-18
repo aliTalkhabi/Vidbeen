@@ -7,11 +7,13 @@ export default function TopCard() {
   return (
     <Grid
       container
+      component='section'
       wrap="wrap"
       sx={{ display:'grid' }}
     >
       <Typography
         className="topparagraph"
+        component='h2'
         sx={{
           width: "100%",
           padding: { md: "0 2rem", sm: "0" },
@@ -22,12 +24,14 @@ export default function TopCard() {
         پربازدیدترین <span className="span">ویدیو ها</span>{" "}
       </Typography>
       <Box
+      component='section'
         sx={{
           width: { xs: "100%", sm: "100%", md: "100%" },
           overflowY: { xs: "hidden" },
         }}
       >
         <Box
+          component='section'
           sx={{
             display: "grid",
             width: { xs: "max-content", sm: "100%", md: "100%" },

@@ -69,7 +69,8 @@ export default function Home() {
               height: "100%",
             }}
           >
-            <BoxDynamic
+            <BoxDynamic 
+              component='aside'
               sx={{
                 display: { xs: "none", sm: "none", md: "block", lg: "block" },
               }}
@@ -77,6 +78,7 @@ export default function Home() {
               <SideBarDynamic />
             </BoxDynamic>
             <BoxDynamic
+              component='section'
               sx={{
                 height: "fit-content",
                 width: { xs: "100%", sm: "100%", md: "100%" },
