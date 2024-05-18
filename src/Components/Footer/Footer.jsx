@@ -22,8 +22,8 @@ export default function Footer() {
         >
           {SocialMediaItems.map((socialmediaitems) => {
             return (
-              <Box component="section" sx={{ textAlign: "center" }}>
-                <Link key={socialmediaitems.id} href={socialmediaitems.link}>
+              <Box key={socialmediaitems.id}  component="section" sx={{ textAlign: "center" }}>
+                <Link href={socialmediaitems.link}>
                   {socialmediaitems.icon}
                 </Link>
               </Box>

@@ -31,7 +31,7 @@ export default function Cards({ typeCards }) {
                   boxShadow: "none",
                 }}
               >
-                <Link href={topcardinfo.link}>
+                <Link href={topcardinfo.link} title={topcardinfo.title}>
                   <CardActionArea component="div">
                     <picture>
                       <source srcSet={topcardinfo.image} type="image/jpg" />
@@ -87,7 +87,7 @@ export default function Cards({ typeCards }) {
                 }}
                 component="article"
               >
-                <Link href={newvideositem.link}>
+                <Link href={newvideositem.link} title={newvideositem.description}>
                   <CardActionArea component="div">
                     <picture>
                       <source srcSet={newvideositem.image} type="image/jpg" />
@@ -131,7 +131,7 @@ export default function Cards({ typeCards }) {
                 }}
                 component="article"
               >
-                <Link href={newvideositem.link}>
+                <Link href={newvideositem.link} title={newvideositem.description}>
                   <CardActionArea component="div">
                     <picture>
                       <source srcSet={newvideositem.image} type="image/jpg" />
@@ -177,7 +177,7 @@ export default function Cards({ typeCards }) {
                   }}
                   component="article"
                 >
-                  <Link key={categoryitem.id} href={categoryitem.link}>
+                  <Link key={categoryitem.id} href={categoryitem.link} title={categoryitem.description}>
                     <CardActionArea component="div">
                     <picture>
                       <source srcSet={categoryitem.image} type="image/jpg" />
@@ -216,7 +216,7 @@ export default function Cards({ typeCards }) {
                   boxShadow: "none",
                 }}
               >
-                <Link href={trainingitems.link}>
+                <Link href={trainingitems.link} title={trainingitems.description}>
                   <CardActionArea component="div">
                   <picture>
                       <source srcSet={trainingitems.image} type="image/jpg" />
