@@ -196,30 +196,53 @@ export const TrainingItems = [
   },
 ];
 
+
+
+import FacebookIcon from '@mui/icons-material/Facebook';
+// import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import { Skeleton } from "@mui/material";
+import dynamic from "next/dynamic";
+
+
+const TwitterIcon = dynamic(() => import("@mui/icons-material/Twitter"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      animation="wave"
+      variant="circular"
+      sx={{ width: "1em", height: "1em" }}
+    />
+  ),
+  suspense :true
+});
+
 export const SocialMediaItems = [
   {
     id: 126,
     link: "/",
-    icon: <FooterIcon iconShow="twitter" />,
+    icon: <TwitterIcon iconShow="twitter" />,
   },
   {
     id: 127,
     link: "/",
-    icon: <FooterIcon iconShow="facebook" />,
+    icon: <FacebookIcon iconShow="facebook" />,
   },
   {
     id: 128,
     link: "/",
-    icon: <FooterIcon iconShow="linkedin" />,
+    icon: <LinkedInIcon iconShow="linkedin" />,
   },
   {
     id: 129,
     link: "/",
-    icon: <FooterIcon iconShow="youtube" />,
+    icon: <YouTubeIcon iconShow="youtube" />,
   },
   {
     id: 130,
     link: "/",
-    icon: <FooterIcon iconShow="instagram" />,
+    icon: <InstagramIcon iconShow="instagram" />,
   },
 ];
