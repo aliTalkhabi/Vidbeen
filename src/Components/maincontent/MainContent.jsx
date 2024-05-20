@@ -1,3 +1,4 @@
+'use client'
 import { CategoryItems, NewVideosItems } from "@/constants/Constants";
 import {
   Box,

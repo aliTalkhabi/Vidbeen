@@ -1,6 +1,7 @@
+'use client'
 import { Box, Typography } from "@mui/material";
 import styles from "./Footer.module.css";
-import { SocialMediaItems } from "@/constants/Constants";
+import  {SocialMediaItems}  from "@/constants/constants";
 import Link from "next/link";
 export default function Footer() {
   return (
@@ -21,6 +22,7 @@ export default function Footer() {
           }}
         >
           {SocialMediaItems.map((socialmediaitems) => {
+           
             return (
               <Box key={socialmediaitems.id}  component="section" sx={{ textAlign: "center" }}>
                 <Link href={socialmediaitems.link}>

@@ -201,26 +201,26 @@ export const SocialMediaItems = [
   {
     id: 126,
     link: "/",
-    icon: <TwitterIcon iconShow="twitter" />,
+    icon: <TwitterIcon sx={{color:'#fff' , fontSize:'3rem'}} />,
   },
   {
     id: 127,
     link: "/",
-    icon: <FacebookIcon iconShow="facebook" />,
+    icon: <FacebookIcon sx={{color:'#fff' , fontSize:'3rem'}}/>,
   },
   {
     id: 128,
     link: "/",
-    icon: <LinkedInIcon iconShow="linkedin" />,
+    icon: <LinkedInIcon sx={{color:'#fff' ,fontSize:'3rem'}} />,
   },
   {
     id: 129,
     link: "/",
-    icon: <YouTubeIcon iconShow="youtube" />,
+    icon: <YouTubeIcon sx={{color:'#fff' ,fontSize:'3rem'}}/>,
   },
   {
     id: 130,
     link: "/",
-    icon: <InstagramIcon iconShow="instagram" />,
+    icon: <InstagramIcon sx={{color:'#fff' ,fontSize:'3rem'}}/>,
   },
 ];

@@ -1,12 +1,11 @@
 import { Inter } from "next/font/google";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { MuiRtlProvider } from "@/context/MuiRtlContext";
 import Header from "@/components/header/Header";
-// import Footer from "@/components/footer/Footer";
 
 
 
-import dynamic from "next/dynamic";
 
 
 
