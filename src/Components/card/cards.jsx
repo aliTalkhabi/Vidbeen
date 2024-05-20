@@ -1,8 +1,8 @@
+'use client'
 import {
   Card,
   CardActionArea,
   CardContent,
-  CardMedia,
   Skeleton,
   Typography,
 } from "@mui/material";

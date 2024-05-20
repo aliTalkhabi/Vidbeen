@@ -1,5 +1,5 @@
 "use client";
-import { Skeleton, Typography } from "@mui/material";
+import { Skeleton } from "@mui/material";
 import styles from "./header.module.css";
 import dynamic from "next/dynamic";
 import Image from "next/image";

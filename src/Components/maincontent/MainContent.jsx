@@ -1,17 +1,10 @@
 'use client'
-import { CategoryItems, NewVideosItems } from "@/constants/Constants";
 import {
   Box,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
   Grid,
-  Typography,
+
 } from "@mui/material";
-import Link from "next/link";
 import "./MainContent.css";
-import StickyBox from "react-sticky-box";
 import Cards from "../card/Cards";
 
 export default function MainContent() {

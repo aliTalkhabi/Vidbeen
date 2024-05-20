@@ -1,10 +1,6 @@
 "use client";
-import Image from "next/image";
 import styles from "./page.module.css";
-import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
-
-import { Box, Container, Grid, Skeleton, Stack } from "@mui/material";
+import {Container,Skeleton,Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import MainContent from "@/components/maincontent/MainContent";
 

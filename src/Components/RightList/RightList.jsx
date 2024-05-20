@@ -1,6 +1,6 @@
 'use client'
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment} from 'react'
 import styles from './rightlist.module.css'
 
 import ArrowDropDownRoundedIcon from '@mui/icons-material/ArrowDropDownRounded';

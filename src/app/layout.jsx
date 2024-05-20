@@ -3,15 +3,7 @@ import dynamic from "next/dynamic";
 import "./globals.css";
 import { MuiRtlProvider } from "@/context/MuiRtlContext";
 import Header from "@/components/header/Header";
-
-
-
-
-
-
 const inter = Inter({ subsets: ["latin"] });
-
-
 const Footer = dynamic(()=> import('@/components/footer/Footer') , {ssr:false})
 
 export const metadata = {
