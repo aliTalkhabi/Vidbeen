@@ -10,19 +10,19 @@ const CategoryIcon = dynamic(
   () => import("@mui/icons-material/GridViewRounded"),
   {
     ssr: false,
-    loading: () => <Skeleton variant="circular" width={25} height={25} />,
+    loading: () => <Skeleton animation='pulse' variant="circular" width={25} height={25} />,
   }
 );
 const MagezineIcon = dynamic(
   () => import("@mui/icons-material/AutoStoriesRounded"),
   {
     ssr: false,
-    loading: () => <Skeleton variant="circular" width={18} height={18} />,
+    loading: () => <Skeleton animation='pulse' variant="circular" width={18} height={18} />,
   }
 );
 const StoreIcon = dynamic(() => import("@mui/icons-material/StoreRounded"), {
   ssr: false,
-  loading: () => <Skeleton variant="circular" width={18} height={18} />,
+  loading: () => <Skeleton animation='wave' variant="circular" width={18} height={18} />,
 });
 const ParagraphDynamic = dynamic(() => import("@mui/material/Typography"), {
   ssr: false,

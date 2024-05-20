@@ -48,13 +48,13 @@ const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
 export default function Home() {
   return (
     <>
-      <Header />
+      
       <main className={styles.main}>
         <Stack
           component="section"
           sx={{ margin: "0 auto", marginTop: { xs: 0, sm: 0, lg: "4rem" } }}
         >
-          <ContainerDynamic
+          <Container
             component="section"
             sx={{
               display: "grid",
@@ -69,8 +69,8 @@ export default function Home() {
               height: "100%",
             }}
           >
-            <BoxDynamic 
-              component='aside'
+            <BoxDynamic
+              component="aside"
               sx={{
                 display: { xs: "none", sm: "none", md: "block", lg: "block" },
               }}
@@ -78,7 +78,7 @@ export default function Home() {
               <SideBarDynamic />
             </BoxDynamic>
             <BoxDynamic
-              component='section'
+              component="section"
               sx={{
                 height: "fit-content",
                 width: { xs: "100%", sm: "100%", md: "100%" },
@@ -87,10 +87,10 @@ export default function Home() {
               <TopCardDynamic />
               <MainContent />
             </BoxDynamic>
-          </ContainerDynamic>
+          </Container>
         </Stack>
       </main>
-      <Footer />
+      
     </>
   );
 }

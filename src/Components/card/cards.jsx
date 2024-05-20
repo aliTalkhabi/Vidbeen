@@ -3,6 +3,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  Skeleton,
   Typography,
 } from "@mui/material";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
@@ -13,7 +14,15 @@ import {
   TrainingItems,
 } from "@/constants/Constants";
 import Link from "next/link";
-import { Padding } from "@mui/icons-material";
+import dynamic from "next/dynamic";
+const TopCardDynamic = dynamic(() => import("@mui/material/Card"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" width='100%' height='100%' />,
+});
+const CardActionAreaDynamic = dynamic(() => import("@mui/material/CardActionArea"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" width="100%" height="100%" />,
+});
 
 export default function Cards({ typeCards }) {
   return (
@@ -21,7 +30,7 @@ export default function Cards({ typeCards }) {
       {typeCards === "top-pages"
         ? TopCardsInfo.map((topcardinfo) => {
             return (
-              <Card
+              <TopCardDynamic
                 key={topcardinfo.id}
                 component="article"
                 sx={{
@@ -32,7 +41,7 @@ export default function Cards({ typeCards }) {
                 }}
               >
                 <Link href={topcardinfo.link} title={topcardinfo.title}>
-                  <CardActionArea component="div">
+                  <CardActionAreaDynamic component="div">
                     <picture>
                       <source srcSet={topcardinfo.image} type="image/jpg" />
                       <img
@@ -69,9 +78,9 @@ export default function Cards({ typeCards }) {
                         تعداد بازدید : {topcardinfo.view}
                       </Typography>
                     </CardContent>
-                  </CardActionArea>
+                  </CardActionAreaDynamic>
                 </Link>
-              </Card>
+              </TopCardDynamic>
             );
           })
         : typeCards === "new-videos-item-mobile"
@@ -87,7 +96,10 @@ export default function Cards({ typeCards }) {
                 }}
                 component="article"
               >
-                <Link href={newvideositem.link} title={newvideositem.description}>
+                <Link
+                  href={newvideositem.link}
+                  title={newvideositem.description}
+                >
                   <CardActionArea component="div">
                     <picture>
                       <source srcSet={newvideositem.image} type="image/jpg" />
@@ -131,7 +143,10 @@ export default function Cards({ typeCards }) {
                 }}
                 component="article"
               >
-                <Link href={newvideositem.link} title={newvideositem.description}>
+                <Link
+                  href={newvideositem.link}
+                  title={newvideositem.description}
+                >
                   <CardActionArea component="div">
                     <picture>
                       <source srcSet={newvideositem.image} type="image/jpg" />
@@ -177,18 +192,22 @@ export default function Cards({ typeCards }) {
                   }}
                   component="article"
                 >
-                  <Link key={categoryitem.id} href={categoryitem.link} title={categoryitem.description}>
+                  <Link
+                    key={categoryitem.id}
+                    href={categoryitem.link}
+                    title={categoryitem.description}
+                  >
                     <CardActionArea component="div">
-                    <picture>
-                      <source srcSet={categoryitem.image} type="image/jpg" />
-                      <img
-                        src={categoryitem.image}
-                        alt={categoryitem.alt}
-                        width={530}
-                        height={300}
-                      />
-                    </picture>
-                     
+                      <picture>
+                        <source srcSet={categoryitem.image} type="image/jpg" />
+                        <img
+                          src={categoryitem.image}
+                          alt={categoryitem.alt}
+                          width={530}
+                          height={300}
+                        />
+                      </picture>
+
                       <CardContent component="div">
                         <Typography
                           component="p"
@@ -216,9 +235,12 @@ export default function Cards({ typeCards }) {
                   boxShadow: "none",
                 }}
               >
-                <Link href={trainingitems.link} title={trainingitems.description}>
+                <Link
+                  href={trainingitems.link}
+                  title={trainingitems.description}
+                >
                   <CardActionArea component="div">
-                  <picture>
+                    <picture>
                       <source srcSet={trainingitems.image} type="image/jpg" />
                       <img
                         src={trainingitems.image}
@@ -226,7 +248,6 @@ export default function Cards({ typeCards }) {
                         width={160}
                         height={90}
                       />
-                       
                     </picture>
                     <CardContent sx={{ padding: "0" }}>
                       <Typography

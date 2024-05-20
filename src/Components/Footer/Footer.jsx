@@ -56,7 +56,7 @@ export default function Footer() {
           <Typography
             sx={{ color: "#fff", margin: "1rem auto", textAlign: "center" }}
           >
-            مدیریت سایت : مسلم زمانی8
+            مدیریت سایت : مسلم زمانی
           </Typography>
         </Box>
       </Box>
