@@ -1,12 +1,8 @@
-import FooterIcon from "@/components/footer/FooterIcon";
-import {
-  Facebook,
-  Instagram,
-  LinkedIn,
-  Twitter,
-  YouTube,
-} from "@mui/icons-material";
-import React from "react";
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
 
 export const RightListItems = [
   {
@@ -198,26 +194,8 @@ export const TrainingItems = [
 
 
 
-import FacebookIcon from '@mui/icons-material/Facebook';
-// import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import { Skeleton } from "@mui/material";
-import dynamic from "next/dynamic";
 
 
-const TwitterIcon = dynamic(() => import("@mui/icons-material/Twitter"), {
-  ssr: false,
-  loading: () => (
-    <Skeleton
-      animation="wave"
-      variant="circular"
-      sx={{ width: "1em", height: "1em" }}
-    />
-  ),
-  suspense :true
-});
 
 export const SocialMediaItems = [
   {
