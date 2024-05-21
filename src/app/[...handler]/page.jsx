@@ -1,13 +1,16 @@
 "use client";
 import { usePathname } from "next/navigation";
 import styles from "../page.module.css";
+import Category from "@/components/category/category";
 export default function Handler() {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <main className={styles.main}>
       {pathname === "/category" ? (
-        <p>category handler</p>
+        <>
+          <p>category handler</p>
+          <Category />
+        </>
       ) : pathname === "/product" ? (
         <p>product handler</p>
       ) : pathname !== "/category" || pathname !== "/product" ? (

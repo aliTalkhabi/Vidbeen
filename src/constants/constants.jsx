@@ -1,8 +1,8 @@
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 export const RightListItems = [
   {
@@ -192,35 +192,120 @@ export const TrainingItems = [
   },
 ];
 
-
-
-
-
-
 export const SocialMediaItems = [
   {
     id: 126,
     link: "/",
-    icon: <TwitterIcon sx={{color:'#fff' , fontSize:'3rem'}} />,
+    icon: <TwitterIcon sx={{ color: "#fff", fontSize: "3rem" }} />,
   },
   {
     id: 127,
     link: "/",
-    icon: <FacebookIcon sx={{color:'#fff' , fontSize:'3rem'}}/>,
+    icon: <FacebookIcon sx={{ color: "#fff", fontSize: "3rem" }} />,
   },
   {
     id: 128,
     link: "/",
-    icon: <LinkedInIcon sx={{color:'#fff' ,fontSize:'3rem'}} />,
+    icon: <LinkedInIcon sx={{ color: "#fff", fontSize: "3rem" }} />,
   },
   {
     id: 129,
     link: "/",
-    icon: <YouTubeIcon sx={{color:'#fff' ,fontSize:'3rem'}}/>,
+    icon: <YouTubeIcon sx={{ color: "#fff", fontSize: "3rem" }} />,
   },
   {
     id: 130,
     link: "/",
-    icon: <InstagramIcon sx={{color:'#fff' ,fontSize:'3rem'}}/>,
+    icon: <InstagramIcon sx={{ color: "#fff", fontSize: "3rem" }} />,
+  },
+];
+export const CategoriesCard = [
+  {
+    id: 131,
+    image: "/image/category-items/",
+    alt: "عکس آبی معرفی آیفون تصویری الکتروپیک New 592",
+    link: "/",
+    description: "آیفون تصویری الکتروپیک 592",
+    realsedate:'22 اسفند 1402',
+    view:'13'
+  },
+  {
+    id:132,
+    image: "/image/category-items/",
+    alt:"آیفون تصویری الکترو پیک مدل 797",
+    link:"/",
+    description:"آیفون تصویری 797 الکتروپیک",
+    realsedate:'22 اسفند 1402',
+    view:'14'
+  },
+  {
+    id:133,
+    image: "/image/category-items/electropeyk-797.jpg",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:134,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:135,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:136,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:137,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:138,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:139,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:140,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:141,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
+  },
+  {
+    id:142,
+    image: "/image/category-items/",
+    alt:"",
+    link:"",
+    description:""
   },
 ];

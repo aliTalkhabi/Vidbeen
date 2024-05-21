@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   Card,
   CardActionArea,
@@ -17,12 +17,17 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 const TopCardDynamic = dynamic(() => import("@mui/material/Card"), {
   ssr: false,
-  loading: () => <Skeleton variant="rectangular" width='100%' height='100%' />,
-});
-const CardActionAreaDynamic = dynamic(() => import("@mui/material/CardActionArea"), {
-  ssr: false,
   loading: () => <Skeleton variant="rectangular" width="100%" height="100%" />,
 });
+const CardActionAreaDynamic = dynamic(
+  () => import("@mui/material/CardActionArea"),
+  {
+    ssr: false,
+    loading: () => (
+      <Skeleton variant="rectangular" width="100%" height="100%" />
+    ),
+  }
+);
 
 export default function Cards({ typeCards }) {
   return (

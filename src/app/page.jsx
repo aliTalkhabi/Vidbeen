@@ -1,6 +1,6 @@
 "use client";
 import styles from "./page.module.css";
-import {Container,Skeleton,Stack } from "@mui/material";
+import { Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import MainContent from "@/components/maincontent/MainContent";
 
@@ -26,67 +26,53 @@ const SideBarDynamic = dynamic(
     ),
   }
 );
-const ContainerDynamic = dynamic(() => import("@mui/material/Container"), {
-  ssr: "false",
-  loading: () => (
-    <Skeleton
-      animation="wave"
-      variant="rectangular"
-      width={1200}
-      height={300}
-    />
-  ),
-});
+
 const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
   ssr: "false",
   loading: () => <Skeleton animation="wave" variant="rectangular" />,
 });
 export default function Home() {
   return (
-    <>
-      
-      <main className={styles.main}>
-        <Stack
+    <main className={styles.main}>
+      <Stack
+        component="section"
+        sx={{ margin: "0 auto", marginTop: { xs: 0, sm: 0, lg: "4rem" } }}
+      >
+        <Container
           component="section"
-          sx={{ margin: "0 auto", marginTop: { xs: 0, sm: 0, lg: "4rem" } }}
+          sx={{
+            display: "grid",
+            gridAutoFlow: "column",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr",
+              md: "2fr 6fr",
+              lg: "1fr 3fr",
+            },
+            gap: "10px 10px",
+            height: "100%",
+          }}
         >
-          <Container
-            component="section"
+          <BoxDynamic
+            component="aside"
             sx={{
-              display: "grid",
-              gridAutoFlow: "column",
-              gridTemplateColumns: {
-                xs: "1fr",
-                sm: "1fr",
-                md: "2fr 6fr",
-                lg: "1fr 3fr",
-              },
-              gap: "10px 10px",
-              height: "100%",
+              display: { xs: "none", sm: "none", md: "block", lg: "block" },
             }}
           >
-            <BoxDynamic
-              component="aside"
-              sx={{
-                display: { xs: "none", sm: "none", md: "block", lg: "block" },
-              }}
-            >
-              <SideBarDynamic />
-            </BoxDynamic>
-            <BoxDynamic
-              component="section"
-              sx={{
-                height: "fit-content",
-                width: { xs: "100%", sm: "100%", md: "100%" },
-              }}
-            >
-              <TopCardDynamic />
-              <MainContent />
-            </BoxDynamic>
-          </Container>
-        </Stack>
-      </main>
-      
-    </>
+            <SideBarDynamic />
+          </BoxDynamic>
+          <BoxDynamic
+            component="section"
+            sx={{
+              height: "fit-content",
+              width: { xs: "100%", sm: "100%", md: "100%" },
+            }}
+          >
+            <TopCardDynamic />
+            <MainContent />
+          </BoxDynamic>
+        </Container>
+      </Stack>
+    </main>
   );
 }
