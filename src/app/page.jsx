@@ -34,10 +34,7 @@ const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Stack
-        component="section"
-        sx={{ margin: "0 auto", marginTop: { xs: 0, sm: 0, lg: "4rem" } }}
-      >
+      <Stack component="section">
         <Container
           component="section"
           sx={{

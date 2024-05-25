@@ -1,8 +1,9 @@
 "use client";
-import {  Container, Skeleton } from "@mui/material";
+import { Container, Skeleton } from "@mui/material";
 import dynamic from "next/dynamic";
 import React from "react";
-import Breadcrumb from "../breadcrumb/Breadcrumb";
+import Cards from "../card/Cards";
+// import Breadcrumb from "../breadcrumb/Breadcrumb";
 
 export default function Category() {
   const SideBarDynamic = dynamic(
@@ -53,8 +54,21 @@ export default function Category() {
         >
           <SideBarDynamic />
         </BoxDynamic>
-        <BoxDynamic component='section' sx={{}}>
-          
+        <BoxDynamic
+          component="section"
+          sx={{
+            border: "1px solid green",
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "repeat(1, 1fr)",
+              sm: "repeat(1, 1fr)",
+              md: "repeat(3, 1fr)",
+            },
+            gridTemplateRows: "repeat(6, 1fr)",
+            gap: "1rem",
+          }}
+        >
+          <Cards typeCards="category-page-items" />
         </BoxDynamic>
       </Container>
     </>

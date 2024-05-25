@@ -1,36 +1,29 @@
-import { NavigateNext } from "@mui/icons-material";
+'use client'
 import { Breadcrumbs, Link, Stack, Typography } from "@mui/material";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 export default function Breadcrumb() {
-  function handleClick(event) {
-    event.preventDefault();
-    console.info("You clicked a breadcrumb.");
-  }
-  const breadcrumbs = [
+  const pathname = usePathname()
+  
+  const breadcrumb = [
     <Link key="1" color="inherit" href="/">
       خانه
     </Link>,
-    <Link key="2" color="inherit" href="/category" onClick={handleClick}>
+    <Link key="2" color="inherit" href="/category" >
       شاخه
     </Link>,
     <Typography key="3" color="text.primary">
       محصول
     </Typography>
   ];
+  
   return (
-    <Stack spacing={2}>
+    <Stack spacing={2} sx={{margin:'1rem 0',padding:'0 8%'}}>
       <Breadcrumbs separator="»" aria-label="breadcrumb">
-        {breadcrumbs}
-      </Breadcrumbs>
-      <Breadcrumbs separator="»" aria-label="breadcrumb">
-        {breadcrumbs}
-      </Breadcrumbs>
-      <Breadcrumbs
-        separator={<NavigateNext fontSize="small" />}
-        aria-label="breadcrumb"
-      >
-        {breadcrumbs}
+        {breadcrumb.map(breadcrumbs=>{
+
+        })}
       </Breadcrumbs>
     </Stack>
   );

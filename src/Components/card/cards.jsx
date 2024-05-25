@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import {
+  CategoriesItemCard,
   CategoryItems,
   NewVideosItems,
   TopCardsInfo,
@@ -15,6 +16,8 @@ import {
 } from "@/constants/Constants";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import "./Card.css";
+import { QueryBuilderRounded } from "@mui/icons-material";
 const TopCardDynamic = dynamic(() => import("@mui/material/Card"), {
   ssr: false,
   loading: () => <Skeleton variant="rectangular" width="100%" height="100%" />,
@@ -274,6 +277,93 @@ export default function Cards({ typeCards }) {
                     </CardContent>
                   </CardActionArea>
                 </Link>
+              </Card>
+            );
+          })
+        : typeCards === "category-page-items"
+        ? CategoriesItemCard.map((categoriesitemcards) => {
+            return (
+              <Card
+                key={categoriesitemcards.id}
+                component="article"
+                variant="article"
+                sx={{
+                  maxWidth: "100%",
+                  background: "none",
+                  boxShadow: "none",
+                  height: { lg: "350px" },
+                }}
+              >
+                <CardActionArea component="div">
+                  <picture>
+                    <source
+                      srcSet={categoriesitemcards.image}
+                      type="image/jpg"
+                    />
+                    <img
+                      src={categoriesitemcards.image}
+                      alt={categoriesitemcards.alt}
+                      width={160}
+                      height={90}
+                    />
+                  </picture>
+                  <CardContent
+                    sx={{ padding: { sm: "16px", xs: "16px", md: "0" } }}
+                  >
+                    <Typography
+                      variant="p"
+                      component="p"
+                      sx={{
+                        fontSize: "16px",
+                        height: {
+                          xs: "45px",
+                          sm: "60px",
+                          md: "60px",
+                          lg: "50px",
+                        },
+                        textAlign: "justify",
+                        color: "#111010",
+                        margin: "5px auto",
+                        fontWeight: "400",
+                        lineHeight: "1.5",
+                        padding: "0 10px",
+                      }}
+                    >
+                      {categoriesitemcards.description}
+                    </Typography>
+                    <Typography
+                      component="p"
+                      sx={{
+                        display: "flex",
+                        flexWrap: "wrap",
+                        color: "#00000080",
+                      }}
+                    >
+                      <QueryBuilderRounded
+                        sx={{
+                          marginBottom: ".5rem",
+                          marginRight: "1rem",
+                          marginLeft: ".5rem",
+                        }}
+                      />
+                      <Typography
+                        component="span"
+                        sx={{ width: { sm: "90%", md: "75%", lg: "80%" } }}
+                      >
+                        تاریخ انتشار : {categoriesitemcards.realsedate}
+                      </Typography>
+                      <VisibilityRoundedIcon
+                        sx={{ marginRight: "1rem", marginLeft: ".5rem" }}
+                      />
+                      <Typography
+                        component="span"
+                        sx={{ width: { sm: "90%", md: "75%", lg: "80%" } }}
+                      >
+                        تعداد بازدید : {categoriesitemcards.view}
+                      </Typography>
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
               </Card>
             );
           })

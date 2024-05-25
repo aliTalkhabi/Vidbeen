@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import "./globals.css";
 import { MuiRtlProvider } from "@/context/MuiRtlContext";
 import Header from "@/components/header/Header";
+import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 const inter = Inter({ subsets: ["latin"] });
 const Footer = dynamic(()=> import('@/components/footer/Footer') , {ssr:false})
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
       <MuiRtlProvider>
         <body className={inter.className}>
           <Header />
+          <Breadcrumb />
           {children}
           <Footer />
         </body>

@@ -24,7 +24,7 @@ export default function RightList() {
                                 rightListItem.subMenu.length > 0 && (
                                     <AccordionDetails component='ul' sx={{ padding: '0 1rem' }}>
                                         {rightListItem.subMenu.map((subMenuItem) => (
-                                            <Typography component='li' key={subMenuItem.id} sx={{ margin: '1rem 0',fontSize:{md:'12px',lg:'16px'}}}>
+                                            <Typography component='li' key={subMenuItem.id} sx={{ margin: '1rem 0',listStyleType:'none',fontSize:{md:'12px',lg:'16px'}}}>
                                                 <Link href={subMenuItem.link}>{subMenuItem.title}</Link>
                                             </Typography>
                                         ))}
