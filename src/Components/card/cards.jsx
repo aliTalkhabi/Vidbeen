@@ -303,13 +303,17 @@ export default function Cards({ typeCards }) {
                     <img
                       src={categoriesitemcards.image}
                       alt={categoriesitemcards.alt}
-                      style={{width:'100%',height:'200px',objectFit:'contain'}}
+                      style={{
+                        width: "100%",
+                        height: "200px",
+                        objectFit: "contain",
+                      }}
                       width={160}
                       height={90}
                     />
                   </picture>
                   <CardContent
-                    sx={{ padding: { sm: "16px", xs: "16px", md: "0" } }}
+                    sx={{ padding: { xs: "16px",sm: "16px",  md: "0" } }}
                   >
                     <Typography
                       variant="p"
@@ -349,7 +353,9 @@ export default function Cards({ typeCards }) {
                       />
                       <Typography
                         component="span"
-                        sx={{ width: { sm: "90%", md: "75%", lg: "80%" } }}
+                        sx={{
+                          width: { xs: "80%", sm: "calc(80% - 1rem)", md: "calc(100% - 3rem)", lg: "80%" },
+                        }}
                       >
                         تاریخ انتشار : {categoriesitemcards.realsedate}
                       </Typography>
@@ -358,7 +364,9 @@ export default function Cards({ typeCards }) {
                       />
                       <Typography
                         component="span"
-                        sx={{ width: { sm: "90%", md: "75%", lg: "80%" } }}
+                        sx={{
+                          width: { xs: "80%", sm: "calc(80% - 1rem)", md: "calc(100% - 3rem)", lg: "80%" },
+                        }}
                       >
                         تعداد بازدید : {categoriesitemcards.view}
                       </Typography>

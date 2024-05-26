@@ -33,7 +33,7 @@ export default function Category() {
       <Container
         component="section"
         sx={{
-          border: "1px solid black",
+          
           display: "grid",
           gridAutoFlow: "column",
           gridTemplateColumns: {
@@ -57,15 +57,16 @@ export default function Category() {
         <BoxDynamic
           component="section"
           sx={{
-            border: "1px solid green",
+            
             display: "grid",
             gridTemplateColumns: {
               xs: "repeat(1, 1fr)",
-              sm: "repeat(1, 1fr)",
+              sm: "repeat(2, 1fr)",
               md: "repeat(3, 1fr)",
             },
             gridTemplateRows: "repeat(6, 1fr)",
-            gap: "1rem",
+            gap: "10px",
+            padding: { xs: "0", sm: "0", md: "0 2rem" },
           }}
         >
           <Cards typeCards="category-page-items" />

@@ -1,8 +1,12 @@
 "use client";
-import { Breadcrumbs, Link, Stack, Typography } from "@mui/material";
+import { Link, Skeleton, Stack } from "@mui/material";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import React from "react";
-
+const BreadcrumbDynamic = dynamic(() => import("@mui/material/Breadcrumbs"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular"/>,
+});
 export default function Breadcrumb() {
   const pathname = usePathname();
 
@@ -29,8 +33,8 @@ export default function Breadcrumb() {
   ];
 
   return (
-    <Stack spacing={2} sx={{ margin: "1rem 0", padding: "0 8%" }}>
-      <Breadcrumbs separator="»" aria-label="breadcrumb">
+    <Stack  spacing={2} sx={{ margin: "1rem auto", width:'85%' }}>
+      <BreadcrumbDynamic separator="»" aria-label="breadcrumb">
         {pathname === "/"
           ? breadcrumb.slice(0, 1)
           : pathname === "/category"
@@ -38,7 +42,7 @@ export default function Breadcrumb() {
           : pathname === "/product"
           ? breadcrumb.slice(0, 3)
           : null}
-      </Breadcrumbs>
+      </BreadcrumbDynamic>
     </Stack>
   );
 }
