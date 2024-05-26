@@ -303,6 +303,7 @@ export default function Cards({ typeCards }) {
                     <img
                       src={categoriesitemcards.image}
                       alt={categoriesitemcards.alt}
+                      style={{width:'100%',height:'200px',objectFit:'contain'}}
                       width={160}
                       height={90}
                     />
