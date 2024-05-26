@@ -294,85 +294,97 @@ export default function Cards({ typeCards }) {
                   height: { lg: "350px" },
                 }}
               >
-                <CardActionArea component="div">
-                  <picture>
-                    <source
-                      srcSet={categoriesitemcards.image}
-                      type="image/jpg"
-                    />
-                    <img
-                      src={categoriesitemcards.image}
-                      alt={categoriesitemcards.alt}
-                      style={{
-                        width: "100%",
-                        height: "200px",
-                        objectFit: "contain",
-                      }}
-                      width={160}
-                      height={90}
-                    />
-                  </picture>
-                  <CardContent
-                    sx={{ padding: { xs: "16px",sm: "16px",  md: "0" } }}
-                  >
-                    <Typography
-                      variant="p"
-                      component="p"
-                      sx={{
-                        fontSize: "16px",
-                        height: {
-                          xs: "45px",
-                          sm: "60px",
-                          md: "60px",
-                          lg: "50px",
-                        },
-                        textAlign: "justify",
-                        color: "#111010",
-                        margin: "5px auto",
-                        fontWeight: "400",
-                        lineHeight: "1.5",
-                        padding: "0 10px",
-                      }}
-                    >
-                      {categoriesitemcards.description}
-                    </Typography>
-                    <Typography
-                      component="p"
-                      sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        color: "#00000080",
-                      }}
-                    >
-                      <QueryBuilderRounded
-                        sx={{
-                          marginBottom: ".5rem",
-                          marginRight: "1rem",
-                          marginLeft: ".5rem",
-                        }}
+                <Link href={categoriesitemcards.link}>
+                  <CardActionArea component="section">
+                    <picture>
+                      <source
+                        srcSet={categoriesitemcards.image}
+                        type="image/jpg"
                       />
+                      <img
+                        src={categoriesitemcards.image}
+                        alt={categoriesitemcards.alt}
+                        style={{
+                          width: "100%",
+                          height: "200px",
+                          objectFit: "contain",
+                        }}
+                        width={160}
+                        height={90}
+                      />
+                    </picture>
+                    <CardContent
+                      sx={{ padding: { xs: "16px", sm: "16px", md: "0" } }}
+                    >
                       <Typography
-                        component="span"
+                        variant="p"
+                        component="p"
                         sx={{
-                          width: { xs: "80%", sm: "calc(80% - 1rem)", md: "calc(100% - 3rem)", lg: "80%" },
+                          fontSize: "16px",
+                          height: {
+                            xs: "45px",
+                            sm: "60px",
+                            md: "60px",
+                            lg: "50px",
+                          },
+                          textAlign: "justify",
+                          color: "#111010",
+                          margin: "5px auto",
+                          fontWeight: "400",
+                          lineHeight: "1.5",
+                          padding: "0 10px",
                         }}
                       >
-                        تاریخ انتشار : {categoriesitemcards.realsedate}
+                        {categoriesitemcards.description}
                       </Typography>
-                      <VisibilityRoundedIcon
-                        sx={{ marginRight: "1rem", marginLeft: ".5rem" }}
-                      />
                       <Typography
-                        component="span"
+                        component="p"
                         sx={{
-                          width: { xs: "80%", sm: "calc(80% - 1rem)", md: "calc(100% - 3rem)", lg: "80%" },
+                          display: "flex",
+                          flexWrap: "wrap",
+                          color: "#00000080",
                         }}
                       >
-                        تعداد بازدید : {categoriesitemcards.view}
+                        <QueryBuilderRounded
+                          sx={{
+                            marginBottom: ".5rem",
+                            marginRight: "1rem",
+                            marginLeft: ".5rem",
+                          }}
+                        />
+                        <Typography
+                          component="span"
+                          sx={{
+                            width: {
+                              xs: "80%",
+                              sm: "calc(80% - 1rem)",
+                              md: "calc(100% - 3rem)",
+                              lg: "80%",
+                            },
+                          }}
+                        >
+                          تاریخ انتشار : {categoriesitemcards.realsedate}
+                        </Typography>
+                        <VisibilityRoundedIcon
+                          sx={{ marginRight: "1rem", marginLeft: ".5rem" }}
+                        />
+                        <Typography
+                          component="span"
+                          sx={{
+                            width: {
+                              xs: "80%",
+                              sm: "calc(80% - 1rem)",
+                              md: "calc(100% - 3rem)",
+                              lg: "80%",
+                            },
+                          }}
+                        >
+                          تعداد بازدید : {categoriesitemcards.view}
+                        </Typography>
                       </Typography>
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
+                    </CardContent>
+                  </CardActionArea>
+                </Link>
               </Card>
             );
           })

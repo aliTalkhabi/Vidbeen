@@ -46,7 +46,7 @@ const ImageDynamic = dynamic(() => import("next/image"), {
 export default function Header() {
   return (
     <header className={styles.header}>
-      <nav>
+      <section>
         <section>
           <ul>
             <li>
@@ -80,7 +80,7 @@ export default function Header() {
             </Link>
           </div>
         </section>
-      </nav>
+      </section>
     </header>
   );
 }

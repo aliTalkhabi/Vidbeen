@@ -33,8 +33,8 @@ export default function Breadcrumb() {
   ];
 
   return (
-    <Stack  spacing={2} sx={{ margin: "1rem auto", width:'85%' }}>
-      <BreadcrumbDynamic separator="»" aria-label="breadcrumb">
+    <Stack component="section" spacing={2} sx={{ margin: "1rem auto", width:'85%' }}>
+      <BreadcrumbDynamic component='section' separator="»" aria-label="breadcrumb">
         {pathname === "/"
           ? breadcrumb.slice(0, 1)
           : pathname === "/category"
