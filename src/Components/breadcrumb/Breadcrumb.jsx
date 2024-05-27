@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import React from "react";
 const BreadcrumbDynamic = dynamic(() => import("@mui/material/Breadcrumbs"), {
   ssr: false,
-  loading: () => <Skeleton variant="rectangular"/>,
+  loading: () => <Skeleton variant="rectangular" animation="wave"/>,
 });
 export default function Breadcrumb() {
   const pathname = usePathname();

@@ -15,30 +15,53 @@ import {
   TrainingItems,
 } from "@/constants/Constants";
 import Link from "next/link";
-import dynamic from "next/dynamic";
+
 import "./Card.css";
 import { QueryBuilderRounded } from "@mui/icons-material";
-const TopCardDynamic = dynamic(() => import("@mui/material/Card"), {
-  ssr: false,
-  loading: () => <Skeleton variant="rectangular" width="100%" height="100%" />,
-});
-const CardActionAreaDynamic = dynamic(
-  () => import("@mui/material/CardActionArea"),
-  {
-    ssr: false,
-    loading: () => (
-      <Skeleton variant="rectangular" width="100%" height="100%" />
-    ),
-  }
-);
+import dynamic from "next/dynamic";
 
 export default function Cards({ typeCards }) {
+  const CategoryIndexCards = dynamic(() => import("@mui/material/Card"), {
+    ssr: false,
+    loading: () => (
+      <Skeleton
+        variant="rectangular"
+        animation="wave"
+        width={531}
+        height={363}
+      />
+    ),
+  });
+
+  const CardNewItemDynamic = dynamic(() => import("@mui/material/Card"), {
+    ssr: false,
+    loading: () => (
+      <Skeleton
+        variant="rectangular"
+        animation="wave"
+        width={211}
+        height={175}
+        sx={{ marginBottom: "1rem" }}
+      />
+    ),
+  });
+  const CardTrainingItem = dynamic(() => import("@mui/material/Card"), {
+    ssr: false,
+    loading: () => (
+      <Skeleton
+        variant="rectangular"
+        animation="wave"
+        width={165}
+        height={170}
+      />
+    ),
+  });
   return (
     <>
       {typeCards === "top-pages"
         ? TopCardsInfo.map((topcardinfo) => {
             return (
-              <TopCardDynamic
+              <Card
                 key={topcardinfo.id}
                 component="article"
                 sx={{
@@ -49,7 +72,7 @@ export default function Cards({ typeCards }) {
                 }}
               >
                 <Link href={topcardinfo.link} title={topcardinfo.title}>
-                  <CardActionAreaDynamic component="div">
+                  <CardActionArea component="section">
                     <picture>
                       <source srcSet={topcardinfo.image} type="image/jpg" />
                       <img
@@ -86,9 +109,9 @@ export default function Cards({ typeCards }) {
                         تعداد بازدید : {topcardinfo.view}
                       </Typography>
                     </CardContent>
-                  </CardActionAreaDynamic>
+                  </CardActionArea>
                 </Link>
-              </TopCardDynamic>
+              </Card>
             );
           })
         : typeCards === "new-videos-item-mobile"
@@ -141,7 +164,7 @@ export default function Cards({ typeCards }) {
         : typeCards === "new-videos-item-desktop"
         ? NewVideosItems.map((newvideositem) => {
             return (
-              <Card
+              <CardNewItemDynamic
                 key={newvideositem.id}
                 sx={{
                   maxWidth: { xs: "350px", sm: "250px", md: "100%" },
@@ -183,7 +206,7 @@ export default function Cards({ typeCards }) {
                     </CardContent>
                   </CardActionArea>
                 </Link>
-              </Card>
+              </CardNewItemDynamic>
             );
           })
         : typeCards === "category-items"
@@ -191,8 +214,7 @@ export default function Cards({ typeCards }) {
             return (
               <div key={categoryitem.id} className="cards-area">
                 <h2>{categoryitem.title}</h2>
-
-                <Card
+                <CategoryIndexCards
                   sx={{
                     maxWidth: "100%",
                     background: "none",
@@ -205,7 +227,7 @@ export default function Cards({ typeCards }) {
                     href={categoryitem.link}
                     title={categoryitem.description}
                   >
-                    <CardActionArea component="div">
+                    <CardActionArea component="section">
                       <picture>
                         <source srcSet={categoryitem.image} type="image/jpg" />
                         <img
@@ -216,7 +238,7 @@ export default function Cards({ typeCards }) {
                         />
                       </picture>
 
-                      <CardContent component="div">
+                      <CardContent component="section">
                         <Typography
                           component="p"
                           sx={{ color: "#111010", fontSize: "16px" }}
@@ -226,14 +248,14 @@ export default function Cards({ typeCards }) {
                       </CardContent>
                     </CardActionArea>
                   </Link>
-                </Card>
+                </CategoryIndexCards>
               </div>
             );
           })
         : typeCards === "training-items"
         ? TrainingItems.map((trainingitems) => {
             return (
-              <Card
+              <CardTrainingItem
                 key={trainingitems.id}
                 component="article"
                 sx={{
@@ -277,7 +299,7 @@ export default function Cards({ typeCards }) {
                     </CardContent>
                   </CardActionArea>
                 </Link>
-              </Card>
+              </CardTrainingItem>
             );
           })
         : typeCards === "category-page-items"

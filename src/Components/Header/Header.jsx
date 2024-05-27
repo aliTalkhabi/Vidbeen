@@ -34,15 +34,7 @@ const ParagraphDynamic = dynamic(() => import("@mui/material/Typography"), {
     />
   ),
 });
-const ImageDynamic = dynamic(() => import("next/image"), {
-  ssr: false,
-  loading: () => (
-    <Skeleton
-      variant="rectangular"
-      sx={{ width: "100%", height: "100%" }}
-    />
-  ),
-});
+
 export default function Header() {
   return (
     <header className={styles.header}>

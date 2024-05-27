@@ -3,6 +3,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Skeleton,
   Typography,
 } from "@mui/material";
 import React, { Fragment } from "react";
@@ -12,7 +13,11 @@ import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import Link from "next/link";
 import { RightListItems } from "@/constants/Constants";
 import StickyBox from "react-sticky-box";
-
+import dynamic from "next/dynamic";
+const DynamicAccordion = dynamic(() => import("@mui/material/Accordion"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" animation="wave" width={285} height={610}/>,
+});
 export default function RightList() {
   return (
     <section className={styles.asideContainer}>
@@ -20,7 +25,7 @@ export default function RightList() {
         {RightListItems.map((rightListItem, i) => {
           return (
             <Fragment key={i}>
-              <Accordion
+              <DynamicAccordion
                 component="section"
                 key={rightListItem.id}
                 sx={{
@@ -43,6 +48,7 @@ export default function RightList() {
                           fontSize: "30px",
                           width: { md: ".5em", lg: ".75em" },
                           height: { md: ".5em", lg: ".75em" },
+                          fontWeight: "700"
                         }}
                       />
                     ) : (
@@ -53,7 +59,10 @@ export default function RightList() {
                   <Link href={rightListItem.link}>{rightListItem.title}</Link>
                 </AccordionSummary>
                 {rightListItem.subMenu.length > 0 && (
-                  <AccordionDetails component="section" sx={{ padding: "0 1rem" }}>
+                  <AccordionDetails
+                    component="section"
+                    sx={{ padding: "0 1rem" }}
+                  >
                     {rightListItem.subMenu.map((subMenuItem) => (
                       <Typography
                         component="section"
@@ -62,7 +71,7 @@ export default function RightList() {
                           margin: "1rem 0",
                           listStyleType: "none",
                           fontSize: { md: "12px", lg: "16px" },
-                          fontWeight:'700'
+                          fontWeight: "700",
                         }}
                       >
                         <Link href={subMenuItem.link}>{subMenuItem.title}</Link>
@@ -70,7 +79,7 @@ export default function RightList() {
                     ))}
                   </AccordionDetails>
                 )}
-              </Accordion>
+              </DynamicAccordion>
             </Fragment>
           );
         })}

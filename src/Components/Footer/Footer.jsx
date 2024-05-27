@@ -1,12 +1,24 @@
-'use client'
-import { Box, Typography } from "@mui/material";
+"use client";
+import { Box, Skeleton, Typography } from "@mui/material";
 import styles from "./Footer.module.css";
-import  {SocialMediaItems}  from "@/constants/constants";
+import { SocialMediaItems } from "@/constants/constants";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 export default function Footer() {
+  const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
+    ssr: "false",
+    loading: () => (
+      <Skeleton
+        animation="wave"
+        variant="rectangular"
+        height={136}
+        sx={{ width: "100%" }}
+      />
+    ),
+  });
   return (
     <footer className={styles.footer}>
-      <Box
+      <BoxDynamic
         component="section"
         sx={{
           display: "grid",
@@ -14,7 +26,7 @@ export default function Footer() {
           padding: { md: "1rem 0rem", lg: "1rem 2rem" },
         }}
       >
-        <Box
+        <BoxDynamic
           component="section"
           sx={{
             display: "inline-grid",
@@ -22,17 +34,23 @@ export default function Footer() {
           }}
         >
           {SocialMediaItems.map((socialmediaitems) => {
-           
             return (
-              <Box key={socialmediaitems.id}  component="section" sx={{ textAlign: "center" ,marginTop:{xs:'2rem',sm:'2rem',lg:'0'}}}>
+              <BoxDynamic
+                key={socialmediaitems.id}
+                component="section"
+                sx={{
+                  textAlign: "center",
+                  marginTop: { xs: "2rem", sm: "2rem", lg: "0" },
+                }}
+              >
                 <Link href={socialmediaitems.link}>
                   {socialmediaitems.icon}
                 </Link>
-              </Box>
+              </BoxDynamic>
             );
           })}
-        </Box>
-        <Box component="section">
+        </BoxDynamic>
+        <BoxDynamic component="section">
           <Typography
             sx={{ color: "#fff", margin: "1rem auto", textAlign: "center" }}
           >
@@ -43,8 +61,8 @@ export default function Footer() {
           >
             02172195 - 02177132831-32
           </Typography>
-        </Box>
-        <Box component="section">
+        </BoxDynamic>
+        <BoxDynamic component="section">
           <Typography
             sx={{ color: "#fff", margin: "1rem auto", textAlign: "center" }}
           >
@@ -60,8 +78,8 @@ export default function Footer() {
           >
             مدیریت سایت : مسلم زمانی
           </Typography>
-        </Box>
-      </Box>
+        </BoxDynamic>
+      </BoxDynamic>
     </footer>
   );
 }

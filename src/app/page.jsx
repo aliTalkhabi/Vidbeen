@@ -29,7 +29,7 @@ const SideBarDynamic = dynamic(
 
 const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
   ssr: "false",
-  loading: () => <Skeleton animation="wave" variant="rectangular" />,
+  loading: () => <Skeleton animation="wave" variant="rectangular" width={850} height={256} />,
 });
 export default function Home() {
   return (
