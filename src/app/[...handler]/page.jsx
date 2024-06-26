@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import styles from "../page.module.css";
 import Category from "@/components/category/category";
+import Product from "@/components/product/Product";
 
 export default function Handler() {
   
@@ -12,8 +13,10 @@ export default function Handler() {
         <>
           <Category />
         </>
-      ) : pathname === "/product" ? (
-        <p>product handler</p>
+      ) : pathname === "/category/product" ? (
+        <>
+          <Product />
+        </>
       ) : pathname !== "/category" || pathname !== "/product" ? (
         <p>not-found</p>
       ) : null}

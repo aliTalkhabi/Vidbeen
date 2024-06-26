@@ -15,7 +15,6 @@ import {
   TrainingItems,
 } from "@/constants/Constants";
 import Link from "next/link";
-
 import "./Card.css";
 import { QueryBuilderRounded } from "@mui/icons-material";
 import dynamic from "next/dynamic";

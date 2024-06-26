@@ -33,6 +33,7 @@ export default function RightList() {
                   border: "none",
                   boxShadow: "none",
                   padding: "0",
+                  fontWeight: "700"
                 }}
               >
                 <AccordionSummary

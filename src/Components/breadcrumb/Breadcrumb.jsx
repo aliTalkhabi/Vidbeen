@@ -24,9 +24,9 @@ export default function Breadcrumb() {
     </Link>,
     <Link
       key="3"
-      color={pathname === "/product" ? "text.primary" : "inherit"}
-      href={pathname === "/product" ? null : "/product"}
-      style={pathname === "/product" ? { textDecoration: "none" } : null}
+      color={pathname === "/category/product" ? "text.primary" : "inherit"}
+      href={pathname === "/category/product" ? null : "/category/product"}
+      style={pathname === "/category/product" ? { textDecoration: "none" } : null}
     >
       محصول
     </Link>,
@@ -39,7 +39,7 @@ export default function Breadcrumb() {
           ? breadcrumb.slice(0, 1)
           : pathname === "/category"
           ? breadcrumb.slice(0, 2)
-          : pathname === "/product"
+          : pathname === "/category/product"
           ? breadcrumb.slice(0, 3)
           : null}
       </BreadcrumbDynamic>
