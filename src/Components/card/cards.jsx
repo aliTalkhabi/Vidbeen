@@ -429,14 +429,17 @@ export default function Cards({ typeCards }) {
                         alt={productnextItem.alt}
                       />
                     </picture>
+
+                    <CardContent sx={{padding:0}}>
+                      <Typography
+                        component="p"
+                        variant="p"
+                        sx={{ margin: ".5rem 0", textAlign: "justify" }}
+                      >
+                        {productnextItem.description}
+                      </Typography>
+                    </CardContent>
                   </CardActionArea>
-                  <Typography
-                    component="p"
-                    variant="p"
-                    sx={{ margin: ".5rem 0",textAlign:'justify' }}
-                  >
-                    {productnextItem.description}
-                  </Typography>
                 </Link>
               </Card>
             );
@@ -448,25 +451,31 @@ export default function Cards({ typeCards }) {
                 key={relatedvideo.id}
                 component="article"
                 variant="article"
-                sx={{ padding: "0 .5rem", margin: ".5rem 0" }}
+                sx={{ padding: "0 1.25rem", margin: ".5rem 0" }}
               >
                 <Link href={relatedvideo.link}>
                   <CardActionArea component="section">
                     <picture>
                       <source srcSet={relatedvideo.image} type="image/jpg" />
-                      <img
-                        src={relatedvideo.image}
-                        alt={relatedvideo.alt}
-                      />
+                      <img src={relatedvideo.image} alt={relatedvideo.alt} />
                     </picture>
+
+                    <CardContent sx={{padding:0}}>
+                      <Typography
+                        component="p"
+                        variant="p"
+                        sx={{
+                          margin: ".5rem 0",
+                          textAlign: "center",
+                          fontSize: "16px",
+                          fontWeight: "400",
+                          color: "#111010",
+                        }}
+                      >
+                        {relatedvideo.title}
+                      </Typography>
+                    </CardContent>
                   </CardActionArea>
-                  <Typography
-                    component="p"
-                    variant="p"
-                    sx={{ margin: ".5rem 0" ,textAlign:'center',fontSize:'14px'}}
-                  >
-                    {relatedvideo.title}
-                  </Typography>
                 </Link>
               </Card>
             );
