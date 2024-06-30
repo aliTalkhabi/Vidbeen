@@ -11,6 +11,8 @@ import {
   CategoriesItemCard,
   CategoryItems,
   NewVideosItems,
+  ProductNextItems,
+  RelatedVideos,
   TopCardsInfo,
   TrainingItems,
 } from "@/constants/Constants";
@@ -405,6 +407,66 @@ export default function Cards({ typeCards }) {
                       </Typography>
                     </CardContent>
                   </CardActionArea>
+                </Link>
+              </Card>
+            );
+          })
+        : typeCards === "product-next-videos"
+        ? ProductNextItems.map((productnextItem) => {
+            return (
+              <Card
+                key={productnextItem.id}
+                component="article"
+                variant="article"
+                sx={{ padding: "0 .5rem", margin: ".5rem 0" }}
+              >
+                <Link href={productnextItem.link}>
+                  <CardActionArea component="section">
+                    <picture>
+                      <source srcSet={productnextItem.image} type="image/jpg" />
+                      <img
+                        src={productnextItem.image}
+                        alt={productnextItem.alt}
+                      />
+                    </picture>
+                  </CardActionArea>
+                  <Typography
+                    component="p"
+                    variant="p"
+                    sx={{ margin: ".5rem 0",textAlign:'justify' }}
+                  >
+                    {productnextItem.description}
+                  </Typography>
+                </Link>
+              </Card>
+            );
+          })
+        : typeCards === "related-videos"
+        ? RelatedVideos.map((relatedvideo) => {
+            return (
+              <Card
+                key={relatedvideo.id}
+                component="article"
+                variant="article"
+                sx={{ padding: "0 .5rem", margin: ".5rem 0" }}
+              >
+                <Link href={relatedvideo.link}>
+                  <CardActionArea component="section">
+                    <picture>
+                      <source srcSet={relatedvideo.image} type="image/jpg" />
+                      <img
+                        src={relatedvideo.image}
+                        alt={relatedvideo.alt}
+                      />
+                    </picture>
+                  </CardActionArea>
+                  <Typography
+                    component="p"
+                    variant="p"
+                    sx={{ margin: ".5rem 0" ,textAlign:'center',fontSize:'14px'}}
+                  >
+                    {relatedvideo.title}
+                  </Typography>
                 </Link>
               </Card>
             );

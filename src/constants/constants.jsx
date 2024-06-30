@@ -365,3 +365,62 @@ export const CategoriesItemCard = [
     view: "17",
   },
 ];
+export const ProductNextItems = [
+  {
+    id: 147,
+    image: "/image/next-videos/dahua-warm-light-pack.jpg",
+    alt: "بنر معرفی دوربین مدار بسته وارم لایت",
+    link: "/product",
+    description: "دوربین های مدار بسته وارم لایت",
+  },
+  {
+    id: 148,
+    image: "/image/next-videos/install-one-unit-elektropeyk.jpg",
+    alt: "بنر معرفی روش نصب آیفون تصویری",
+    link: "/product",
+    description: "نصب آیفون تصویری الکتروپیک",
+  },
+  {
+    id: 149,
+    image: "/image/next-videos/simaran-76tkm.jpg",
+    alt: "بنر آیفون تصویری سیماران 76",
+    link: "/product",
+    description: "ویدیو بررسی آیفون تصویری سیماران مدل 76tk",
+  },
+  {
+    id: 150,
+    image: "/image/next-videos/simaran-46tk-video-cover-2.jpg",
+    alt: "بنر آیفون تصویری سیماران 46",
+    link: "/product",
+    description: "ویدیو بررسی آیفون تصویری سیماران مدل 46tk",
+  },
+];
+export const RelatedVideos = [
+  {
+    id: 151,
+    link: "/product",
+    image: "/image/next-videos/simaran-46tk-video-cover-2.jpg",
+    alt: "ویدئوی مرتبط سیماران 46",
+    title: "بررسی آیفون تصویری سیماران مدل 46",
+    relesedate: "06 دی 1402",
+    view: "654",
+  },
+  {
+    id: 152,
+    link: "/product",
+    image: "/image/next-videos/simaran-76tkm.jpg",
+    alt: "ویدیوی مرتبط سیماران 76",
+    title: "بررسی آیفون تصویری سیماران مدل 76",
+    relesedate: "06 دی 1402",
+    view: "654",
+  },
+  {
+    id: 153,
+    link: "/product",
+    image: "/image/next-videos/install-one-unit-elektropeyk.jpg",
+    alt: "نصب آیفون تصویری الکتروپیک",
+    title: "بررسی آیفون تصویری سیماران مدل 76",
+    relesedate: "06 دی 1402",
+    view: "654",
+  },
+];
