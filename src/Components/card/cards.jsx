@@ -451,7 +451,7 @@ export default function Cards({ typeCards }) {
                 key={relatedvideo.id}
                 component="article"
                 variant="article"
-                sx={{ padding: "0 1.25rem", margin: ".5rem 0" }}
+                sx={{ padding: "0 1.25rem", margin: ".5rem 0",width:{xs:'250px',sm:'250px',md:'auto'}}}
               >
                 <Link href={relatedvideo.link}>
                   <CardActionArea component="section">

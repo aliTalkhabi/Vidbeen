@@ -16,14 +16,15 @@ export default function Product() {
       <Container
         component="section"
         sx={{
-          border: "1px solid black",
+          
           display: "grid",
           gridTemplateAreas: ". .",
-          gridTemplateColumns: "2.5fr .5fr",
+          gridTemplateColumns: { xs: "1fr", md: "2.5fr .5fr" },
           gap: "1em",
+          padding: { xs: "0 .5rem", sm: "0 .5rem" },
         }}
       >
-        <Box component="section" sx={{ border: "1px solid red" }}>
+        <Box component="section" sx={{  overflowY:{xs:'hidden',sm:'hidden',md:'unset'} }}>
           <Typography
             component="h1"
             sx={{ color: "#000", margin: "1rem 1.5rem", fontSize: "1.5rem" }}
@@ -47,7 +48,6 @@ export default function Product() {
             <Box
               component="section"
               sx={{
-                border: "1px solid blue",
                 display: "flex",
                 justifyContent: "right",
                 margin: "1rem 0",
@@ -65,12 +65,12 @@ export default function Product() {
               >
                 <SaveAltIcon
                   sx={{
-                    color: "#150578",
+                    color: {xs:'#B6B3C2',sm:'#B6B3C2',md:'#150578'},
                     fontSize: "28px",
                     marginRight: ".5rem",
                   }}
                 />
-                <Typography component="p">کپی کردن</Typography>
+                <Typography component="p" sx={{display:{xs:'none',sm:'none',md:'block'}}}>کپی کردن</Typography>
               </Box>
               <Box
                 component="div"
@@ -83,12 +83,12 @@ export default function Product() {
               >
                 <ShareOutlinedIcon
                   sx={{
-                    color: "#150578",
+                    color: {xs:'#B6B3C2',sm:'#B6B3C2',md:'#150578'},
                     fontSize: "28px",
                     marginRight: ".5rem",
                   }}
                 />
-                <Typography component="p">اشتراک گذاری</Typography>
+                <Typography component="p" sx={{display:{xs:'none',sm:'none',md:'block'}}}>اشتراک گذاری</Typography>
               </Box>
               <Box
                 component="div"
@@ -101,12 +101,12 @@ export default function Product() {
               >
                 <ThumbDownAltOutlinedIcon
                   sx={{
-                    color: "#150578",
+                    color: {xs:'#B6B3C2',sm:'#B6B3C2',md:'#150578'},
                     fontSize: "28px",
                     marginRight: ".5rem",
                   }}
                 />
-                <Typography component="p">دوست نداشتم 0</Typography>
+                <Typography component="p" sx={{display:{xs:'none',sm:'none',md:'block'}}}>دوست نداشتم 0</Typography>
               </Box>
               <Box
                 component="div"
@@ -120,23 +120,48 @@ export default function Product() {
               >
                 <ThumbUpOutlinedIcon
                   sx={{
-                    color: "#150578",
+                    color:{xs:'#B6B3C2',sm:'#B6B3C2',md:'#150578'},
                     fontSize: "28px",
                     marginRight: ".5rem",
                   }}
                 />
-                <Typography component="p">دوست داشتم 0</Typography>
+                <Typography component="p" sx={{display:{xs:'none',sm:'none',md:'block'}}}>دوست داشتم 0</Typography>
               </Box>
             </Box>
-
           </Box>
           <Descriptionbox />
-          <Box component="section" sx={{display:'grid',gridTemplateColumns:'repeat(3,1fr)'}}>
-              <Typography component='p' sx={{gridColumn:'3',gridArea:'1 / 4 / 1 / 1',fontSize:'18px',color:'#434343',fontWeight:'600'}}>ویدیو های مرتبط</Typography>
-              <Cards typeCards='related-videos' />
+          <Box component="section">
+            <Typography
+              component="p"
+              sx={{
+                gridColumn: "3",
+                gridArea: "1 / 4 / 1 / 1",
+                fontSize: "18px",
+                color: "#434343",
+                fontWeight: "600",
+                paddingLeft:'1.5rem'
+              }}
+            >
+              ویدیو های مرتبط
+            </Typography>
+            <Box component="section" sx={{width:'100%',overflowY:'hidden'}}>
+              <Box
+                component="section"
+                sx={{
+                  width: { xs: "max-content",sm:'max-content',md:'100%'},
+                  display: { xs: "inline-grid" },
+                  gridTemplateColumns: "repeat(3,1fr)",
+                }}
+              >
+                <Cards typeCards="related-videos" />
+              </Box>
+            </Box>
           </Box>
         </Box>
-        <Box component="section">
+        <Box
+          component="section"
+          sx={{ display: { xs: "none", sm: "none", md: "block" } }}
+        >
           <Typography
             component="p"
             sx={{
@@ -148,7 +173,7 @@ export default function Product() {
           >
             ویدیو های بعدی
           </Typography>
-          <Box component="section" sx={{ position: "sticky", top: "0%"}}>
+          <Box component="section" sx={{ position: "sticky", top: "0%" }}>
             <Cards typeCards="product-next-videos" />
           </Box>
         </Box>
