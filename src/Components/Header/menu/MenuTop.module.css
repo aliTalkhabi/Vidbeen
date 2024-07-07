@@ -1,0 +1,41 @@
+.menuNav ul li {
+    color: #000 !important;
+    list-style-type: none;
+    font-size: 14px !important;
+}
+
+.menu {
+    width: 200px;
+    border: 1px solid green;
+
+}
+
+.menuItem {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.submenu {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu.open {
+    max-height: 300px;
+    transition: max-height 0.3s ease-in;
+}
+
+.submenuItem {
+    width: 100%;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}

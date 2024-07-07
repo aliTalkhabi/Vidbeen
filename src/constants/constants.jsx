@@ -424,3 +424,59 @@ export const RelatedVideos = [
     view: "654",
   },
 ];
+export const SubCategories = [
+  {
+    id: 154,
+    title: "منو - 1",
+    link: "/",
+    subMenu: [
+      {
+        id: 155,
+        title: "زیر-منو-1",
+        link: "/",
+      },
+      {
+        id: 156,
+        title: "زیر-منو-2",
+        link: "/",
+      },
+      {
+        id: 157,
+        title: "زیر-منو-3",
+        link: "/",
+      },
+      {
+        id: 158,
+        title: "زیر-منو-4",
+        link: "/",
+      },
+    ],
+  },
+  {
+    id: 159,
+    title: "منو-2",
+    link: "",
+    subMenu: [
+      {
+        id: 160,
+        title: "زیر - منو -5",
+        link: "/",
+      },
+      {
+        id: 161,
+        title: "زیر - منو -6",
+        link: "/",
+      },
+      {
+        id: 162,
+        title: "زیر - منو -7",
+        link: "/",
+      },
+      {
+        id: 163,
+        title: "زیر - منو -8",
+        link: "/",
+      },
+    ],
+  },
+];

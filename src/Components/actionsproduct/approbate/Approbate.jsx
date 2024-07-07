@@ -26,6 +26,7 @@ const Approbate = memo(function MyLikes() {
         alignItems: "center",
         margin: "0 .5rem",
         marginRight: "0",
+        cursor:'pointer'
       }}
       onClick={handleLikes}
     >
@@ -35,6 +36,7 @@ const Approbate = memo(function MyLikes() {
             color: { xs: "#B6B3C2", sm: "#B6B3C2", md: "#150578" },
             fontSize: "28px",
             marginRight: ".5rem",
+            
           }}
         />
       ) : (

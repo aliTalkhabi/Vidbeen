@@ -2,9 +2,9 @@
 import { Skeleton } from "@mui/material";
 import styles from "./header.module.css";
 import dynamic from "next/dynamic";
-import Image from "next/image";
-// import Logo from "../../../public/image/logo.png";
+
 import Link from "next/link";
+import Menu from "./menu/MenuTop";
 
 const CategoryIcon = dynamic(
   () => import("@mui/icons-material/GridViewRounded"),
@@ -46,6 +46,7 @@ export default function Header() {
                 sx={{ marginLeft: "1rem", color: "#fff", fontSize: "25px" }}
               />
               <ParagraphDynamic>دسته بندی ویدیو</ParagraphDynamic>
+              <Menu />
             </li>
             <li>
               <MagezineIcon

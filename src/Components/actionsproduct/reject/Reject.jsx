@@ -23,7 +23,7 @@ const Reject = memo(function MyReject() {
         display: "inline-flex",
         flexWrap: "nowrap",
         alignItems: "center",
-        margin: "0 .5rem",
+        margin: "0 .5rem",cursor:'pointer'
       }}
       onClick={handleDisLikes}
     >
