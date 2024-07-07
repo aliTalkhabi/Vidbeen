@@ -3,6 +3,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
   Skeleton,
   Typography,
 } from "@mui/material";
@@ -14,18 +15,25 @@ import Link from "next/link";
 import { RightListItems } from "@/constants/Constants";
 import StickyBox from "react-sticky-box";
 import dynamic from "next/dynamic";
-const DynamicAccordion = dynamic(() => import("@mui/material/Accordion"), {
-  ssr: false,
-  loading: () => <Skeleton variant="rectangular" animation="wave" width={285} height={610}/>,
+const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
+  srr: false,
+  loading: () => (
+    <Skeleton
+      variant="rectangular"
+      animation="wave"
+      sx={{ width: "285px", height: "160px" }}
+    />
+  ),
 });
+
 export default function RightList() {
   return (
-    <section className={styles.asideContainer}>
+    <BoxDynamic component="aside" className={styles.asideContainer}>
       <StickyBox offsetTop={70} offsetBottom={2}>
         {RightListItems.map((rightListItem, i) => {
           return (
             <Fragment key={i}>
-              <DynamicAccordion
+              <Accordion
                 component="section"
                 key={rightListItem.id}
                 sx={{
@@ -33,7 +41,7 @@ export default function RightList() {
                   border: "none",
                   boxShadow: "none",
                   padding: "0",
-                  fontWeight: "700"
+                  fontWeight: "700",
                 }}
               >
                 <AccordionSummary
@@ -49,7 +57,7 @@ export default function RightList() {
                           fontSize: "30px",
                           width: { md: ".5em", lg: ".75em" },
                           height: { md: ".5em", lg: ".75em" },
-                          fontWeight: "700"
+                          fontWeight: "700",
                         }}
                       />
                     ) : (
@@ -80,11 +88,11 @@ export default function RightList() {
                     ))}
                   </AccordionDetails>
                 )}
-              </DynamicAccordion>
+              </Accordion>
             </Fragment>
           );
         })}
       </StickyBox>
-    </section>
+    </BoxDynamic>
   );
 }

@@ -15,8 +15,6 @@ export default function Category() {
           <Skeleton
             animation="wave"
             variant="rectangular"
-            width={250}
-            height={250}
           />
         </div>
       ),
@@ -28,6 +26,12 @@ export default function Category() {
       <Skeleton animation="wave" variant="rectangular" width={1200} />;
     },
   });
+  const CardsBoxDynamic = dynamic(()=> import("@mui/material/Box"),{
+    ssr:false,
+    loading : () =>{
+      <Skeleton animation="wave" variant="rectangular" sx={{width:'100%',height:'100%'}} />
+    }
+  })
   return (
     <>
       <Container
@@ -46,14 +50,7 @@ export default function Category() {
           height: "100%",
         }}
       >
-        <BoxDynamic
-          component="aside"
-          sx={{
-            display: { xs: "none", sm: "none", md: "block", lg: "block" },
-          }}
-        >
           <SideBarDynamic />
-        </BoxDynamic>
         <BoxDynamic
           component="section"
           sx={{

@@ -4,14 +4,16 @@ import React from "react";
 import { CldVideoPlayer } from "next-cloudinary";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import "next-cloudinary/dist/cld-video-player.css";
 import Cards from "../card/Cards";
-import Descriptionbox from "../descriptionbox/Descriptionbox";
 import dynamic from "next/dynamic";
+import ActionProducts from "../actionsproduct/ActionsProduct";
 
 export default function Product() {
+  
+
+  // const [liked, setLiked] = useState(false);
   const TypographyDynamic = dynamic(() => import("@mui/material/Typography"), {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
@@ -22,7 +24,7 @@ export default function Product() {
       <Skeleton
         variant="rectangular"
         animation="wave"
-        sx={{ height: "750px" }}
+        sx={{ height: "750px", width: "186px" }}
       />
     ),
   });
@@ -53,13 +55,20 @@ export default function Product() {
     () => import("../descriptionbox/Descriptionbox"),
     {
       ssr: false,
-      loading: () => <Skeleton variant="rectangular" animation="wave" sx={{height:'1000px'}}/>,
+      loading: () => (
+        <Skeleton
+          variant="rectangular"
+          animation="wave"
+          sx={{ height: "1000px" }}
+        />
+      ),
     }
   );
-  const RealatedBoxDynamic = dynamic(()=>import('@mui/material/Box'),{
-    ssr:false,
-    loading:() => <Skeleton variant="rectangular" animation="wave" />
-  })
+  const RealatedBoxDynamic = dynamic(() => import("@mui/material/Box"), {
+    ssr: false,
+    loading: () => <Skeleton variant="rectangular" animation="wave" />,
+  });
+
   return (
     <>
       <Container component="section">
@@ -80,7 +89,12 @@ export default function Product() {
           >
             <TypographyDynamic
               component="h1"
-              sx={{ color: "#000", margin: "1rem 1.5rem", fontSize: "1.5rem" }}
+              sx={{
+                color: "#000",
+                margin: "1rem 1.5rem",
+                marginLeft: { xs: "0", sm: "0" },
+                fontSize: "1.5rem",
+              }}
             >
               نام محصول
             </TypographyDynamic>
@@ -154,53 +168,8 @@ export default function Product() {
                     اشتراک گذاری
                   </Typography>
                 </Box>
-                <Box
-                  component="div"
-                  sx={{
-                    display: "inline-flex",
-                    flexWrap: "nowrap",
-                    alignItems: "center",
-                    margin: "0 .5rem",
-                  }}
-                >
-                  <ThumbDownAltOutlinedIcon
-                    sx={{
-                      color: { xs: "#B6B3C2", sm: "#B6B3C2", md: "#150578" },
-                      fontSize: "28px",
-                      marginRight: ".5rem",
-                    }}
-                  />
-                  <Typography
-                    component="p"
-                    sx={{ display: { xs: "none", sm: "none", md: "block" } }}
-                  >
-                    دوست نداشتم 0
-                  </Typography>
-                </Box>
-                <Box
-                  component="div"
-                  sx={{
-                    display: "inline-flex",
-                    flexWrap: "nowrap",
-                    alignItems: "center",
-                    margin: "0 .5rem",
-                    marginRight: "0",
-                  }}
-                >
-                  <ThumbUpOutlinedIcon
-                    sx={{
-                      color: { xs: "#B6B3C2", sm: "#B6B3C2", md: "#150578" },
-                      fontSize: "28px",
-                      marginRight: ".5rem",
-                    }}
-                  />
-                  <Typography
-                    component="p"
-                    sx={{ display: { xs: "none", sm: "none", md: "block" } }}
-                  >
-                    دوست داشتم 0
-                  </Typography>
-                </Box>
+               
+                <ActionProducts />
               </IconsBoxDynamic>
             </Box>
             <DescriptionBoxDynamic />
@@ -213,7 +182,7 @@ export default function Product() {
                   fontSize: "18px",
                   color: "#434343",
                   fontWeight: "600",
-                  paddingLeft: "1.5rem",
+                  paddingLeft: { xs: "0", sx: "0", md: "1.5rem" },
                 }}
               >
                 ویدیو های مرتبط
