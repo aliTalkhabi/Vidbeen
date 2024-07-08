@@ -5,24 +5,31 @@ import dynamic from "next/dynamic";
 
 import Link from "next/link";
 import Menu from "./menu/MenuTop";
+import { useEffect, useState } from "react";
 
 const CategoryIcon = dynamic(
   () => import("@mui/icons-material/GridViewRounded"),
   {
     ssr: false,
-    loading: () => <Skeleton animation='pulse' variant="circular" width={25} height={25} />,
+    loading: () => (
+      <Skeleton animation="pulse" variant="circular" width={25} height={25} />
+    ),
   }
 );
 const MagezineIcon = dynamic(
   () => import("@mui/icons-material/AutoStoriesRounded"),
   {
     ssr: false,
-    loading: () => <Skeleton animation='pulse' variant="circular" width={18} height={18} />,
+    loading: () => (
+      <Skeleton animation="pulse" variant="circular" width={18} height={18} />
+    ),
   }
 );
 const StoreIcon = dynamic(() => import("@mui/icons-material/StoreRounded"), {
   ssr: false,
-  loading: () => <Skeleton animation='wave' variant="circular" width={18} height={18} />,
+  loading: () => (
+    <Skeleton animation="wave" variant="circular" width={18} height={18} />
+  ),
 });
 const ParagraphDynamic = dynamic(() => import("@mui/material/Typography"), {
   ssr: false,
@@ -36,17 +43,39 @@ const ParagraphDynamic = dynamic(() => import("@mui/material/Typography"), {
 });
 
 export default function Header() {
+  const [isFixed, setIsFixed] = useState(false);
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsFixed(true);
+    } else {
+      setIsFixed(false);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  const [isHovered, setIsHovered] = useState(false);
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isFixed ? styles.fixed : ""}`}>
       <section>
         <section>
           <ul>
-            <li>
+            <li onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
               <CategoryIcon
                 sx={{ marginLeft: "1rem", color: "#fff", fontSize: "25px" }}
               />
               <ParagraphDynamic>دسته بندی ویدیو</ParagraphDynamic>
-              <Menu />
+              {isHovered && <Menu />}
             </li>
             <li>
               <MagezineIcon
@@ -65,11 +94,15 @@ export default function Header() {
         <section>
           <div>
             <Link href="/">
-                <picture>
-                  <source srcSet='../image/logo.png' type="image/png"/>
-                  <img src='../image/logo.png' alt="لگوی ویدبین" width={130} height={50} />
-                </picture>
-              
+              <picture>
+                <source srcSet="../image/logo.png" type="image/png" />
+                <img
+                  src="../image/logo.png"
+                  alt="لگوی ویدبین"
+                  width={130}
+                  height={50}
+                />
+              </picture>
             </Link>
           </div>
         </section>

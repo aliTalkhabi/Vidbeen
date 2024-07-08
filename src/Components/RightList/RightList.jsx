@@ -28,7 +28,13 @@ const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
 
 export default function RightList() {
   return (
-    <BoxDynamic component="aside" className={styles.asideContainer}>
+    <BoxDynamic
+      sx={{
+        display: { xs: "none", sm: "none", md: "block", lg: "block" },
+      }}
+      component="aside"
+      className={styles.asideContainer}
+    >
       <StickyBox offsetTop={70} offsetBottom={2}>
         {RightListItems.map((rightListItem, i) => {
           return (

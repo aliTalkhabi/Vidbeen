@@ -3,14 +3,16 @@ import { Box, Menu } from "@mui/material";
 import { Fragment, useState } from "react";
 import { SubCategories } from "../../../constants/constants";
 import Link from "next/link";
-import ExpandCircleDownOutlinedIcon from "@mui/icons-material/ExpandCircleDownOutlined";
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import styles from "./MenuTop.module.css";
 export default function MenuTop() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(null);
   const toggleSubMenu = (index) => {
     setIsSubMenuOpen(index);
   };
-
+  
   return (
     <Box
       className={styles.menuNav}
@@ -18,16 +20,23 @@ export default function MenuTop() {
       sx={{
         border: "1px solid black",
         display: "grid",
-        gridTemplateColumns: "1.5fr 1fr",
-        width: "1200px",
-        height: "700px",
+        gridTemplateColumns: {
+          xs: "1fr",
+          sm: "1fr",
+          md: "1fr",
+          lg: "1.25fr 1fr",
+        },
+        width: { xs: "80%", sm: "80%", md: "100%", lg: "1200px" },
+        height: {xs:'100vh',sm:'100vh',md:'700px'},
         position: "absolute",
-        top: "3.5rem",
+        boxShadow:{xs:'rgba(0, 0, 0, 0.25) -100px 0px ',sm:'rgba(0, 0, 0, 0.25) -100px 0px ',md:'none'},
+        top:{xs:'3.25rem',sm:'3.25rem',md:'3.5rem'},
         background: "#fff",
         borderRadius: " 0 0 .5rem .5rem",
       }}
     >
-      <Box component="section" sx={{ border: "1px solid red" }}>
+      <Box component="section" sx={{ border: "1px solid red", width: "100%" }}>
+        
         <ul className={styles.menu}>
           {SubCategories.map((subcategory, i) => {
             return (
@@ -36,18 +45,32 @@ export default function MenuTop() {
                   <Link href={subcategory.link}>{subcategory.title}</Link>
                   {subcategory.subMenu.length > 0 && (
                     <>
-                      <ExpandCircleDownOutlinedIcon onClick={()=>toggleSubMenu(i)} />
+                      {isSubMenuOpen == i ? (
+                        <KeyboardArrowUpOutlinedIcon
+                          sx={{ float: "right", marginTop: "-1rem" }}
+                          onClick={() => toggleSubMenu(i)}
+                        />
+                      ) : (
+                        <KeyboardArrowDownOutlinedIcon
+                          sx={{ float: "right", marginTop: "-1rem" }}
+                          onClick={() => toggleSubMenu(i)}
+                        />
+                      )}
+
                       <ul
-                        className={`${styles.submenu}${isSubMenuOpen== i ? "open" : ""}`}
+                        className={`${styles.submenu} ${
+                          isSubMenuOpen == i ? styles.open : ""
+                        }`}
                       >
                         {subcategory.subMenu.map((subcategorymenu) => {
                           return (
                             <li
                               className={styles.submenuItem}
                               key={subcategorymenu.id}
-                              href={subcategorymenu.link}
                             >
-                              {subcategorymenu.title}
+                              <a href={subcategorymenu.link}>
+                                {subcategorymenu.title}
+                              </a>
                             </li>
                           );
                         })}
@@ -60,7 +83,17 @@ export default function MenuTop() {
           })}
         </ul>
       </Box>
-      <Box component="section" sx={{ border: "1px solid blue" }}></Box>
+      <Box className={styles.imageBox} component="section">
+        <picture>
+          <source srcSet="../image/next-videos/picture-menu.jpg" />
+          <img
+            width="700"
+            height="400"
+            src="../image/next-videos/picture-menu.jpg"
+            alt="بنر منو"
+          />
+        </picture>
+      </Box>
     </Box>
   );
 }

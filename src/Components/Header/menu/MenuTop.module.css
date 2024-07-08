@@ -5,19 +5,28 @@
 }
 
 .menu {
-    width: 200px;
-    border: 1px solid green;
-
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .25rem 1rem;
 }
 
 .menuItem {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
-    
+    position: relative;
+    border-bottom: 1px solid #ebebeb;
+
+}
+.menuItem a{
+    width: 100%;
+    height: 100%;
+}
+.menuItem svg {
+    margin-top: -.25rem !important
 }
 
 .submenu {
@@ -27,15 +36,46 @@
 }
 
 .submenu.open {
-    max-height: 300px;
+    max-height: 100%;
     transition: max-height 0.3s ease-in;
+    margin: 1rem auto;
+    border: 1px solid #ebebeb;
+    border-radius: .25rem;
 }
 
 .submenuItem {
     width: 100%;
     padding: 10px;
     background-color: #f8f9fa;
-    border: none;
+    border: 1px solid #f8f9fa;
     cursor: pointer;
-    text-align: left;
+    text-align: right;
+}
+
+.imageBox {
+    border: 1px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.imageBox picture {
+    width: 100%;
+}
+
+.imageBox picture img {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+    border-radius: .5rem;
+    height: auto;
+}
+@media (max-width:600px){
+    .imageBox{
+        display: none;
+    }
+    .menu{
+        grid-template-columns: 1fr;
+    }
 }
