@@ -2,7 +2,6 @@
 import { Skeleton } from "@mui/material";
 import styles from "./header.module.css";
 import dynamic from "next/dynamic";
-
 import Link from "next/link";
 import Menu from "./menu/MenuTop";
 import { useEffect, useState } from "react";

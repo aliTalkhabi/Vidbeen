@@ -4,7 +4,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
-  Skeleton,
+  
   Typography,
 } from "@mui/material";
 import React, { Fragment } from "react";
@@ -14,28 +14,10 @@ import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import Link from "next/link";
 import { RightListItems } from "@/constants/Constants";
 import StickyBox from "react-sticky-box";
-import dynamic from "next/dynamic";
-const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
-  srr: false,
-  loading: () => (
-    <Skeleton
-      variant="rectangular"
-      animation="wave"
-      sx={{ width: "285px", height: "160px" }}
-    />
-  ),
-});
-
 export default function RightList() {
   return (
-    <BoxDynamic
-      sx={{
-        display: { xs: "none", sm: "none", md: "block", lg: "block" },
-      }}
-      component="aside"
-      className={styles.asideContainer}
-    >
-      <StickyBox offsetTop={70} offsetBottom={2}>
+    <Box className={styles.asideContainer}>
+      <StickyBox offsetTop={150} offsetBottom={2}>
         {RightListItems.map((rightListItem, i) => {
           return (
             <Fragment key={i}>
@@ -99,6 +81,6 @@ export default function RightList() {
           );
         })}
       </StickyBox>
-    </BoxDynamic>
+    </Box>
   );
 }

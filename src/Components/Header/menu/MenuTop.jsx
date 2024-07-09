@@ -1,11 +1,10 @@
 "use client";
-import { Box, Menu } from "@mui/material";
+import { Box} from "@mui/material";
 import { Fragment, useState } from "react";
 import { SubCategories } from "../../../constants/constants";
 import Link from "next/link";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import styles from "./MenuTop.module.css";
 export default function MenuTop() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(null);
@@ -18,7 +17,6 @@ export default function MenuTop() {
       className={styles.menuNav}
       component="nav"
       sx={{
-        border: "1px solid black",
         display: "grid",
         gridTemplateColumns: {
           xs: "1fr",
@@ -35,7 +33,7 @@ export default function MenuTop() {
         borderRadius: " 0 0 .5rem .5rem",
       }}
     >
-      <Box component="section" sx={{ border: "1px solid red", width: "100%" }}>
+      <Box component="section" sx={{ width: "100%" }}>
         
         <ul className={styles.menu}>
           {SubCategories.map((subcategory, i) => {

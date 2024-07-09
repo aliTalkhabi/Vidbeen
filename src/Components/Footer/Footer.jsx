@@ -1,5 +1,5 @@
 "use client";
-import { Box, Skeleton, Typography } from "@mui/material";
+import { Skeleton, Typography } from "@mui/material";
 import styles from "./Footer.module.css";
 import { SocialMediaItems } from "@/constants/constants";
 import Link from "next/link";

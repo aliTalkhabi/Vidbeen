@@ -74,7 +74,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Dana-Regular';
 }
 
 p,
@@ -87,12 +86,13 @@ h5,
 h6 {
   font-family: 'Dana-Regular' !important;
 }
-
+.cld-video-player * {
+font-family: VideoJS !important;
+}
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  
   direction: rtl;
 }
 

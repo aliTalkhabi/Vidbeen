@@ -1,13 +1,13 @@
 "use client";
 import styles from "./page.module.css";
-import { Container, Skeleton, Stack } from "@mui/material";
+import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import MainContent from "@/components/maincontent/MainContent";
 
 const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
   ssr: false,
   loading: () => {
-    <Skeleton animation="wave" variant="rectangular" width={1200} />;
+    <Skeleton animation="wave" variant="rectangular" width={850} />;
   },
 });
 const SideBarDynamic = dynamic(
@@ -15,14 +15,12 @@ const SideBarDynamic = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div>
         <Skeleton
           animation="wave"
           variant="rectangular"
-          width={250}
-          height={250}
+          sx={{width:'250px',height:'195px'}}
         />
-      </div>
+
     ),
   }
 );
@@ -50,9 +48,14 @@ export default function Home() {
             height: "100%",
           }}
         >
-          
+          <Box
+            component="aside"
+            sx={{
+              display: { xs: "none", sm: "none", md: "block", lg: "block" },
+            }}
+          >
             <SideBarDynamic />
-          
+          </Box>
           <BoxDynamic
             component="section"
             sx={{

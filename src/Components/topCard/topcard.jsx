@@ -1,3 +1,4 @@
+'use client'
 import { Box, Grid, Typography } from "@mui/material";
 import Cards from "../card/Cards";
 import "./topcard.css";

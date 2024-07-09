@@ -4,7 +4,6 @@ import React from "react";
 import { CldVideoPlayer } from "next-cloudinary";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
-import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import "next-cloudinary/dist/cld-video-player.css";
 import Cards from "../card/Cards";
 import dynamic from "next/dynamic";
