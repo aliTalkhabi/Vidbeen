@@ -30,12 +30,9 @@ export default function Category() {
 
   return (
     <>
+      <Stack component='section'>
 
-      <Container
-        component="section"
-      >
-        <Stack component='section' sx={{
-
+        <Container component="section" sx={{
           display: "grid",
           gridAutoFlow: "column",
           gridTemplateColumns: {
@@ -45,13 +42,13 @@ export default function Category() {
             lg: "1fr 3fr",
           },
           gap: "10px 10px",
-        }}>
-          <Box
-            component="aside"
-            sx={{
-              display: { xs: "none", sm: "none", md: "block", lg: "block" },
-            }}
-          >
+        }}
+        >
+
+          <Box component="aside" sx={{
+            display:
+              { xs: 'none', sm: 'none', md: 'block' }
+          }} >
             <SideBarDynamic />
           </Box>
           <BoxDynamic
@@ -70,8 +67,8 @@ export default function Category() {
           >
             <Cards typeCards="category-page-items" />
           </BoxDynamic>
-        </Stack>
-      </Container>
+        </Container>
+      </Stack >
 
     </>
   );

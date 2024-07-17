@@ -16,4 +16,9 @@
 .asideContainer *::before{
     display: none;
 }
+@media(max-width:900px){
+    .asideContainer{
+        display: none;
+    }
+}
 

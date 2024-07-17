@@ -21,14 +21,15 @@ export default function MenuTop() {
         gridTemplateColumns: {
           xs: "1fr",
           sm: "1fr",
-          md: "1fr",
+          md: "1.25fr 1fr",
           lg: "1.25fr 1fr",
         },
-        width: { xs: "80%", sm: "80%", md: "100%", lg: "1200px" },
-        height: {xs:'100vh',sm:'100vh',md:'700px'},
+        width: { xs: "80%", sm: "100%", md: "100%", lg: "1200px" },
+        height: {xs:'100vh',sm:'100vh',md:'100vh',lg:'700px'},
         position: "absolute",
         boxShadow:{xs:'rgba(0, 0, 0, 0.25) -100px 0px ',sm:'rgba(0, 0, 0, 0.25) -100px 0px ',md:'none'},
         top:{xs:'3.25rem',sm:'3.25rem',md:'3.5rem'},
+        left:{xs:'0',sm:'0',md:'0'},
         background: "#fff",
         borderRadius: " 0 0 .5rem .5rem",
         zIndex:'10'

@@ -103,7 +103,7 @@
         height: 40px;
     }
 }
-@media(max-width:599px){
+@media(max-width:1024px){
     .header>section>section>ul>li{
         position:unset;
         text-align: right;
