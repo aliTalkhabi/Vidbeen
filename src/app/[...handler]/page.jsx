@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import styles from "../page.module.css";
 import Category from "@/components/category/category";
 import Product from "@/components/product/Product";
+import Custom404 from "../404";
 
 export default function Handler() {
   
@@ -18,7 +19,7 @@ export default function Handler() {
           <Product />
         </>
       ) : pathname !== "/category" || pathname !== "/product" ? (
-        <p>not-found</p>
+        <Custom404 />
       ) : null}
     </main>
   );

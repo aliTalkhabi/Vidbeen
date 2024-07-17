@@ -31,7 +31,7 @@ const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+  
       <Stack component="section">
         <Container
           component="section"
@@ -68,6 +68,6 @@ export default function Home() {
           </BoxDynamic>
         </Container>
       </Stack>
-    </main>
+
   );
 }
