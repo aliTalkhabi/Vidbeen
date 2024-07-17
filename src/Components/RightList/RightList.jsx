@@ -15,7 +15,7 @@ import StickyBox from 'react-sticky-box';
 
 export default function RightList() {
   return (
-    <Box component='aside' className={styles.asideContainer}>
+    <Box className={styles.asideContainer}>
       <StickyBox offsetTop={75} offsetBottom={0}>
         
         {RightListItems.map((rightListItem, i) => {

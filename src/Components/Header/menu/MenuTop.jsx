@@ -31,6 +31,7 @@ export default function MenuTop() {
         top:{xs:'3.25rem',sm:'3.25rem',md:'3.5rem'},
         background: "#fff",
         borderRadius: " 0 0 .5rem .5rem",
+        zIndex:'10'
       }}
     >
      <Box component="section" sx={{ width: "100%",borderRight:'1px solid #ebebeb'}}>

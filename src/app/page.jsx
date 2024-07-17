@@ -18,7 +18,7 @@ const SideBarDynamic = dynamic(
         <Skeleton
           animation="wave"
           variant="rectangular"
-          sx={{width:'250px',height:'195px',position:'sticky'}}
+          sx={{width:'250px',height:'195px'}}
         />
 
     ),

@@ -3,7 +3,7 @@ import { Skeleton } from "@mui/material";
 import styles from "./header.module.css";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import Menu from "./menu/MenuTop";
+import MenuTop from "./menu/MenuTop";
 import { useEffect, useState } from "react";
 
 const CategoryIcon = dynamic(
@@ -74,7 +74,7 @@ export default function Header() {
                 sx={{ marginLeft: "1rem", color: "#fff", fontSize: "25px" }}
               />
               <ParagraphDynamic>دسته بندی ویدیو</ParagraphDynamic>
-              {isHovered && <Menu />}
+              {isHovered && <MenuTop />}
             </li>
             <li>
               <MagezineIcon
