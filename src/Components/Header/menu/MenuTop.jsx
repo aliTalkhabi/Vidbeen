@@ -33,7 +33,7 @@ export default function MenuTop() {
         borderRadius: " 0 0 .5rem .5rem",
       }}
     >
-      <Box component="section" sx={{ width: "100%" }}>
+     <Box component="section" sx={{ width: "100%",borderRight:'1px solid #ebebeb'}}>
         
         <ul className={styles.menu}>
           {SubCategories.map((subcategory, i) => {

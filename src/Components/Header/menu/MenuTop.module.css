@@ -9,6 +9,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: .25rem 1rem;
+    
 }
 
 .menuItem {
@@ -54,7 +55,6 @@
 }
 
 .imageBox {
-    border: 1px solid blue;
     display: flex;
     justify-content: center;
     align-items: center;

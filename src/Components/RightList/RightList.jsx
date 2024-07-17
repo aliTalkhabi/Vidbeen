@@ -4,20 +4,20 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
-  
   Typography,
 } from "@mui/material";
 import React, { Fragment } from "react";
 import styles from "./rightlist.module.css";
-
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import Link from "next/link";
 import { RightListItems } from "@/constants/Constants";
-import StickyBox from "react-sticky-box";
+import StickyBox from 'react-sticky-box';
+
 export default function RightList() {
   return (
     <Box className={styles.asideContainer}>
-      <StickyBox offsetTop={150} offsetBottom={2}>
+      <StickyBox offsetTop={75} offsetBottom={0}>
+        
         {RightListItems.map((rightListItem, i) => {
           return (
             <Fragment key={i}>
@@ -69,6 +69,7 @@ export default function RightList() {
                           listStyleType: "none",
                           fontSize: { md: "12px", lg: "16px" },
                           fontWeight: "700",
+                          fontFamily: 'Dana-Regular'
                         }}
                       >
                         <Link href={subMenuItem.link}>{subMenuItem.title}</Link>
@@ -80,6 +81,7 @@ export default function RightList() {
             </Fragment>
           );
         })}
+       
       </StickyBox>
     </Box>
   );

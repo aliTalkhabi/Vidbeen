@@ -18,17 +18,17 @@ const SideBarDynamic = dynamic(
         <Skeleton
           animation="wave"
           variant="rectangular"
-          sx={{width:'250px',height:'195px'}}
+          sx={{width:'250px',height:'195px',position:'sticky'}}
         />
 
     ),
   }
 );
-
 const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
   ssr: "false",
   loading: () => <Skeleton animation="wave" variant="rectangular" width={850} height={256} />,
 });
+
 export default function Home() {
   return (
     <main className={styles.main}>
