@@ -1,5 +1,5 @@
 "use client";
-import { Container, Skeleton, Stack } from "@mui/material";
+import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import React from "react";
 import Cards from "../card/Cards";
