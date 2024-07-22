@@ -10,7 +10,7 @@ import { CssBaseline } from "@mui/material";
 const theme = createTheme({
   direction: "rtl",
   typography: {
-    fontFamily: "iranSans",
+    fontFamily: 'Dana-Regular',
   },
 });
 const cacheRtl = createCache({

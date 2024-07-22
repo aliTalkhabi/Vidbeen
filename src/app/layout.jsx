@@ -5,7 +5,7 @@ import { MuiRtlProvider } from "@/context/MuiRtlContext";
 import Header from "@/components/header/Header";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { ApiProvider } from "@/Context/ApiContext";
-const inter = Inter({ subsets: ["latin"] });
+
 const Footer = dynamic(() => import('@/components/footer/Footer'), { ssr: false })
 
 export const metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="fa" dir="rtl">
       <MuiRtlProvider>
         <ApiProvider>
-          <body className={inter.className}>
+          <body >
             <Header />
             <Breadcrumb />
             {children}

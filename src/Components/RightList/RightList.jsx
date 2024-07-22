@@ -69,7 +69,7 @@ export default function RightList() {
                           listStyleType: "none",
                           fontSize: { md: "12px", lg: "16px" },
                           fontWeight: "700",
-                          fontFamily: 'Dana-Regular'
+                          
                         }}
                       >
                         <Link href={subMenuItem.link}>{subMenuItem.title}</Link>

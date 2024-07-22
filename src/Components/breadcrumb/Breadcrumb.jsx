@@ -71,7 +71,7 @@ export default function Breadcrumb() {
         />
       </Head>
       <Stack component="section" spacing={2} sx={{ margin: "1rem auto", width: '85%' }}>
-        <BreadcrumbDynamic component='nav' separator="»" aria-label="breadcrumb" sx={{ fontFamily: 'Dana-Regular' }}>
+        <BreadcrumbDynamic component='nav' separator="»" aria-label="breadcrumb" >
           {pathname === "/"
             ? breadcrumb.slice(0, 1)
             : pathname === "/category"
