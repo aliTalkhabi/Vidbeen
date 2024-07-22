@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import {
-  CategoriesItemCard,
+ 
   CategoryItems,
   NewVideosItems,
   ProductNextItems,
@@ -20,8 +20,9 @@ import Link from "next/link";
 import "./Card.css";
 import { QueryBuilderRounded } from "@mui/icons-material";
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import { fetchData } from "@/Services/api";
+import { useApi } from "@/Context/ApiContext";
+import Loading from "../loading/Loading";
+
 
 export default function Cards({ typeCards }) {
   const CategoryIndexCards = dynamic(() => import("@mui/material/Card"), {
@@ -59,22 +60,9 @@ export default function Cards({ typeCards }) {
       />
     ),
   });
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const result = await fetchData('/products');
-        setData(result);
-      }
-      catch (error) {
-        setError(error.message);
-      }
-    };
-    getData();
-  }, []);
-  if (error) return <div>Error: {error}</div>
-  if (!data) return <div>Loading...</div>
+  
+  const { data   , loading} = useApi();
+  if(loading) return <Loading />
   return (
     <>
       {typeCards === "top-pages"

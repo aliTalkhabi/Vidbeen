@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import MainContent from "@/components/maincontent/MainContent";
+import { useApi } from "@/Context/ApiContext";
 
 const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
   ssr: false,
@@ -28,6 +29,7 @@ const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
   ssr: "false",
   loading: () => <Skeleton animation="wave" variant="rectangular" width={850} height={256} />,
 });
+
 
 export default function Home() {
   return (
