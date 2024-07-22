@@ -15,11 +15,11 @@ const SideBarDynamic = dynamic(
   {
     ssr: false,
     loading: () => (
-        <Skeleton
-          animation="wave"
-          variant="rectangular"
-          sx={{width:'250px',height:'195px'}}
-        />
+      <Skeleton
+        animation="wave"
+        variant="rectangular"
+        sx={{ width: '250px', height: '195px' }}
+      />
 
     ),
   }
@@ -31,7 +31,7 @@ const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
 
 export default function Home() {
   return (
-  
+    <main className={styles.msin}>
       <Stack component="section">
         <Container
           component="section"
@@ -68,6 +68,6 @@ export default function Home() {
           </BoxDynamic>
         </Container>
       </Stack>
-
+    </main>
   );
 }

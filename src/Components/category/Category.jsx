@@ -31,7 +31,6 @@ export default function Category() {
   return (
     <>
       <Stack component='section'>
-
         <Container component="section" sx={{
           display: "grid",
           gridAutoFlow: "column",
