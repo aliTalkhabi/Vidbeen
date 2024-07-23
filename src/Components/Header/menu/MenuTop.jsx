@@ -6,12 +6,13 @@ import Link from "next/link";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
 import styles from "./MenuTop.module.css";
+import { useApi } from "@/Context/ApiContext";
 export default function MenuTop() {
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(null);
   const toggleSubMenu = (index) => {
     setIsSubMenuOpen(index);
   };
-  
+  const {dataMenu} = useApi();
   return (
     <Box
       className={styles.menuNav}
@@ -38,12 +39,12 @@ export default function MenuTop() {
      <Box component="section" sx={{ width: "100%",borderRight:'1px solid #ebebeb',borderLeft:'1px solid #ebebeb'}}>
         
         <ul className={styles.menu}>
-          {SubCategories.map((subcategory, i) => {
+          {dataMenu.map((item, i) => {
             return (
-              <Fragment key={i}>
-                <li key={subcategory.id} className={styles.menuItem}>
-                  <Link href={subcategory.link}>{subcategory.title}</Link>
-                  {subcategory.subMenu.length > 0 && (
+              //<Fragment key={i}>
+                <li key={item} className={styles.menuItem}>
+                  <Link href='/'>{item}</Link>
+                  {/* {subcategory.subMenu.length > 0 && (
                     <>
                       {isSubMenuOpen == i ? (
                         <KeyboardArrowUpOutlinedIcon
@@ -76,9 +77,9 @@ export default function MenuTop() {
                         })}
                       </ul>
                     </>
-                  )}
+                  )} */}
                 </li>
-              </Fragment>
+              //</Fragment>
             );
           })}
         </ul>

@@ -10,7 +10,6 @@ import React, { Fragment } from "react";
 import styles from "./rightlist.module.css";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import Link from "next/link";
-import { RightListItems } from "@/constants/Constants";
 import StickyBox from 'react-sticky-box';
 import { useApi } from "@/Context/ApiContext";
 export default function RightList() {
