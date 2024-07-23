@@ -12,18 +12,20 @@ import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import Link from "next/link";
 import { RightListItems } from "@/constants/Constants";
 import StickyBox from 'react-sticky-box';
-
+import { useApi } from "@/Context/ApiContext";
 export default function RightList() {
+  const {dataMenu} = useApi();
   return (
     <Box className={styles.asideContainer}>
       <StickyBox offsetTop={75} offsetBottom={0}>
         
-        {RightListItems.map((rightListItem, i) => {
+        {dataMenu.map((item, i) => {
+          
           return (
-            <Fragment key={i}>
+            // <Fragment key={i}>
               <Accordion
                 component="section"
-                key={rightListItem.id}
+                key={item}
                 sx={{
                   background: "#fff0",
                   border: "none",
@@ -36,7 +38,7 @@ export default function RightList() {
                   component="section"
                   sx={{ fontSize: { md: "14px", lg: "16px" } }}
                   expandIcon={
-                    rightListItem.subMenu.length > 0 ? (
+                    // rightListItem.subMenu.length > 0 ? (
                       <ArrowDropDownRoundedIcon
                         sx={{
                           color: "#1B2CC1",
@@ -48,14 +50,14 @@ export default function RightList() {
                           fontWeight: "700",
                         }}
                       />
-                    ) : (
-                      ""
-                    )
+                    // ) : (
+                    //   ""
+                    // )
                   }
                 >
-                  <Link href={rightListItem.link}>{rightListItem.title}</Link>
+                  <Link href='/'>{item}</Link>
                 </AccordionSummary>
-                {rightListItem.subMenu.length > 0 && (
+                {/* {rightListItem.subMenu.length > 0 && (
                   <AccordionDetails
                     component="section"
                     sx={{ padding: "0 1rem" }}
@@ -76,9 +78,9 @@ export default function RightList() {
                       </Typography>
                     ))}
                   </AccordionDetails>
-                )}
+                )} */}
               </Accordion>
-            </Fragment>
+            // </Fragment>
           );
         })}
        

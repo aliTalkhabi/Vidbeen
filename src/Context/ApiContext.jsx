@@ -1,6 +1,6 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from 'react';
-import { fetchDataCards } from '@/Services/api';
+import { fetchDataCards, fetchDataMenu } from '@/Services/api';
 
 
 
@@ -9,6 +9,7 @@ const ApiContext = createContext();
 
 export const ApiProvider = ({ children }) => {
     const [dataCard, setDataCard] = useState(null);
+    const [dataMenu, setDataMenu] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -27,8 +28,24 @@ export const ApiProvider = ({ children }) => {
         };
         getDataCard();
     }, []);
+
+    useEffect(() => {
+        const getDataMenu = async () => {
+            try {
+                const result = await fetchDataMenu('/products/categories');
+                setDataMenu(result);
+            }
+            catch {
+                setError(error.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        getDataMenu();
+    }, [])
+
     return (
-        <ApiContext.Provider value={{ dataCard, error, loading }}>
+        <ApiContext.Provider value={{ dataCard, dataMenu, error, loading }}>
             {children}
         </ApiContext.Provider>
     );

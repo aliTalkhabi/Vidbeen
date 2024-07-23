@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import {
- 
   CategoryItems,
   NewVideosItems,
   ProductNextItems,
@@ -61,8 +60,8 @@ export default function Cards({ typeCards }) {
     ),
   });
   
-  const { dataCard   , loading} = useApi();
-  if(loading) return <Loading />
+  const { dataCard } = useApi();
+ 
   return (
     <>
       {typeCards === "top-pages"
