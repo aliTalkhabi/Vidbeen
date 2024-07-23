@@ -1,7 +1,6 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
-import { fetchDataProducts } from '@/Services/api';
+import { fetchDataCards } from '@/Services/api';
 
 
 
@@ -9,15 +8,15 @@ const ApiContext = createContext();
 
 
 export const ApiProvider = ({ children }) => {
-    const [data, setData] = useState(null);
+    const [dataCard, setDataCard] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const getData = async () => {
+        const getDataCard = async () => {
             try {
-                const result = await fetchDataProducts('/products');
-                setData(result);
+                const result = await fetchDataCards('/products');
+                setDataCard(result);
             }
             catch (error) {
                 setError(error.message);
@@ -26,10 +25,10 @@ export const ApiProvider = ({ children }) => {
                 setLoading(false);
             }
         };
-        getData();
+        getDataCard();
     }, []);
     return (
-        <ApiContext.Provider value={{ data, error, loading }}>
+        <ApiContext.Provider value={{ dataCard, error, loading }}>
             {children}
         </ApiContext.Provider>
     );

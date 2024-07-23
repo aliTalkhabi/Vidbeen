@@ -3,7 +3,7 @@ import axios from 'axios';
 const api = axios.create({
     baseURL: 'https://fakestoreapi.com'
 });
-export const fetchDataProducts = async (products) =>{
+export const fetchDataCards = async (products) =>{
     try{
         const response = await api.get(products);
         return response.data;

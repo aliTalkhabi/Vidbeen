@@ -35,7 +35,7 @@ export default function MenuTop() {
         zIndex:'10'
       }}
     >
-     <Box component="section" sx={{ width: "100%",borderRight:'1px solid #ebebeb'}}>
+     <Box component="section" sx={{ width: "100%",borderRight:'1px solid #ebebeb',borderLeft:'1px solid #ebebeb'}}>
         
         <ul className={styles.menu}>
           {SubCategories.map((subcategory, i) => {

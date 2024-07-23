@@ -61,7 +61,7 @@ export default function Cards({ typeCards }) {
     ),
   });
   
-  const { data   , loading} = useApi();
+  const { dataCard   , loading} = useApi();
   if(loading) return <Loading />
   return (
     <>
@@ -312,7 +312,7 @@ export default function Cards({ typeCards }) {
                 })
                 : typeCards === "category-page-items"
                   ?
-                  data.map(item => {
+                  dataCard.map(item => {
                     return (
                       <Card key={item.id} variant="article" component="article" sx={{
                         maxWidth: "100%",
