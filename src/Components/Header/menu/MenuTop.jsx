@@ -30,6 +30,7 @@ export default function MenuTop() {
           md: "1.25fr 1fr",
           lg: "1.25fr 1fr",
         },
+        border:'1px solid #ebebeb',
         width: { xs: "80%", sm: "100%", md: "100%", lg: "1200px" },
         height: {xs:'100vh',sm:'100vh',md:'100vh',lg:'700px'},
         position: "absolute",
@@ -41,7 +42,7 @@ export default function MenuTop() {
         zIndex:'10'
       }}
     >
-     <Box component="section" sx={{ width: "100%",borderRight:'1px solid #ebebeb',borderLeft:'1px solid #ebebeb'}}>
+     <Box component="section" sx={{ width: "100%",borderRight:'1px solid #ebebeb'}}>
         <ul className={styles.menu}>
           {dataMenu.map((item, i) => {
             return (
