@@ -20,48 +20,57 @@ import "./Card.css";
 import { QueryBuilderRounded } from "@mui/icons-material";
 import dynamic from "next/dynamic";
 import { useApi } from "@/Context/ApiContext";
-import Loading from "../loading/Loading";
+
+import { fetchDataCards } from "@/Services/api";
+
+
+const CategoryIndexCards = dynamic(() => import("@mui/material/Card"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      variant="rectangular"
+      animation="wave"
+      width={531}
+      height={363}
+    />
+  ),
+});
+
+const CardNewItemDynamic = dynamic(() => import("@mui/material/Card"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      variant="rectangular"
+      animation="wave"
+      width={211}
+      height={175}
+      sx={{ marginBottom: "1rem" }}
+    />
+  ),
+});
+const CardTrainingItem = dynamic(() => import("@mui/material/Card"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      variant="rectangular"
+      animation="wave"
+      width={165}
+      height={170}
+    />
+  ),
+});
+
 
 
 export default function Cards({ typeCards }) {
-  const CategoryIndexCards = dynamic(() => import("@mui/material/Card"), {
-    ssr: false,
-    loading: () => (
-      <Skeleton
-        variant="rectangular"
-        animation="wave"
-        width={531}
-        height={363}
-      />
-    ),
-  });
-
-  const CardNewItemDynamic = dynamic(() => import("@mui/material/Card"), {
-    ssr: false,
-    loading: () => (
-      <Skeleton
-        variant="rectangular"
-        animation="wave"
-        width={211}
-        height={175}
-        sx={{ marginBottom: "1rem" }}
-      />
-    ),
-  });
-  const CardTrainingItem = dynamic(() => import("@mui/material/Card"), {
-    ssr: false,
-    loading: () => (
-      <Skeleton
-        variant="rectangular"
-        animation="wave"
-        width={165}
-        height={170}
-      />
-    ),
-  });
-  
-  const { dataCard } = useApi();
- 
+  const {dataCard ,cardLoading} = useApi(); 
+  if(cardLoading){
+    return(
+      <Box>
+        <Skeleton animation="wave" variant="rectangular" width={210} height={118} />
+      </Box>
+    )
+  }
   return (
     <>
       {typeCards === "top-pages"

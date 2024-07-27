@@ -1,7 +1,7 @@
 "use client";
-import { Box} from "@mui/material";
+import { Box, Skeleton} from "@mui/material";
 import { Fragment, useState } from "react";
-import { SubCategories } from "../../../constants/constants";
+
 import Link from "next/link";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutlined";
@@ -12,7 +12,12 @@ export default function MenuTop() {
   const toggleSubMenu = (index) => {
     setIsSubMenuOpen(index);
   };
-  const {dataMenu} = useApi();
+  const {dataMenu , menuLoading} = useApi();
+  if(menuLoading){
+    return(
+      <Skeleton animation="wave" variant="text" width={210} height={30} />
+    )
+  }
   return (
     <Box
       className={styles.menuNav}
@@ -37,7 +42,6 @@ export default function MenuTop() {
       }}
     >
      <Box component="section" sx={{ width: "100%",borderRight:'1px solid #ebebeb',borderLeft:'1px solid #ebebeb'}}>
-        
         <ul className={styles.menu}>
           {dataMenu.map((item, i) => {
             return (
