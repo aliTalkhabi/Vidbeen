@@ -4,17 +4,18 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  Skeleton,
   Typography,
 } from "@mui/material";
-import React, { Fragment } from "react";
+import React, { Fragment,use } from "react";
 import styles from "./rightlist.module.css";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import Link from "next/link";
 import StickyBox from 'react-sticky-box';
 import { useApi } from "@/Context/ApiContext";
 export default function RightList() {
-  const { dataMenu, menuLoading } = useApi();
-  if (menuLoading) {
+  const { dataMenu } = useApi()
+  if (!dataMenu.length) {
     return (
       <Skeleton animation="wave" variant="text" width={210} height={30} />
     )
@@ -22,9 +23,7 @@ export default function RightList() {
   return (
     <Box className={styles.asideContainer}>
       <StickyBox offsetTop={75} offsetBottom={0}>
-
         {dataMenu.map((item, i) => {
-
           return (
             // <Fragment key={i}>
             <Accordion

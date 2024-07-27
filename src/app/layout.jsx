@@ -5,6 +5,7 @@ import { MuiRtlProvider } from "@/context/MuiRtlContext";
 import Header from "@/components/header/Header";
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
 import { ApiProvider } from "@/Context/ApiContext";
+import { fetchDataCards, fetchDataMenu } from "@/Services/api";
 
 const Footer = dynamic(() => import('@/components/footer/Footer'), { ssr: false })
 
@@ -14,11 +15,11 @@ export const metadata = {
 };
 
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children}) {
   return (
     <html lang="fa" dir="rtl">
-      <MuiRtlProvider>
-        <ApiProvider>
+      <MuiRtlProvider >
+        <ApiProvider >
           <body >
             <Header />
             <Breadcrumb />

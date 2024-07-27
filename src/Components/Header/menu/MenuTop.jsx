@@ -12,8 +12,8 @@ export default function MenuTop() {
   const toggleSubMenu = (index) => {
     setIsSubMenuOpen(index);
   };
-  const {dataMenu , menuLoading} = useApi();
-  if(menuLoading){
+  const {dataMenu } = useApi();
+  if(!dataMenu.length ){
     return(
       <Skeleton animation="wave" variant="text" width={210} height={30} />
     )

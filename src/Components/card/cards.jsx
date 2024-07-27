@@ -1,5 +1,6 @@
 "use client";
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
@@ -20,8 +21,6 @@ import "./Card.css";
 import { QueryBuilderRounded } from "@mui/icons-material";
 import dynamic from "next/dynamic";
 import { useApi } from "@/Context/ApiContext";
-
-import { fetchDataCards } from "@/Services/api";
 
 
 const CategoryIndexCards = dynamic(() => import("@mui/material/Card"), {
@@ -63,8 +62,8 @@ const CardTrainingItem = dynamic(() => import("@mui/material/Card"), {
 
 
 export default function Cards({ typeCards }) {
-  const {dataCard ,cardLoading} = useApi(); 
-  if(cardLoading){
+  const {dataCard} = useApi(); 
+  if(!dataCard.length){
     return(
       <Box>
         <Skeleton animation="wave" variant="rectangular" width={210} height={118} />

@@ -8,10 +8,9 @@ const ApiContext = createContext();
 
 
 export const ApiProvider = ({ children }) => {
-    const [dataCard, setDataCard] = useState(null);
-    const [dataMenu, setDataMenu] = useState(null);
-    const [menuLoading , setMenuLoading] =useState(true);
-    const [cardLoading,setCardLoading] = useState(true);
+    const [dataCard, setDataCard] = useState([]);
+    const [dataMenu, setDataMenu] = useState([]);
+
 
     // useEffect(() => {
     //     const getDataCard = async () => {
@@ -43,33 +42,46 @@ export const ApiProvider = ({ children }) => {
     //     };
     //     getDataMenu();
     // }, [])
-    useEffect(()=>{
-        const fetchCategoriesCards = async()=>{
-            try{
-                const data = await fetchDataCards('/products');
-                setDataCard(data);
-            }catch (error){
-                console.error('Error loading products:',error);
-            }finally{
-                setCardLoading(false);
+    // useEffect(()=>{
+    //     const fetchCategoriesCards = async()=>{
+    //         try{
+    //             const data = await fetchDataCards('/products');
+    //             setDataCard(data);
+    //         }catch (error){
+    //             console.error('Error loading products:',error);
+    //         }finally{
+    //             setCardLoading(false);
+    //         }
+    //     }
+    //     const fetchMenuItems = async()=>{
+    //         try{
+    //             const data = await fetchDataMenu('/products/categories');
+    //             setDataMenu(data);
+    //         }catch(error){
+    //             console.error('Error loading products:',error);
+    //         }finally{
+    //             setMenuLoading(false);
+    //         }
+
+    //     }
+    //     fetchCategoriesCards();
+    //     fetchMenuItems();
+    // },[]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const dataCardSet = await fetchDataCards('/products');
+                const dataMenuSet = await fetchDataMenu('/products/categories');
+                setDataCard(dataCardSet);
+                setDataMenu(dataMenuSet)
+            } catch {
+                console.error('Error fetching data:', error);
             }
         }
-        const fetchMenuItems = async()=>{
-            try{
-                const data = await fetchDataMenu('/products/categories');
-                setDataMenu(data);
-            }catch(error){
-                console.error('Error loading products:',error);
-            }finally{
-                setMenuLoading(false);
-            }
-            
-        }
-        fetchCategoriesCards();
-        fetchMenuItems();
-    },[]);
+        fetchData()
+    }, [])
     return (
-        <ApiContext.Provider value={{ dataCard,cardLoading, dataMenu,menuLoading}}>
+        <ApiContext.Provider value={{ dataCard, dataMenu }}>
             {children}
         </ApiContext.Provider>
     );

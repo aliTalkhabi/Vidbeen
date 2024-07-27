@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import MainContent from "@/components/maincontent/MainContent";
-import { useApi } from "@/Context/ApiContext";
+
 
 const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
   ssr: false,
