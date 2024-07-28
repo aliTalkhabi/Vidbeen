@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
-import MainContent from "@/Components/MainContent/MainContent";
+import MainContent from "@/components/MainContent/MainContent";
 
 
 const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
@@ -12,7 +12,7 @@ const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
   },
 });
 const SideBarDynamic = dynamic(
-  () => import("@/components/rightList/RightList"),
+  () => import("@/components/RightList/RightList"),
   {
     ssr: false,
     loading: () => (
@@ -25,7 +25,7 @@ const SideBarDynamic = dynamic(
     ),
   }
 );
-const Mostview = dynamic(() => import("@/Components/Mostview/MostView"), {
+const Mostview = dynamic(() => import("@/components/Mostview/MostView"), {
   ssr: "false",
   loading: () => <Skeleton animation="wave" variant="rectangular" width={850} height={256} />,
 });

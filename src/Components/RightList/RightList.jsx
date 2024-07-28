@@ -12,7 +12,7 @@ import styles from "./rightlist.module.css";
 import ArrowDropDownRoundedIcon from "@mui/icons-material/ArrowDropDownRounded";
 import Link from "next/link";
 import StickyBox from 'react-sticky-box';
-import { useApi } from "@/Context/ApiContext";
+import { useApi } from "@/context/ApiContext";
 export default function RightList() {
   const { dataMenu } = useApi()
   if (!dataMenu.length) {

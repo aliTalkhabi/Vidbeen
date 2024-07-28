@@ -23,9 +23,9 @@ export const fetchDataMenu = async (categories) => {
         throw error
     }    
 }
-export const fetchMostView = async (products) => {
+export const fetchMostView = async (cards) => {
     try {
-        const response = await api.get(products);
+        const response = await api.get(cards);
         return response.data;
     }
     catch(error){

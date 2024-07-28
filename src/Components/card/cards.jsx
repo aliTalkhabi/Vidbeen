@@ -17,10 +17,9 @@ import {
   TrainingItems,
 } from "@/constants/Constants";
 import Link from "next/link";
-import "./Card.css";
 import { QueryBuilderRounded } from "@mui/icons-material";
 import dynamic from "next/dynamic";
-import { useApi } from "@/Context/ApiContext";
+import { useApi } from "@/context/ApiContext";
 
 
 const CategoryIndexCards = dynamic(() => import("@mui/material/Card"), {
@@ -62,7 +61,7 @@ const CardTrainingItem = dynamic(() => import("@mui/material/Card"), {
 
 
 export default function Cards({ typeCards }) {
-  const {dataCard} = useApi(); 
+  const {dataCard , dataMostView} = useApi(); 
   if(!dataCard.length){
     return(
       <Box>
@@ -73,10 +72,10 @@ export default function Cards({ typeCards }) {
   return (
     <>
       {typeCards === "top-pages"
-        ? TopCardsInfo.map((topcardinfo) => {
+        ?  dataMostView.map((item) => {
           return (
             <Card
-              key={topcardinfo.id}
+              key={item.id}
               component="article"
               sx={{
                 maxWidth: "250px",
@@ -85,13 +84,13 @@ export default function Cards({ typeCards }) {
                 boxShadow: "none",
               }}
             >
-              <Link href={topcardinfo.link} title={topcardinfo.title}>
+              <Link href='/' title={item.title}>
                 <CardActionArea component="section">
                   <picture>
-                    <source srcSet={topcardinfo.image} type="image/jpg" />
+                    <source srcSet={item.image} type="image/jpg" />
                     <img
-                      src={topcardinfo.image}
-                      alt={topcardinfo.alt}
+                      src={item.image}
+                      alt={item.title}
                       width={250}
                       height={140}
                     />
@@ -110,7 +109,7 @@ export default function Cards({ typeCards }) {
                         padding: "0 10px",
                       }}
                     >
-                      {topcardinfo.title}
+                      {item.title}
                     </Typography>
                     <Typography component="span" color="#00000080">
                       <VisibilityRoundedIcon
@@ -120,7 +119,7 @@ export default function Cards({ typeCards }) {
                           marginLeft: ".5rem",
                         }}
                       />{" "}
-                      تعداد بازدید : {topcardinfo.view}
+                      تعداد بازدید : {'0'}
                     </Typography>
                   </CardContent>
                 </CardActionArea>

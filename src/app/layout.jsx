@@ -1,13 +1,12 @@
-import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
 import "./globals.css";
 import { MuiRtlProvider } from "@/context/MuiRtlContext";
-import Header from "@/components/header/Header";
-import Breadcrumb from "@/Components/Breadcrumb/Breadcrumb";
-import { ApiProvider } from "@/Context/ApiContext";
-import { fetchDataCards, fetchDataMenu } from "@/Services/api";
+import Header from "@/components/Header/Header";
+import Breadcrumb from "@/components/Breadcrumb/Breadcrumb";
+import { ApiProvider } from "@/context/ApiContext";
 
-const Footer = dynamic(() => import('@/components/footer/Footer'), { ssr: false })
+
+const Footer = dynamic(() => import('@/components/Footer/Footer'), { ssr: false })
 
 export const metadata = {
   title: "سرویس اشتراک ویدیویی سیستم های حفاظتی و نظارتی - ویدبین",
