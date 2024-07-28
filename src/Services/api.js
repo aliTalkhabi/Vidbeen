@@ -18,18 +18,28 @@ export const fetchDataMenu = async (categories) => {
         const response = await api.get(categories)
         return response.data
     }
-    catch(error){
-        console.error('Error Fetching data : ',error);
+    catch (error) {
+        console.error('Error Fetching data : ', error);
         throw error
-    }    
+    }
 }
-export const fetchMostView = async (cards) => {
+export const fetchMostView = async (products) => {
     try {
-        const response = await api.get(cards);
+        const response = await api.get(products);
         return response.data;
     }
-    catch(error){
-        console.error('Error Fetching data : ',error);
+    catch (error) {
+        console.error('Error Fetching data : ', error);
+        throw error
+    }
+}
+export const fetchNewCards = async (products) => {
+    try {
+        const response = await api.get(products);
+        return response.data;
+    }
+    catch (error) {
+        console.error('Error Fetching data : ', error);
         throw error
     }
 }

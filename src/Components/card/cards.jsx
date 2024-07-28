@@ -1,7 +1,6 @@
 "use client";
 import {
   Box,
-  Card,
   CardActionArea,
   CardContent,
   Skeleton,
@@ -13,7 +12,6 @@ import {
   NewVideosItems,
   ProductNextItems,
   RelatedVideos,
-  TopCardsInfo,
   TrainingItems,
 } from "@/constants/Constants";
 import Link from "next/link";
@@ -22,48 +20,15 @@ import dynamic from "next/dynamic";
 import { useApi } from "@/context/ApiContext";
 
 
-const CategoryIndexCards = dynamic(() => import("@mui/material/Card"), {
-  ssr: false,
-  loading: () => (
-    <Skeleton
-      variant="rectangular"
-      animation="wave"
-      width={531}
-      height={363}
-    />
-  ),
-});
 
-const CardNewItemDynamic = dynamic(() => import("@mui/material/Card"), {
-  ssr: false,
-  loading: () => (
-    <Skeleton
-      variant="rectangular"
-      animation="wave"
-      width={211}
-      height={175}
-      sx={{ marginBottom: "1rem" }}
-    />
-  ),
-});
-const CardTrainingItem = dynamic(() => import("@mui/material/Card"), {
-  ssr: false,
-  loading: () => (
-    <Skeleton
-      variant="rectangular"
-      animation="wave"
-      width={165}
-      height={170}
-    />
-  ),
-});
+const Card = dynamic(() => import("@mui/material/Card"), { ssr: false });
 
 
 
 export default function Cards({ typeCards }) {
-  const {dataCard , dataMostView} = useApi(); 
-  if(!dataCard.length){
-    return(
+  const { dataCard, dataMostView, dataNewCards } = useApi();
+  if (!dataCard.length) {
+    return (
       <Box>
         <Skeleton animation="wave" variant="rectangular" width={210} height={118} />
       </Box>
@@ -72,7 +37,7 @@ export default function Cards({ typeCards }) {
   return (
     <>
       {typeCards === "top-pages"
-        ?  dataMostView.map((item) => {
+        ? dataMostView.map((item) => {
           return (
             <Card
               key={item.id}
@@ -128,10 +93,10 @@ export default function Cards({ typeCards }) {
           );
         })
         : typeCards === "new-videos-item-mobile"
-          ? NewVideosItems.map((newvideositem) => {
+          ? dataNewCards.map((item) => {
             return (
               <Card
-                key={newvideositem.id}
+                key={item.id}
                 sx={{
                   maxWidth: { xs: "250px", sm: "350px", md: "100%" },
                   background: "none",
@@ -141,15 +106,15 @@ export default function Cards({ typeCards }) {
                 component="article"
               >
                 <Link
-                  href={newvideositem.link}
-                  title={newvideositem.description}
+                  href={'/'}
+                  title={item.title}
                 >
                   <CardActionArea component="div">
                     <picture>
-                      <source srcSet={newvideositem.image} type="image/jpg" />
+                      <source srcSet={item.image} type="image/jpg" />
                       <img
-                        src={newvideositem.image}
-                        alt={newvideositem.alt}
+                        src={item.image}
+                        alt={item.title}
                         width={250}
                         height={140}
                       />
@@ -166,7 +131,7 @@ export default function Cards({ typeCards }) {
                           margin: "10px auto",
                         }}
                       >
-                        {newvideositem.description}
+                        {item.title}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -175,10 +140,10 @@ export default function Cards({ typeCards }) {
             );
           })
           : typeCards === "new-videos-item-desktop"
-            ? NewVideosItems.map((newvideositem) => {
+            ? dataNewCards.map((item) => {
               return (
-                <CardNewItemDynamic
-                  key={newvideositem.id}
+                <Card
+                  key={item.id}
                   sx={{
                     maxWidth: { xs: "350px", sm: "250px", md: "100%" },
                     background: "none",
@@ -188,15 +153,15 @@ export default function Cards({ typeCards }) {
                   component="article"
                 >
                   <Link
-                    href={newvideositem.link}
-                    title={newvideositem.description}
+                    href={'/'}
+                    title={item.title}
                   >
                     <CardActionArea component="div">
                       <picture>
-                        <source srcSet={newvideositem.image} type="image/jpg" />
+                        <source srcSet={item.image} type="image/jpg" />
                         <img
-                          src={newvideositem.image}
-                          alt={newvideositem.alt}
+                          src={item.image}
+                          alt={item.title}
                           width={250}
                           height={140}
                         />
@@ -214,12 +179,12 @@ export default function Cards({ typeCards }) {
                             borderBottom: "2px solid #E3E3E3",
                           }}
                         >
-                          {newvideositem.description}
+                          {item.title}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
                   </Link>
-                </CardNewItemDynamic>
+                </Card>
               );
             })
             : typeCards === "category-items"
@@ -227,7 +192,7 @@ export default function Cards({ typeCards }) {
                 return (
                   <div key={categoryitem.id} className="cards-area">
                     <h2>{categoryitem.title}</h2>
-                    <CategoryIndexCards
+                    <Card
                       sx={{
                         maxWidth: "100%",
                         background: "none",
@@ -261,7 +226,7 @@ export default function Cards({ typeCards }) {
                           </CardContent>
                         </CardActionArea>
                       </Link>
-                    </CategoryIndexCards>
+                    </Card>
                   </div>
                 );
               })
@@ -269,7 +234,7 @@ export default function Cards({ typeCards }) {
               : typeCards === "training-items"
                 ? TrainingItems.map((trainingitems) => {
                   return (
-                    <CardTrainingItem
+                    <Card
                       key={trainingitems.id}
                       component="article"
                       sx={{
@@ -313,7 +278,7 @@ export default function Cards({ typeCards }) {
                           </CardContent>
                         </CardActionArea>
                       </Link>
-                    </CardTrainingItem>
+                    </Card>
                   );
                 })
                 : typeCards === "category-page-items"
