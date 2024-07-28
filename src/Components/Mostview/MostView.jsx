@@ -1,7 +1,7 @@
 'use client'
 import { Box, Grid, Typography } from "@mui/material";
-import Cards from "../card/Cards";
-import "./topcard.css";
+import Cards from "../Card/Cards";
+import styles from "./MostView.module.css";
 
 export default function TopCard() {
   return (
@@ -12,7 +12,7 @@ export default function TopCard() {
       sx={{ display:'grid' }}
     >
       <Typography
-        className="topparagraph"
+        className={styles.topparagraph}
         component='h2'
         sx={{
           width: "100%",
@@ -21,7 +21,7 @@ export default function TopCard() {
           fontWeight: "900",
         }}
       >
-        پربازدیدترین <span className="span">ویدیو ها</span>{" "}
+        پربازدیدترین <span className={styles.span}>ویدیو ها</span>{" "}
       </Typography>
       <Box
       component='section'

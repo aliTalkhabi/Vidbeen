@@ -23,3 +23,13 @@ export const fetchDataMenu = async (categories) => {
         throw error
     }    
 }
+export const fetchMostView = async (products) => {
+    try {
+        const response = await api.get(products);
+        return response.data;
+    }
+    catch(error){
+        console.error('Error Fetching data : ',error);
+        throw error
+    }
+}

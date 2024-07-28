@@ -5,7 +5,7 @@ import {
 
 } from "@mui/material";
 import "./MainContent.css";
-import Cards from "../card/Cards";
+import Cards from "../Card/Cards";
 
 export default function MainContent() {
   return (

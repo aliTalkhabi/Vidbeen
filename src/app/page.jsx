@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
-import MainContent from "@/components/maincontent/MainContent";
+import MainContent from "@/Components/MainContent/MainContent";
 
 
 const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
@@ -25,7 +25,7 @@ const SideBarDynamic = dynamic(
     ),
   }
 );
-const TopCardDynamic = dynamic(() => import("@/components/topCard/Topcard"), {
+const Mostview = dynamic(() => import("@/Components/Mostview/MostView"), {
   ssr: "false",
   loading: () => <Skeleton animation="wave" variant="rectangular" width={850} height={256} />,
 });
@@ -65,7 +65,7 @@ export default function Home() {
               width: { xs: "100%", sm: "100%", md: "100%" },
             }}
           >
-            <TopCardDynamic />
+            <Mostview />
             <MainContent />
           </BoxDynamic>
         </Container>

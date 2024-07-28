@@ -5,10 +5,9 @@ import { CldVideoPlayer } from "next-cloudinary";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import "next-cloudinary/dist/cld-video-player.css";
-import Cards from "../card/Cards";
+import Cards from "../Card/Cards";
 import dynamic from "next/dynamic";
-import ActionProducts from "../actionsproduct/ActionsProduct";
-
+import ActionProducts from "../ActionsProduct/ActionsProduct";
 export default function Product() {
   
 
@@ -51,7 +50,7 @@ export default function Product() {
     ),
   });
   const DescriptionBoxDynamic = dynamic(
-    () => import("../descriptionbox/Descriptionbox"),
+    () => import("../DescriptionBox/Descriptionbox"),
     {
       ssr: false,
       loading: () => (

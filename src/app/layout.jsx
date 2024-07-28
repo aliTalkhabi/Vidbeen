@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import "./globals.css";
 import { MuiRtlProvider } from "@/context/MuiRtlContext";
 import Header from "@/components/header/Header";
-import Breadcrumb from "@/components/breadcrumb/Breadcrumb";
+import Breadcrumb from "@/Components/Breadcrumb/Breadcrumb";
 import { ApiProvider } from "@/Context/ApiContext";
 import { fetchDataCards, fetchDataMenu } from "@/Services/api";
 

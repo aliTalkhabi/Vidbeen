@@ -2,7 +2,7 @@
 import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import React from "react";
-import Cards from "../card/Cards";
+import Cards from "../Card/Cards";
 
 
 export default function Category() {
