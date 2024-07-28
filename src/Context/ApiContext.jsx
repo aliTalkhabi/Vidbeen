@@ -1,12 +1,7 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from 'react';
 import { fetchDataCards, fetchDataMenu, fetchMostView, fetchNewCards } from '@/services/api';
-
-
-
 const ApiContext = createContext();
-
-
 export const ApiProvider = ({ children }) => {
     const [dataCard, setDataCard] = useState([]);
     const [dataMenu, setDataMenu] = useState([]);

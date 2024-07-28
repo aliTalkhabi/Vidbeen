@@ -8,8 +8,6 @@ import {
 } from "@mui/material";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import {
-  CategoryItems,
-  NewVideosItems,
   ProductNextItems,
   RelatedVideos,
   TrainingItems,
@@ -188,10 +186,10 @@ export default function Cards({ typeCards }) {
               );
             })
             : typeCards === "category-items"
-              ? CategoryItems.map((categoryitem) => {
+              ? dataMostView.map((item) => {
                 return (
-                  <div key={categoryitem.id} className="cards-area">
-                    <h2>{categoryitem.title}</h2>
+                  <div key={item.id} className="cards-area">
+                    <h2>{item.title}</h2>
                     <Card
                       sx={{
                         maxWidth: "100%",
@@ -201,16 +199,16 @@ export default function Cards({ typeCards }) {
                       component="article"
                     >
                       <Link
-                        key={categoryitem.id}
-                        href={categoryitem.link}
-                        title={categoryitem.description}
+                        
+                        href={'/'}
+                        title={item.title}
                       >
                         <CardActionArea component="section">
                           <picture>
-                            <source srcSet={categoryitem.image} type="image/jpg" />
+                            <source srcSet={item.image} type="image/jpg" />
                             <img
-                              src={categoryitem.image}
-                              alt={categoryitem.alt}
+                              src={item.image}
+                              alt={item.title}
                               width={530}
                               height={300}
                             />
@@ -221,7 +219,7 @@ export default function Cards({ typeCards }) {
                               component="p"
                               sx={{ color: "#111010", fontSize: "16px" }}
                             >
-                              {categoryitem.description}
+                              {item.description}
                             </Typography>
                           </CardContent>
                         </CardActionArea>
@@ -232,10 +230,10 @@ export default function Cards({ typeCards }) {
               })
 
               : typeCards === "training-items"
-                ? TrainingItems.map((trainingitems) => {
+                ? dataMostView.map((item) => {
                   return (
                     <Card
-                      key={trainingitems.id}
+                      key={item.id}
                       component="article"
                       sx={{
                         maxWidth: "250px",
@@ -245,15 +243,15 @@ export default function Cards({ typeCards }) {
                       }}
                     >
                       <Link
-                        href={trainingitems.link}
-                        title={trainingitems.description}
+                        href={'/'}
+                        title={item.title}
                       >
                         <CardActionArea component="div">
                           <picture>
-                            <source srcSet={trainingitems.image} type="image/jpg" />
+                            <source srcSet={item.image} type="image/jpg" />
                             <img
-                              src={trainingitems.image}
-                              alt={trainingitems.alt}
+                              src={item.image}
+                              alt={item.title}
                               width={160}
                               height={90}
                             />
@@ -273,7 +271,7 @@ export default function Cards({ typeCards }) {
                                 padding: "0 10px",
                               }}
                             >
-                              {trainingitems.description}
+                              {item.title}
                             </Typography>
                           </CardContent>
                         </CardActionArea>
