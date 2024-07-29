@@ -14,15 +14,15 @@ export const metadata = {
 };
 
 
-export default function RootLayout({ children}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <MuiRtlProvider >
         <ApiProvider >
-          <body >
+          <body>
             <Header />
             <main>
-            <Breadcrumb />
+              <Breadcrumb />
               {children}
             </main>
             <Footer />
