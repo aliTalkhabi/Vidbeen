@@ -23,7 +23,7 @@ export default function RightList() {
   return (
     <Box className={styles.asideContainer}>
       <StickyBox offsetTop={75} offsetBottom={0}>
-        {dataMenu.map((item, i) => {
+        {dataMenu.map((item) => {
           return (
             // <Fragment key={i}>
             <Accordion

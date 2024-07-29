@@ -10,19 +10,12 @@ import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
 import {
   ProductNextItems,
   RelatedVideos,
-  TrainingItems,
 } from "@/constants/Constants";
 import Link from "next/link";
 import { QueryBuilderRounded } from "@mui/icons-material";
 import dynamic from "next/dynamic";
 import { useApi } from "@/context/ApiContext";
-
-
-
 const Card = dynamic(() => import("@mui/material/Card"), { ssr: false });
-
-
-
 export default function Cards({ typeCards }) {
   const { dataCard, dataMostView, dataNewCards } = useApi();
   if (!dataCard.length) {

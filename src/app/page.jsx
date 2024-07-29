@@ -1,14 +1,8 @@
 "use client";
 import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
-import MainContent from "@/components/MainContent/MainContent";
-import MostView from "@/components/MostView/MostView";
-const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
-  ssr: false,
-  loading: () => {
-    <Skeleton animation="wave" variant="rectangular" sx={{ width: '850px', height: '1700px' }} />;
-  },
-});
+
+
 const SideBarDynamic = dynamic(
   () => import("@/components/RightList/RightList"),
   {
@@ -23,11 +17,16 @@ const SideBarDynamic = dynamic(
     ),
   }
 );
-
+const MostViewDynamic = dynamic(() => import("@/components/Mostview/MostView"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" animation="wave" />,
+});
+const MainContentDynamic = dynamic(() => import("@/components/MainContent/MainContent"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" animation="wave" sx={{height:'100%'}} />,
+});
 export default function Home() {
   return (
-    
-      <Stack component="section">
         <Container
           component="section"
           sx={{
@@ -41,6 +40,7 @@ export default function Home() {
             },
             gap: "10px 10px",
             height: "100%",
+            margin:'0 auto !important'
           }}
         >
           <Box
@@ -51,18 +51,18 @@ export default function Home() {
           >
             <SideBarDynamic />
           </Box>
-          <BoxDynamic
+          <Box
             component="section"
             sx={{
               height: "fit-content",
               width: { xs: "100%", sm: "100%", md: "100%" },
             }}
           >
-            <MostView/>
-            <MainContent />
-          </BoxDynamic>
+            <MostViewDynamic/>
+            <MainContentDynamic />
+          </Box>
         </Container>
-      </Stack>
+      
     
   );
 }

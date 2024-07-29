@@ -2,13 +2,12 @@
 import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import React from "react";
-import Cards from "../Card/Cards";
+
 
 
 export default function Category() {
   const SideBarDynamic = dynamic(
-    () => import("@/components/rightList/RightList"),
-    {
+    () => import("@/components/rightList/RightList"),{
       ssr: false,
       loading: () => (
         <div>
@@ -21,11 +20,9 @@ export default function Category() {
       ),
     }
   );
-  const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
+ const CardsDynamic = dynamic(() => import("../Card/Cards"), {
     ssr: false,
-    loading: () => {
-      <Skeleton animation="wave" variant="rectangular" sx={{ width: '856px', height: '100%' }} />;
-    },
+    loading: () => <Skeleton animation="wave" variant="rectangular" width={856} sx={{height:'100vh'}} />,
   });
 
   return (
@@ -50,7 +47,7 @@ export default function Category() {
           }} >
             <SideBarDynamic />
           </Box>
-          <BoxDynamic
+          <Box
             component="section"
             sx={{
               display: "grid",
@@ -64,8 +61,8 @@ export default function Category() {
               padding: { xs: "0", sm: "0", md: "0 2rem" },
             }}
           >
-            <Cards typeCards="category-page-items" />
-          </BoxDynamic>
+            <CardsDynamic typeCards="category-page-items" />
+          </Box>
         </Container>
       </Stack >
 
