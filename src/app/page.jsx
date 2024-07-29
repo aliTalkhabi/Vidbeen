@@ -1,14 +1,12 @@
 "use client";
-import styles from "./page.module.css";
 import { Box, Container, Skeleton, Stack } from "@mui/material";
 import dynamic from "next/dynamic";
 import MainContent from "@/components/MainContent/MainContent";
-
-
+import MostView from "@/components/MostView/MostView";
 const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
   ssr: false,
   loading: () => {
-    <Skeleton animation="wave" variant="rectangular" width={850} />;
+    <Skeleton animation="wave" variant="rectangular" sx={{ width: '850px', height: '1700px' }} />;
   },
 });
 const SideBarDynamic = dynamic(
@@ -25,15 +23,10 @@ const SideBarDynamic = dynamic(
     ),
   }
 );
-const Mostview = dynamic(() => import("@/components/Mostview/MostView"), {
-  ssr: "false",
-  loading: () => <Skeleton animation="wave" variant="rectangular" width={850} height={256} />,
-});
-
 
 export default function Home() {
   return (
-    <main className={styles.msin}>
+    
       <Stack component="section">
         <Container
           component="section"
@@ -65,11 +58,11 @@ export default function Home() {
               width: { xs: "100%", sm: "100%", md: "100%" },
             }}
           >
-            <Mostview />
+            <MostView/>
             <MainContent />
           </BoxDynamic>
         </Container>
       </Stack>
-    </main>
+    
   );
 }

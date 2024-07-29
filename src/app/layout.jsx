@@ -21,8 +21,10 @@ export default function RootLayout({ children}) {
         <ApiProvider >
           <body >
             <Header />
+            <main>
             <Breadcrumb />
-            {children}
+              {children}
+            </main>
             <Footer />
           </body>
         </ApiProvider>
