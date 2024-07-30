@@ -19,11 +19,11 @@ const SideBarDynamic = dynamic(
 );
 const MostViewDynamic = dynamic(() => import("@/components/Mostview/MostView"), {
   ssr: false,
-  loading: () => <Skeleton variant="rectangular" animation="wave" />,
+  loading: () => <Skeleton variant="rectangular" animation="wave" width={856} height={295} />,
 });
-const MainContentDynamic = dynamic(() => import("@/Components/MainContent/MainContent"), {
+const MainContentDynamic = dynamic(() => import("@/components/MainContent/MainContent"), {
   ssr: false,
-  loading: () => <Skeleton variant="rectangular" animation="wave" sx={{height:'100%'}} />,
+  loading: () => <Skeleton variant="rectangular" animation="wave" width={856} height={1710} sx={{marginTop:'2rem'}} />,
 });
 export default function Home() {
   return (
@@ -58,8 +58,8 @@ export default function Home() {
               width: { xs: "100%", sm: "100%", md: "100%" },
             }}
           >
-            <MostViewDynamic/>
-            <MainContentDynamic />
+            <MostViewDynamic />
+            <MainContentDynamic  />
           </Box>
         </Container>
       

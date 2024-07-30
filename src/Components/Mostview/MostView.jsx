@@ -1,13 +1,10 @@
 'use client'
-import { Box, Grid, Skeleton } from "@mui/material";
-// import Cards from "../Card/Cards";
+import { Box,  Grid, Skeleton } from "@mui/material";
+import Cards from "../Card/Cards";
 import styles from "./MostView.module.css";
 import dynamic from "next/dynamic";
 const Typography = dynamic(() => import("@mui/material/Typography"), { ssr: false, loading: () => <Skeleton variant="rectangular" animation="wave" />, });
-const Card = dynamic(() => import("../Card/Cards"), {
-  ssr: false,
-  loading: () => <Skeleton variant="rectangular" animation="wave" />,
-});
+
 export default function TopCard() {
   return (
     <Grid
@@ -45,7 +42,8 @@ export default function TopCard() {
             gap: "20px",
           }}
         >
-          <Card typeCards='top-pages' />
+          <Cards typeCards='top-pages' />
+
         </Box>
       </Box>
     </Grid>

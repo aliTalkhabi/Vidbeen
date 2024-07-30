@@ -7,7 +7,7 @@ import React from "react";
 
 export default function Category() {
   const SideBarDynamic = dynamic(
-    () => import("@/components/rightList/RightList"),{
+    () => import("@/components/RightList/RightList"),{
       ssr: false,
       loading: () => (
         <div>

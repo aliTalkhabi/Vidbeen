@@ -1,12 +1,12 @@
 'use client'
 import {
   Box,
-  Skeleton,
+  Grid,
 } from "@mui/material";
 import "./MainContent.css";
 import Cards from "../Card/Cards";
-import dynamic from "next/dynamic";
-const Grid = dynamic(() => import("@mui/material/Grid"), { ssr: false, loading: () => <Skeleton variant="rectangular" animation="wave" width={"100%"} height={'100%'} />, });
+
+
 export default function MainContent() {
   return (
     <Grid
