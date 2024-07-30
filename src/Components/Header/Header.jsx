@@ -40,7 +40,10 @@ const ParagraphDynamic = dynamic(() => import("@mui/material/Typography"), {
     />
   ),
 });
-
+const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" animation="wave"/>,
+});
 export default function Header() {
   const [isFixed, setIsFixed] = useState(false);
   const handleScroll = () => {
@@ -92,20 +95,22 @@ export default function Header() {
         </section>
         <section>
           <div>
-            <Link href="/">
-              <picture>
-                <source srcSet="../image/logo.png" type="image/png" />
-                <img
-                  src="../image/logo.png"
-                  alt="لگوی ویدبین"
-                  width={130}
-                  height={50}
-                />
-              </picture>
-            </Link>
+            <BoxDynamic>
+              <Link href="/">
+                <picture>
+                  <source srcSet="../image/logo.png" type="image/png" />
+                  <img
+                    src="../image/logo.png"
+                    alt="لگوی ویدبین"
+                    width={130}
+                    height={50}
+                  />
+                </picture>
+              </Link>
+            </BoxDynamic>
           </div>
         </section>
       </section>
-    </header>
+    </header >
   );
 }
