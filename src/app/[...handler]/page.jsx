@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 
 import Category from "@/components/Category/Category";
-import Product from "@/components/Product/Product";
+import Product from "@/Components/Product/Product";
 import Custom404 from "../404";
 
 export default function Handler() {

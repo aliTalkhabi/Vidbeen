@@ -21,7 +21,7 @@ const MostViewDynamic = dynamic(() => import("@/components/Mostview/MostView"), 
   ssr: false,
   loading: () => <Skeleton variant="rectangular" animation="wave" />,
 });
-const MainContentDynamic = dynamic(() => import("@/components/MainContent/MainContent"), {
+const MainContentDynamic = dynamic(() => import("@/Components/MainContent/MainContent"), {
   ssr: false,
   loading: () => <Skeleton variant="rectangular" animation="wave" sx={{height:'100%'}} />,
 });
