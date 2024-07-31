@@ -43,7 +43,7 @@ export const fetchMostView = async (endpoint) => {
 export const fetchNewCards = async (endpoint) => {
     try {
         const response = await api.get(endpoint);
-        return response.data;
+        return response.data.newVideo;
     }
     catch (error) {
         console.error('Error Fetching data : ', error);

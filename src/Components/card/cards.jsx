@@ -43,7 +43,7 @@ export default function Cards({ typeCards }) {
                 boxShadow: "none",
               }}
             >
-              <Link href='/' title={item.title}>
+              <Link href={item.url} title={item.title}>
                 <CardActionArea component="section">
                   <picture>
                     <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
@@ -68,7 +68,7 @@ export default function Cards({ typeCards }) {
                         padding: "0 10px",
                       }}
                     >
-                      {item.title}
+                      {item.main_name}
                     </Typography>
                     <Typography component="span" color="#00000080" sx={{fontSize:'16px',fontWeight:'400',lineHeight:'1.5',textAlign:'justify',margin:'10px auto'}}>
                       <VisibilityRoundedIcon
@@ -86,7 +86,7 @@ export default function Cards({ typeCards }) {
             </Card>
           );
         })
-        : /* typeCards === "new-videos-item-mobile"
+        :  typeCards === "new-videos-item-mobile"
           ? dataNewCards.map((item) => {
             return (
               <Card
@@ -105,9 +105,9 @@ export default function Cards({ typeCards }) {
                 >
                   <CardActionArea component="div">
                     <picture>
-                      <source srcSet={item.image} type="image/jpg" />
+                      <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
                       <img
-                        src={item.image}
+                        src={`https://vidbeen.ir/public/${item.poster}`}
                         alt={item.title}
                         width={250}
                         height={140}
@@ -125,7 +125,7 @@ export default function Cards({ typeCards }) {
                           margin: "10px auto",
                         }}
                       >
-                        {item.title}
+                        {item.main_name}
                       </Typography>
                     </CardContent>
                   </CardActionArea>
@@ -152,9 +152,9 @@ export default function Cards({ typeCards }) {
                   >
                     <CardActionArea component="div">
                       <picture>
-                        <source srcSet={item.image} type="image/jpg" />
+                        <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
                         <img
-                          src={item.image}
+                          src={`https://vidbeen.ir/public/${item.poster}`}
                           alt={item.title}
                           width={250}
                           height={140}
@@ -173,7 +173,7 @@ export default function Cards({ typeCards }) {
                             borderBottom: "2px solid #E3E3E3",
                           }}
                         >
-                          {item.title}
+                          {item.main_name}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
@@ -181,7 +181,7 @@ export default function Cards({ typeCards }) {
                 </Card>
               );
             })
-            : typeCards === "category-items"
+            : /*typeCards === "category-items"
               ? dataMostView.map((item) => {
                 return (
                   <div key={item.id} className="cards-area">

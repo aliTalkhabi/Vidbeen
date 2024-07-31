@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container, Skeleton, Stack } from "@mui/material";
+import { Box, Container, Skeleton } from "@mui/material";
 import dynamic from "next/dynamic";
 
 
@@ -27,17 +27,7 @@ const MainContentDynamic = dynamic(() => import("@/components/MainContent/MainCo
   loading: () => <Skeleton variant="rectangular" animation="wave" width={856} height={1710} sx={{marginTop:'2rem'}} />,
 });
 export default function Home() {
-  // const slug = usePathname();
  
-  // const[homeData,setHomeData] = useState([]);
-  // useEffect(()=>{
-  //   axios.get(`${backURL}${slug}home`).then((res)=>{
-  //     setHomeData(res.data);
-  //   }).catch((err)=>{
-  //     console.log(err);
-  //   })
-  // },[slug ])
-  // console.log(homeData);
   return (
         <Container
           component="section"
