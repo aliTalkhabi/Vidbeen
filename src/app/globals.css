@@ -103,6 +103,6 @@ a {
 main img {
   width: 100%;
   object-fit: cover;
-  padding: 1rem;
-  border-radius: 1.25rem;
+  padding: .25rem;
+  border-radius:.75rem;
 }

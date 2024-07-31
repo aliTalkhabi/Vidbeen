@@ -1,11 +1,18 @@
 "use server"
-import axios from 'axios';
+import axios from "axios";
+
 const api = axios.create({
-    baseURL: 'https://fakestoreapi.com'
+    baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
+    headers: {
+        'X-Requested-With': 'XMLHttpRequest',
+    },
+    withCredentials: true,
+    withXSRFToken: true
 });
-export const fetchDataCards = async (products) => {
+
+export const fetchDataCards = async (endpoint) => {
     try {
-        const response = await api.get(products);
+        const response = await api.get(endpoint);
         return response.data;
     }
     catch (error) {
@@ -13,9 +20,9 @@ export const fetchDataCards = async (products) => {
         throw error
     }
 }
-export const fetchDataMenu = async (categories) => {
+export const fetchDataMenu = async (endpoint) => {
     try {
-        const response = await api.get(categories)
+        const response = await api.get(endpoint)
         return response.data
     }
     catch (error) {
@@ -23,19 +30,19 @@ export const fetchDataMenu = async (categories) => {
         throw error
     }
 }
-export const fetchMostView = async (cards) => {
+export const fetchMostView = async (endpoint) => {
     try {
-        const response = await api.get(cards);
-        return response.data;
+        const response = await api.get(endpoint);
+        return response.data.viewed;
     }
     catch (error) {
         console.error('Error Fetching data : ', error);
         throw error
     }
 }
-export const fetchNewCards = async (newcards) => {
+export const fetchNewCards = async (endpoint) => {
     try {
-        const response = await api.get(newcards);
+        const response = await api.get(endpoint);
         return response.data;
     }
     catch (error) {

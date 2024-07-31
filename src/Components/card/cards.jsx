@@ -14,21 +14,23 @@ import {
 } from "@/constants/Constants";
 import Link from "next/link";
 import { QueryBuilderRounded } from "@mui/icons-material";
-import dynamic from "next/dynamic";
+
 import { useApi } from "@/context/ApiContext";
+
 
 export default function Cards({ typeCards }) {
   const { dataCard, dataMostView, dataNewCards } = useApi();
-  if (!dataCard.length) {
-    return (
-      <Box>
-        <Skeleton animation="wave" variant="rectangular" width={210} height={118} />
-      </Box>
-    )
-  }
+  // if (!dataCard.length) {
+  //   return (
+  //     <Box>
+  //       <Skeleton animation="wave" variant="rectangular" width={210} height={118} />
+  //     </Box>
+  //   )
+  // }
+   
   return (
     <>
-      {typeCards === "top-pages"
+       {typeCards === "top-pages"
         ? dataMostView.map((item) => {
           return (
             <Card
@@ -44,9 +46,9 @@ export default function Cards({ typeCards }) {
               <Link href='/' title={item.title}>
                 <CardActionArea component="section">
                   <picture>
-                    <source srcSet={item.image} type="image/jpg" />
+                    <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
                     <img
-                      src={item.image}
+                      src={`https://vidbeen.ir/public/${item.poster}`}
                       alt={item.title}
                       width={250}
                       height={140}
@@ -68,15 +70,15 @@ export default function Cards({ typeCards }) {
                     >
                       {item.title}
                     </Typography>
-                    <Typography component="span" color="#00000080">
+                    <Typography component="span" color="#00000080" sx={{fontSize:'16px',fontWeight:'400',lineHeight:'1.5',textAlign:'justify',margin:'10px auto'}}>
                       <VisibilityRoundedIcon
                         sx={{
-                          float: "left",
+                          float:'left',
                           marginRight: ".5rem",
                           marginLeft: ".5rem",
                         }}
                       />{" "}
-                      تعداد بازدید : {'0'}
+                      تعداد بازدید : {item.view}
                     </Typography>
                   </CardContent>
                 </CardActionArea>
@@ -84,7 +86,7 @@ export default function Cards({ typeCards }) {
             </Card>
           );
         })
-        : typeCards === "new-videos-item-mobile"
+        : /* typeCards === "new-videos-item-mobile"
           ? dataNewCards.map((item) => {
             return (
               <Card
@@ -434,7 +436,7 @@ export default function Cards({ typeCards }) {
                           </Card>
                         );
                       })
-                      : null}
+                      :*/ null} 
     </>
   );
 }

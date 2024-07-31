@@ -1,19 +1,25 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from 'react';
-import { fetchDataCards, fetchDataMenu, fetchMostView, fetchNewCards } from '@/services/api';
+import { fetchDataCards, fetchDataMenu, fetchMostView, fetchNewCards } from '@/Services/api';
+import { usePathname } from 'next/navigation';
 const ApiContext = createContext();
+
 export const ApiProvider = ({ children }) => {
+    const slug = usePathname();
     const [dataCard, setDataCard] = useState([]);
     const [dataMenu, setDataMenu] = useState([]);
     const [dataMostView, setDataMostView] = useState([]);
     const [dataNewCards, setDataNewCards] = useState([]);
+    
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const dataCardSet = await fetchDataCards('/products');
-                const dataMenuSet = await fetchDataMenu('/products/categories');
-                const dataMostView = await fetchMostView('/products?limit=3');
-                const dataNewCards = await fetchNewCards('/products?limit=6');
+                const endpoint = `${slug}home`;
+                const dataCardSet = await fetchDataCards(endpoint);
+                const dataMenuSet = await fetchDataMenu(endpoint);
+                const dataMostView = await fetchMostView(endpoint);
+                const dataNewCards = await fetchNewCards(endpoint);
+                console.log(dataMostView);
                 setDataCard(dataCardSet);
                 setDataMenu(dataMenuSet);
                 setDataMostView(dataMostView);
@@ -23,8 +29,8 @@ export const ApiProvider = ({ children }) => {
                 console.error('Error fetching data:', error);
             }
         }
-        fetchData()
-    }, [])
+        fetchData();
+    }, [slug])
     return (
         <ApiContext.Provider value={{ dataCard, dataMenu, dataMostView, dataNewCards }}>
             {children}

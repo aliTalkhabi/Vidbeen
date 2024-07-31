@@ -43,7 +43,6 @@ export default function TopCard() {
           }}
         >
           <Cards typeCards='top-pages' />
-
         </Box>
       </Box>
     </Grid>
