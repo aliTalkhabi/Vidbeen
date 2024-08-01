@@ -19,7 +19,7 @@ import { useApi } from "@/context/ApiContext";
 
 
 export default function Cards({ typeCards }) {
-  const { dataCard, dataMostView, dataNewCards } = useApi();
+  const { dataCard, dataMostView, dataNewCards,dataTrainingCards } = useApi();
   // if (!dataCard.length) {
   //   return (
   //     <Box>
@@ -181,8 +181,8 @@ export default function Cards({ typeCards }) {
                 </Card>
               );
             })
-            : /*typeCards === "category-items"
-              ? dataMostView.map((item) => {
+            : typeCards === "category-items"
+              ? dataCard.map((item) => {
                 return (
                   <div key={item.id} className="cards-area">
                     <h2>{item.title}</h2>
@@ -201,9 +201,9 @@ export default function Cards({ typeCards }) {
                       >
                         <CardActionArea component="section">
                           <picture>
-                            <source srcSet={item.image} type="image/jpg" />
+                            <source srcSet={`https://vidbeen.ir/public/${item.image}`} type="image/jpg" />
                             <img
-                              src={item.image}
+                              src={`https://vidbeen.ir/public/${item.image}`}
                               alt={item.title}
                               width={530}
                               height={300}
@@ -226,7 +226,7 @@ export default function Cards({ typeCards }) {
               })
 
               : typeCards === "training-items"
-                ? dataMostView.map((item) => {
+                ? dataTrainingCards.map((item) => {
                   return (
                     <Card
                       key={item.id}
@@ -244,9 +244,9 @@ export default function Cards({ typeCards }) {
                       >
                         <CardActionArea component="div">
                           <picture>
-                            <source srcSet={item.image} type="image/jpg" />
+                            <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
                             <img
-                              src={item.image}
+                              src={`https://vidbeen.ir/public/${item.poster}`}
                               alt={item.title}
                               width={160}
                               height={90}
@@ -275,7 +275,7 @@ export default function Cards({ typeCards }) {
                     </Card>
                   );
                 })
-                : typeCards === "category-page-items"
+                :/* typeCards === "category-page-items"
                   ?
                   dataCard.map(item => {
                     return (

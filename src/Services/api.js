@@ -13,7 +13,7 @@ const api = axios.create({
 export const fetchDataCards = async (endpoint) => {
     try {
         const response = await api.get(endpoint);
-        return response.data;
+        return response.data.boxs;
     }
     catch (error) {
         console.error('Error Fetching data : ', error);
@@ -50,3 +50,14 @@ export const fetchNewCards = async (endpoint) => {
         throw error
     }
 }
+export const fetchTrainingCards = async (endpoint) => {
+    try {
+        const response = await api.get(endpoint);
+        return response.data.tutorialVideo;
+    }
+    catch (error) {
+        console.error('Error Fetching data : ', error);
+        throw error
+    }
+}
+
