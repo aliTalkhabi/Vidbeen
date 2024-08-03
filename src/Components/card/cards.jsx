@@ -16,10 +16,11 @@ import Link from "next/link";
 import { QueryBuilderRounded } from "@mui/icons-material";
 
 import { useApi } from "@/context/ApiContext";
+import JalaliDate from "../JalaliDate/JalaliDate";
 
 
 export default function Cards({ typeCards }) {
-  const { dataCard, dataMostView, dataNewCards,dataTrainingCards } = useApi();
+  const { dataCard, dataMostView, dataNewCards,dataTrainingCards,dataCardCategory  } = useApi();
   // if (!dataCard.length) {
   //   return (
   //     <Box>
@@ -275,9 +276,9 @@ export default function Cards({ typeCards }) {
                     </Card>
                   );
                 })
-                :/* typeCards === "category-page-items"
+                :typeCards === "category-page-items"
                   ?
-                  dataCard.map(item => {
+                  dataCardCategory.map(item => {
                     return (
                       <Card key={item.id} variant="article" component="article" sx={{
                         maxWidth: "100%",
@@ -288,8 +289,8 @@ export default function Cards({ typeCards }) {
                         <Link href='/' title={item.title}>
                           <CardActionArea component='section'>
                             <picture>
-                              <source srcSet={item.image} />
-                              <img src={item.image} alt={item.title} width={160} height={90} style={{
+                              <source srcSet={`https://vidbeen.ir/public/${item.poster}`} />
+                              <img src={`https://vidbeen.ir/public/${item.poster}`} alt={item.title} width={160} height={90} style={{
                                 width: "100%",
                                 height: "200px",
                                 objectFit: "contain",
@@ -302,7 +303,7 @@ export default function Cards({ typeCards }) {
                                   xs: "45px",
                                   sm: "65px",
                                   md: "65px",
-                                  lg: "75px",
+                                  lg: "60px",
                                 },
                                 textAlign: "justify",
                                 color: "#111010",
@@ -311,7 +312,7 @@ export default function Cards({ typeCards }) {
                                 lineHeight: "1.5",
                                 padding: "0 10px",
                               }}>
-                                {item.title}
+                                {item.main_name}
                               </Typography>
                               <Typography
                                 component="p"
@@ -339,7 +340,7 @@ export default function Cards({ typeCards }) {
                                     },
                                   }}
                                 >
-                                  تاریخ انتشار : {item.rating.rate}
+                                  تاریخ انتشار : {JalaliDate(item.created_at)}
                                 </Typography>
                                 <VisibilityRoundedIcon
                                   sx={{ marginRight: "1rem", marginLeft: ".5rem" }}
@@ -355,7 +356,7 @@ export default function Cards({ typeCards }) {
                                     },
                                   }}
                                 >
-                                  تعداد بازدید : {item.rating.rate}
+                                  تعداد بازدید : {item.view}
                                 </Typography>
                               </Typography>
                             </CardContent>
@@ -367,7 +368,7 @@ export default function Cards({ typeCards }) {
                   }
 
                   )
-                  : typeCards === "product-next-videos"
+                  : /*typeCards === "product-next-videos"
                     ? ProductNextItems.map((productnextItem) => {
                       return (
                         <Card

@@ -60,4 +60,14 @@ export const fetchTrainingCards = async (endpoint) => {
         throw error
     }
 }
-
+export const fetchDataCardsCategory = async (endpoint) => {
+    try {
+        const response = await api.get(endpoint);
+        return response.data.videos;
+    
+    }
+    catch (error) {
+        console.error('Error Fetching data : ', error);
+        throw error
+    }
+}
