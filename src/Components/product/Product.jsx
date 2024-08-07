@@ -8,10 +8,8 @@ import "next-cloudinary/dist/cld-video-player.css";
 import Cards from "../Card/Cards";
 import dynamic from "next/dynamic";
 import ActionProducts from "../ActionsProduct/ActionsProduct";
+import { useApi } from "@/Context/ApiContext";
 export default function Product() {
-  
-
-  // const [liked, setLiked] = useState(false);
   const TypographyDynamic = dynamic(() => import("@mui/material/Typography"), {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
@@ -66,7 +64,6 @@ export default function Product() {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
   });
-
   return (
     <>
       <Container component="section">

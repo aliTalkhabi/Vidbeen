@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Box,
   Card,
@@ -14,13 +15,13 @@ import {
 } from "@/constants/Constants";
 import Link from "next/link";
 import { QueryBuilderRounded } from "@mui/icons-material";
-
 import { useApi } from "@/context/ApiContext";
 import JalaliDate from "../JalaliDate/JalaliDate";
-
-
-export default function Cards({ typeCards }) {
+export default function Cards({ typeCards  }) {
+  const ImageURL = process.env.NEXT_IMAGE_SOURCE;
+  console.log(process.env.NEXT_IMAGE_SOURCE);
   const { dataCard, dataMostView, dataNewCards,dataTrainingCards,dataCardCategory  } = useApi();
+  
   // if (!dataCard.length) {
   //   return (
   //     <Box>
@@ -44,12 +45,12 @@ export default function Cards({ typeCards }) {
                 boxShadow: "none",
               }}
             >
-              <Link href={item.url} title={item.title}>
+              <Link href={`${item.category.slug}${item.url}`} title={item.title}>
                 <CardActionArea component="section">
                   <picture>
-                    <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                    <source srcSet={`${ImageURL}${item.poster}`} type="image/jpg" />
                     <img
-                      src={`https://vidbeen.ir/public/${item.poster}`}
+                      src={`${ImageURL}${item.poster}`}
                       alt={item.title}
                       width={250}
                       height={140}
@@ -106,9 +107,9 @@ export default function Cards({ typeCards }) {
                 >
                   <CardActionArea component="div">
                     <picture>
-                      <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                      <source srcSet={`${ImageURL}${item.poster}`} type="image/jpg" />
                       <img
-                        src={`https://vidbeen.ir/public/${item.poster}`}
+                        src={`${ImageURL}${item.poster}`}
                         alt={item.title}
                         width={250}
                         height={140}
@@ -153,9 +154,9 @@ export default function Cards({ typeCards }) {
                   >
                     <CardActionArea component="div">
                       <picture>
-                        <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                        <source srcSet={`${ImageURL}${item.poster}`} type="image/jpg" />
                         <img
-                          src={`https://vidbeen.ir/public/${item.poster}`}
+                          src={`${ImageURL}${item.poster}`}
                           alt={item.title}
                           width={250}
                           height={140}
@@ -202,9 +203,9 @@ export default function Cards({ typeCards }) {
                       >
                         <CardActionArea component="section">
                           <picture>
-                            <source srcSet={`https://vidbeen.ir/public/${item.image}`} type="image/jpg" />
+                            <source srcSet={`${ImageURL}${item.image}`} type="image/jpg" />
                             <img
-                              src={`https://vidbeen.ir/public/${item.image}`}
+                              src={`${ImageURL}${item.image}`}
                               alt={item.title}
                               width={530}
                               height={300}
@@ -245,9 +246,9 @@ export default function Cards({ typeCards }) {
                       >
                         <CardActionArea component="div">
                           <picture>
-                            <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                            <source srcSet={`${ImageURL}${item.poster}`} type="image/jpg" />
                             <img
-                              src={`https://vidbeen.ir/public/${item.poster}`}
+                              src={`${ImageURL}${item.poster}`}
                               alt={item.title}
                               width={160}
                               height={90}
@@ -289,8 +290,8 @@ export default function Cards({ typeCards }) {
                         <Link href='/' title={item.title}>
                           <CardActionArea component='section'>
                             <picture>
-                              <source srcSet={`https://vidbeen.ir/public/${item.poster}`} />
-                              <img src={`https://vidbeen.ir/public/${item.poster}`} alt={item.title} width={160} height={90} style={{
+                              <source srcSet={`${ImageURL}${item.poster}`} />
+                              <img src={`${ImageURL}${item.poster}`} alt={item.title} width={160} height={90} style={{
                                 width: "100%",
                                 height: "200px",
                                 objectFit: "contain",
