@@ -1,27 +1,20 @@
 "use client";
 
 import {
-  Box,
   Card,
   CardActionArea,
   CardContent,
-  Skeleton,
   Typography,
 } from "@mui/material";
 import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
-import {
-  ProductNextItems,
-  RelatedVideos,
-} from "@/constants/Constants";
+
 import Link from "next/link";
-import { QueryBuilderRounded } from "@mui/icons-material";
+
 import { useApi } from "@/context/ApiContext";
-import JalaliDate from "../JalaliDate/JalaliDate";
+
 export default function Cards({ typeCards  }) {
-  const ImageURL = process.env.NEXT_IMAGE_SOURCE;
-  console.log(process.env.NEXT_IMAGE_SOURCE);
-  const { dataCard, dataMostView, dataNewCards,dataTrainingCards,dataCardCategory  } = useApi();
-  
+  const { dataCard, dataMostView, dataNewCards, dataTrainingCards } = useApi();
+
   // if (!dataCard.length) {
   //   return (
   //     <Box>
@@ -29,10 +22,10 @@ export default function Cards({ typeCards  }) {
   //     </Box>
   //   )
   // }
-   
+
   return (
     <>
-       {typeCards === "top-pages"
+      {typeCards === "top-pages"
         ? dataMostView.map((item) => {
           return (
             <Card
@@ -45,12 +38,12 @@ export default function Cards({ typeCards  }) {
                 boxShadow: "none",
               }}
             >
-              <Link href={`${item.category.slug}${item.url}`} title={item.title}>
+              <Link href={`${item.category.slug}/${item.url}`} title={item.title}>
                 <CardActionArea component="section">
                   <picture>
-                    <source srcSet={`${ImageURL}${item.poster}`} type="image/jpg" />
+                    <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
                     <img
-                      src={`${ImageURL}${item.poster}`}
+                      src={`https://vidbeen.ir/public/${item.poster}`}
                       alt={item.title}
                       width={250}
                       height={140}
@@ -72,10 +65,10 @@ export default function Cards({ typeCards  }) {
                     >
                       {item.main_name}
                     </Typography>
-                    <Typography component="span" color="#00000080" sx={{fontSize:'16px',fontWeight:'400',lineHeight:'1.5',textAlign:'justify',margin:'10px auto'}}>
+                    <Typography component="span" color="#00000080" sx={{ fontSize: '16px', fontWeight: '400', lineHeight: '1.5', textAlign: 'justify', margin: '10px auto' }}>
                       <VisibilityRoundedIcon
                         sx={{
-                          float:'left',
+                          float: 'left',
                           marginRight: ".5rem",
                           marginLeft: ".5rem",
                         }}
@@ -88,7 +81,7 @@ export default function Cards({ typeCards  }) {
             </Card>
           );
         })
-        :  typeCards === "new-videos-item-mobile"
+        : typeCards === "new-videos-item-mobile"
           ? dataNewCards.map((item) => {
             return (
               <Card
@@ -102,14 +95,14 @@ export default function Cards({ typeCards  }) {
                 component="article"
               >
                 <Link
-                  href={'/'}
+                  href={`${item.category.slug}${item.url}`}
                   title={item.title}
                 >
                   <CardActionArea component="div">
                     <picture>
-                      <source srcSet={`${ImageURL}${item.poster}`} type="image/jpg" />
+                      <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
                       <img
-                        src={`${ImageURL}${item.poster}`}
+                        src={`https://vidbeen.ir/public/${item.poster}`}
                         alt={item.title}
                         width={250}
                         height={140}
@@ -149,14 +142,14 @@ export default function Cards({ typeCards  }) {
                   component="article"
                 >
                   <Link
-                    href={'/'}
+                    href={`${item.category.slug}${item.url}`}
                     title={item.title}
                   >
                     <CardActionArea component="div">
                       <picture>
-                        <source srcSet={`${ImageURL}${item.poster}`} type="image/jpg" />
+                        <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
                         <img
-                          src={`${ImageURL}${item.poster}`}
+                          src={`https://vidbeen.ir/public/${item.poster}`}
                           alt={item.title}
                           width={250}
                           height={140}
@@ -197,15 +190,14 @@ export default function Cards({ typeCards  }) {
                       component="article"
                     >
                       <Link
-                        
-                        href={'/'}
+                        href={`/`}
                         title={item.title}
                       >
                         <CardActionArea component="section">
                           <picture>
-                            <source srcSet={`${ImageURL}${item.image}`} type="image/jpg" />
+                            <source srcSet={`https://vidbeen.ir/public/${item.image}`} type="image/jpg" />
                             <img
-                              src={`${ImageURL}${item.image}`}
+                              src={`https://vidbeen.ir/public/${item.image}`}
                               alt={item.title}
                               width={530}
                               height={300}
@@ -241,14 +233,14 @@ export default function Cards({ typeCards  }) {
                       }}
                     >
                       <Link
-                        href={'/'}
+                        href={`${item.category.slug}${item.url}`}
                         title={item.title}
                       >
                         <CardActionArea component="div">
                           <picture>
-                            <source srcSet={`${ImageURL}${item.poster}`} type="image/jpg" />
+                            <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
                             <img
-                              src={`${ImageURL}${item.poster}`}
+                              src={`https://vidbeen.ir/public/${item.poster}`}
                               alt={item.title}
                               width={160}
                               height={90}
@@ -277,98 +269,9 @@ export default function Cards({ typeCards  }) {
                     </Card>
                   );
                 })
-                :typeCards === "category-page-items"
-                  ?
-                  dataCardCategory.map(item => {
-                    return (
-                      <Card key={item.id} variant="article" component="article" sx={{
-                        maxWidth: "100%",
-                        background: "none",
-                        boxShadow: "none",
-                        height: { lg: "350px" },
-                      }}>
-                        <Link href='/' title={item.title}>
-                          <CardActionArea component='section'>
-                            <picture>
-                              <source srcSet={`${ImageURL}${item.poster}`} />
-                              <img src={`${ImageURL}${item.poster}`} alt={item.title} width={160} height={90} style={{
-                                width: "100%",
-                                height: "200px",
-                                objectFit: "contain",
-                              }} />
-                            </picture>
-                            <CardContent sx={{ padding: { xs: "16px", sm: "16px", md: "0" } }}>
-                              <Typography variant="p" component='p' sx={{
-                                fontSize: "16px",
-                                height: {
-                                  xs: "45px",
-                                  sm: "65px",
-                                  md: "65px",
-                                  lg: "60px",
-                                },
-                                textAlign: "justify",
-                                color: "#111010",
-                                margin: "5px auto",
-                                fontWeight: "400",
-                                lineHeight: "1.5",
-                                padding: "0 10px",
-                              }}>
-                                {item.main_name}
-                              </Typography>
-                              <Typography
-                                component="p"
-                                sx={{
-                                  display: "flex",
-                                  flexWrap: "wrap",
-                                  color: "#00000080",
-                                }}
-                              >
-                                <QueryBuilderRounded
-                                  sx={{
-                                    marginBottom: ".5rem",
-                                    marginRight: "1rem",
-                                    marginLeft: ".5rem",
-                                  }}
-                                />
-                                <Typography
-                                  component="span"
-                                  sx={{
-                                    width: {
-                                      xs: "80%",
-                                      sm: "calc(80% - 1rem)",
-                                      md: "calc(100% - 3rem)",
-                                      lg: "80%",
-                                    },
-                                  }}
-                                >
-                                  تاریخ انتشار : {JalaliDate(item.created_at)}
-                                </Typography>
-                                <VisibilityRoundedIcon
-                                  sx={{ marginRight: "1rem", marginLeft: ".5rem" }}
-                                />
-                                <Typography
-                                  component="span"
-                                  sx={{
-                                    width: {
-                                      xs: "80%",
-                                      sm: "calc(80% - 1rem)",
-                                      md: "calc(100% - 3rem)",
-                                      lg: "80%",
-                                    },
-                                  }}
-                                >
-                                  تعداد بازدید : {item.view}
-                                </Typography>
-                              </Typography>
-                            </CardContent>
-                          </CardActionArea>
-                        </Link>
-                      </Card>
-                    )
-
-                  }
-
-                  )
+ 
+                   
+                  
                   : /*typeCards === "product-next-videos"
                     ? ProductNextItems.map((productnextItem) => {
                       return (
@@ -438,7 +341,7 @@ export default function Cards({ typeCards  }) {
                           </Card>
                         );
                       })
-                      :*/ null} 
+                      :*/ null}
     </>
   );
 }

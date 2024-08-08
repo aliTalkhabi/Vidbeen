@@ -1,29 +1,38 @@
 "use client";
-import { Box, Container, Skeleton, Stack } from "@mui/material";
+import { QueryBuilderRounded } from "@mui/icons-material";
+import VisibilityRoundedIcon from "@mui/icons-material/VisibilityRounded";
+import { Box,Card, CardActionArea, CardContent, Container, Skeleton, Stack, Typography } from "@mui/material";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import React from "react";
+import JalaliDate from "../JalaliDate/JalaliDate";
 
 
 
-export default function Category() {
+export default function Category({ data , pathname }) {
+  console.log(pathname);
+  
+  
+  const dataCategoriesItem = data.videos;
   const SideBarDynamic = dynamic(
-    () => import("@/components/RightList/RightList"),{
-      ssr: false,
-      loading: () => (
-        <div>
-          <Skeleton
-            animation="wave"
-            variant="rectangular"
-            sx={{ width: '250px', height: '195px' }}
-          />
-        </div>
-      ),
-    }
-  );
- const CardsDynamic = dynamic(() => import("../Card/Cards"), {
+    () => import("@/components/RightList/RightList"), {
     ssr: false,
-    loading: () => <Skeleton animation="wave" variant="rectangular" width={856} sx={{height:'100vh'}} />,
-  });
+    loading: () => (
+      <div>
+        <Skeleton
+          animation="wave"
+          variant="rectangular"
+          sx={{ width: '250px', height: '195px' }}
+        />
+      </div>
+    ),
+  }
+  );
+  // const Card = dynamic(() => import("../Card/Cards"), {
+  //   ssr: false,
+  //   loading: () => <Skeleton animation="wave" variant="rectangular" width={856} sx={{ height: '100vh' }} />,
+  // });
+
 
   return (
     <>
@@ -61,7 +70,97 @@ export default function Category() {
               padding: { xs: "0", sm: "0", md: "0 2rem" },
             }}
           >
-            <CardsDynamic typeCards="category-page-items" />
+            {/* <Card typeCards='categories-page-item' /> */}
+            {dataCategoriesItem.map(item => {
+                      return (
+                        <Card key={item.id} variant="article" component="article" sx={{
+                          maxWidth: "100%",
+                          background: "none",
+                          boxShadow: "none",
+                          height: { lg: "350px" },
+                        }}>
+                          <Link href={`${pathname}/${item.slug}`} title={item.title}>
+                            <CardActionArea component='section'>
+                              <picture>
+                                <source srcSet={`https://vidbeen.ir/public/${item.poster}`} />
+                                <img src={`https://vidbeen.ir/public/${item.poster}`} alt={item.title} width={160} height={90} style={{
+                                  width: "100%",
+                                  height: "200px",
+                                  objectFit: "contain",
+                                }} />
+                              </picture>
+                              <CardContent sx={{ padding: { xs: "16px", sm: "16px", md: "0" } }}>
+                                <Typography variant="p" component='p' sx={{
+                                  fontSize: "16px",
+                                  height: {
+                                    xs: "45px",
+                                    sm: "65px",
+                                    md: "65px",
+                                    lg: "60px",
+                                  },
+                                  textAlign: "justify",
+                                  color: "#111010",
+                                  margin: "5px auto",
+                                  fontWeight: "400",
+                                  lineHeight: "1.5",
+                                  padding: "0 10px",
+                                }}>
+                                  {item.main_name}
+                                </Typography>
+                                <Typography
+                                  component="p"
+                                  sx={{
+                                    display: "flex",
+                                    flexWrap: "wrap",
+                                    color: "#00000080",
+                                  }}
+                                >
+                                  <QueryBuilderRounded
+                                    sx={{
+                                      marginBottom: ".5rem",
+                                      marginRight: "1rem",
+                                      marginLeft: ".5rem",
+                                    }}
+                                  />
+                                  <Typography
+                                    component="span"
+                                    sx={{
+                                      width: {
+                                        xs: "80%",
+                                        sm: "calc(80% - 1rem)",
+                                        md: "calc(100% - 3rem)",
+                                        lg: "80%",
+                                      },
+                                    }}
+                                  >
+                                    تاریخ انتشار : {JalaliDate(item.created_at)}
+                                  </Typography>
+                                  <VisibilityRoundedIcon
+                                    sx={{ marginRight: "1rem", marginLeft: ".5rem" }}
+                                  />
+                                  <Typography
+                                    component="span"
+                                    sx={{
+                                      width: {
+                                        xs: "80%",
+                                        sm: "calc(80% - 1rem)",
+                                        md: "calc(100% - 3rem)",
+                                        lg: "80%",
+                                      },
+                                    }}
+                                  >
+                                    تعداد بازدید : {item.view}
+                                  </Typography>
+                                </Typography>
+                              </CardContent>
+                            </CardActionArea>
+                          </Link>
+                        </Card>
+                      )
+
+                    })
+                  }
+
           </Box>
         </Container>
       </Stack >
