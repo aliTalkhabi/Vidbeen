@@ -1,0 +1,31 @@
+
+.description h2{
+    font-size: 24px;
+}
+.description h3 {
+    margin: 20px 0;
+    font-weight: 500;
+    color: #434343;
+    font-size: 22px;
+}
+
+.description p{
+    line-height: 2.5;
+    text-align: justify;
+    color: #111010;
+}
+
+@media (max-width:900px){
+    .description h2{
+        font-size: 1.25rem;
+        line-height: 2;
+        margin: 0.5rem 0;
+        text-align: right;
+    }
+    .description h3 {
+        font-size: 1.05rem;
+        line-height: 2;
+        text-align: right;
+        margin: 1rem auto;
+    }
+}

@@ -5,6 +5,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import MenuTop from "./menu/MenuTop";
 import { useEffect, useState } from "react";
+import LogoImage from '../../../public/image/logo.png'
+import Image from "next/image";
 
 const CategoryIcon = dynamic(
   () => import("@mui/icons-material/GridViewRounded"),
@@ -98,9 +100,9 @@ export default function Header() {
             <BoxDynamic>
               <Link href="/">
                 <picture>
-                  <source srcSet="../image/logo.png" type="image/png" />
-                  <img
-                    src="../image/logo.png"
+                  <source srcSet={LogoImage} type="image/png" />
+                  <Image
+                    src={LogoImage}
                     alt="لگوی ویدبین"
                     width={130}
                     height={50}

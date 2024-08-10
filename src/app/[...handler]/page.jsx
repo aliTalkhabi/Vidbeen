@@ -11,7 +11,7 @@ export default function Handler() {
   const [typeOfData, setTypeOfData] = useState('');
   const [passData, setPassData] = useState();
   const slug = `https://vidbeen.ir/api${pathname}`;
-  console.log(slug);
+ 
   
   // axios.get(slug).then();
   useEffect(() => {
@@ -34,10 +34,10 @@ export default function Handler() {
     };
     getData();
   }, [slug]);
-  console.log(typeOfData);
+  // console.log(typeOfData);
   
 
-  return (
+  return passData&&(
     <>
       {
         typeOfData === "category" ? (

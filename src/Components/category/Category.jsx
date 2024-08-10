@@ -10,9 +10,6 @@ import JalaliDate from "../JalaliDate/JalaliDate";
 
 
 export default function Category({ data , pathname }) {
-  console.log(pathname);
-  
-  
   const dataCategoriesItem = data.videos;
   const SideBarDynamic = dynamic(
     () => import("@/components/RightList/RightList"), {

@@ -1,15 +1,19 @@
 "use client";
-import { Box, Container, Skeleton, Stack, Typography } from "@mui/material";
-import React from "react";
-import { CldVideoPlayer } from "next-cloudinary";
+import { Box, Card, CardActionArea, CardContent, Container, Skeleton, Stack, Typography } from "@mui/material";
+import styles from './Product.module.css'
+import React, { useEffect, useState } from "react";
+import { CldVideoPlayer, getCldImageUrl } from "next-cloudinary";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import "next-cloudinary/dist/cld-video-player.css";
 import Cards from "../Card/Cards";
 import dynamic from "next/dynamic";
 import ActionProducts from "../ActionsProduct/ActionsProduct";
-import { useApi } from "@/Context/ApiContext";
-export default function Product() {
+import Link from "next/link";
+export default function Product({ data }) {
+  const dataProductItem = data.video;
+  const nextVideoItem = data.videoNext;
+  const relatedVideoItem = data.videoRelation;
   const TypographyDynamic = dynamic(() => import("@mui/material/Typography"), {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
@@ -47,19 +51,7 @@ export default function Product() {
       />
     ),
   });
-  const DescriptionBoxDynamic = dynamic(
-    () => import("../DescriptionBox/Descriptionbox"),
-    {
-      ssr: false,
-      loading: () => (
-        <Skeleton
-          variant="rectangular"
-          animation="wave"
-          sx={{ height: "1000px" }}
-        />
-      ),
-    }
-  );
+
   const RealatedBoxDynamic = dynamic(() => import("@mui/material/Box"), {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
@@ -78,6 +70,8 @@ export default function Product() {
             padding: { xs: "0 .5rem", sm: "0 .5rem" },
           }}
         >
+
+
           <Box
             component="section"
             sx={{ overflowY: { xs: "hidden", sm: "hidden", md: "unset" } }}
@@ -91,13 +85,14 @@ export default function Product() {
                 fontSize: "1.5rem",
               }}
             >
-              نام محصول
+              {dataProductItem.title}
             </TypographyDynamic>
             <Box component="section">
               <VideoBoxDynamic>
                 <CldVideoPlayer
-                  id="videoplayer-1"
-                  src="https://upload.vidbeen.ir/videos/video-door-phone/taba/taba-vdp-1043.mp4"
+                  id={dataProductItem.id}
+                  src={dataProductItem.video.original}
+                  poster={getCldImageUrl({ src: `${dataProductItem.poster}` })}
                   width="1960"
                   height="1080"
                   pictureInPictureToggle
@@ -163,11 +158,13 @@ export default function Product() {
                     اشتراک گذاری
                   </Typography>
                 </Box>
-               
+
                 <ActionProducts />
               </IconsBoxDynamic>
             </Box>
-            <DescriptionBoxDynamic />
+
+            <Box component="section" className={styles.description} sx={{ background: '#F5F4F9', margin: '25px auto', padding: '1.5rem 2rem', borderRadius: '5px', boxShadow: '0 0 4px #00000040' }} dangerouslySetInnerHTML={{ __html: dataProductItem.body }}>
+            </Box>
             <Box component="section">
               <TypographyDynamic
                 component="p"
@@ -194,7 +191,43 @@ export default function Product() {
                     gridTemplateColumns: "repeat(3,1fr)",
                   }}
                 >
-                  <Cards typeCards="related-videos" />
+                  {
+                    relatedVideoItem.map(item => {
+                      return (
+                        <Card
+                          key={item.id}
+                          component="article"
+                          variant="article"
+                          sx={{ padding: "0 1.25rem", margin: ".5rem 0", width: { xs: '250px', sm: '250px', md: 'auto' } }}
+                        >
+                          <Link href={item.url}>
+                            <CardActionArea component="section">
+                              <picture>
+                                <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                                <img src={`https://vidbeen.ir/public/${item.poster}`} alt={item.description} />
+                              </picture>
+
+                              <CardContent sx={{ padding: 0 }}>
+                                <Typography
+                                  component="p"
+                                  variant="p"
+                                  sx={{
+                                    margin: ".5rem 0",
+                                    textAlign: "center",
+                                    fontSize: "16px",
+                                    fontWeight: "400",
+                                    color: "#111010",
+                                  }}
+                                >
+                                  {item.main_name}
+                                </Typography>
+                              </CardContent>
+                            </CardActionArea>
+                          </Link>
+                        </Card>
+                      );
+                    })
+                  }
                 </RealatedBoxDynamic>
               </Box>
             </Box>
@@ -218,7 +251,41 @@ export default function Product() {
               component="section"
               sx={{ position: "sticky", top: "0%" }}
             >
-              <Cards typeCards="product-next-videos" />
+              {
+                nextVideoItem.map(item => {
+                  return (
+                    <Card
+                      key={item.id}
+                      component="article"
+                      variant="article"
+                      sx={{ padding: "0 .5rem", margin: ".5rem 0" }}
+                    >
+                      <Link href={item.url}>
+                        <CardActionArea component="section">
+                          <picture>
+                            <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                            <img
+                              src={`https://vidbeen.ir/public/${item.poster}`}
+                              alt={item.description}
+                            />
+                          </picture>
+
+                          <CardContent sx={{ padding: 0 }}>
+                            <Typography
+                              component="p"
+                              variant="p"
+                              sx={{ margin: ".5rem 0", textAlign: "justify", padding: '0 .25rem' }}
+                            >
+                              {item.main_name}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Link>
+                    </Card>
+                  );
+                })
+              }
+
             </NextBoxDynamic>
           </Box>
         </Stack>
