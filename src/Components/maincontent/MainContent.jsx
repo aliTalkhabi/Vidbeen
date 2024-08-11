@@ -1,14 +1,41 @@
 'use client'
 import {
   Box,
+  Card,
+  CardActionArea,
+  CardContent,
   Grid,
+  Typography,
 } from "@mui/material";
 import "./MainContent.css";
 import Cards from "../Card/Cards";
-
-
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import axios from "axios";
 export default function MainContent() {
-  return (
+  const [newVideosData, setNewVideosData] = useState();
+  const [mainBoxes ,setMainBoxes] = useState();
+  const slug = `${process.env.NEXT_PUBLIC_BACKEND_URL}/home`;
+  useEffect(() => {
+    const getNewVideosData = async () => {
+      await axios.get(slug).then(response => {
+        setNewVideosData(response.data.newVideo);
+      })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    const getBoxCategory = async () =>{
+      await axios.get(slug).then(response=>{
+        setMainBoxes(response.data.boxs)
+      }).catch((error)=>{
+        console.log(error);
+      })
+    }
+    getNewVideosData();
+    getBoxCategory();
+  }, [slug])
+  return (newVideosData && mainBoxes) ? (
     <Grid
       component="section"
       sx={{
@@ -53,7 +80,54 @@ export default function MainContent() {
               gap: { xs: "20px" },
             }}
           >
-            <Cards typeCards="new-videos-item-mobile" />
+            {
+              newVideosData.map(item => {
+                return (
+                  <Card
+                    key={item.id}
+                    sx={{
+                      maxWidth: { xs: "250px", sm: "350px", md: "100%" },
+                      background: "none",
+                      boxShadow: "none",
+                      margin: "1rem 0",
+                    }}
+                    component="article"
+                  >
+                    <Link
+                      href={`${item.category.slug}/${item.url}`}
+                      title={item.title}
+                    >
+                      <CardActionArea component="div">
+                        <picture>
+                          <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                          <img
+                            src={`https://vidbeen.ir/public/${item.poster}`}
+                            alt={item.title}
+                            width={250}
+                            height={140}
+                          />
+                        </picture>
+
+                        <CardContent sx={{ padding: "4px" }}>
+                          <Typography
+                            component="p"
+                            sx={{
+                              color: "#111010",
+                              fontSize: "16px",
+                              height: "45px",
+                              lineHeight: "1.5",
+                              margin: "10px auto",
+                            }}
+                          >
+                            {item.main_name}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Link>
+                  </Card>
+                );
+              })
+            }
           </Box>
         </Box>
       </Box>
@@ -68,7 +142,50 @@ export default function MainContent() {
           display: { xs: "grid", sm: "grid", md: "inherit" },
         }}
       >
-        <Cards typeCards="category-items" />
+        {/* <Cards typeCards="category-items" /> */
+          mainBoxes.map(item=>{
+            return (
+              <section key={item.id} className="cards-area">
+                <h2>{item.title}</h2>
+                <Card
+                  sx={{
+                    maxWidth: "100%",
+                    background: "none",
+                    boxShadow: "none",
+                  }}
+                  component="article"
+                >
+                  <Link
+                    href={`${item.link}`}
+                    title={item.title}
+                  >
+                    <CardActionArea component="section">
+                      <picture>
+                        <source srcSet={`https://vidbeen.ir/public/${item.image}`} type="image/jpg" />
+                        <img
+                          src={`https://vidbeen.ir/public/${item.image}`}
+                          alt={item.title}
+                          width={530}
+                          height={300}
+                        />
+                      </picture>
+
+                      <CardContent component="section">
+                        <Typography
+                          component="p"
+                          sx={{ color: "#111010", fontSize: "16px" }}
+                        >
+                          {item.description}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                  </Link>
+                </Card>
+              </section>
+            );
+          })
+        }
+      
         <Box component='section' sx={{ width: "100%", overflowY: "hidden" }}>
           <div className="cards-area">
             <h2>آموزشی</h2>
@@ -130,11 +247,59 @@ export default function MainContent() {
               gap: { xs: "20px" },
             }}
           >
-            <Cards typeCards="new-videos-item-desktop" />
+            {
+              newVideosData.map(item => {
+                return (
+                  <Card
+                    key={item.id}
+                    sx={{
+                      maxWidth: { xs: "350px", sm: "250px", md: "100%" },
+                      background: "none",
+                      boxShadow: "none",
+                      margin: "1rem 0",
+                    }}
+                    component="article"
+                  >
+                    <Link
+                      href={`${item.category.slug}/${item.url}`}
+                      title={item.title}
+                    >
+                      <CardActionArea component="div">
+                        <picture>
+                          <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                          <img
+                            src={`https://vidbeen.ir/public/${item.poster}`}
+                            alt={item.title}
+                            width={250}
+                            height={140}
+                          />
+                        </picture>
+                        <CardContent sx={{ padding: "5px" }}>
+                          <Typography
+                            component="p"
+                            width="210"
+                            height="120"
+                            sx={{
+                              color: "#111010",
+                              fontSize: "14px",
+                              padding: ".5rem 0",
+                              textAlign: "center",
+                              borderBottom: "2px solid #E3E3E3",
+                            }}
+                          >
+                            {item.main_name}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Link>
+                  </Card>
+                );
+              })
+            }
           </Box>
         </Box>
       </Box>
     </Grid>
 
-  );
+  ):null;
 }

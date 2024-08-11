@@ -30,16 +30,7 @@ export const fetchDataMenu = async (endpoint) => {
         throw error
     }
 }
-export const fetchMostView = async (endpoint) => {
-    try {
-        const response = await api.get(endpoint);
-        return response.data.viewed;
-    }
-    catch (error) {
-        console.error('Error Fetching data : ', error);
-        throw error
-    }
-}
+
 export const fetchNewCards = async (endpoint) => {
     try {
         const response = await api.get(endpoint);

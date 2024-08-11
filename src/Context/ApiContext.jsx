@@ -8,21 +8,21 @@ export const ApiProvider = ({ children }) => {
     const slug = usePathname();
     const [dataCard, setDataCard] = useState([]);
     const [dataMenu, setDataMenu] = useState([]);
-    const [dataMostView, setDataMostView] = useState([]);
+    
     const [dataNewCards, setDataNewCards] = useState([]);
     const [dataTrainingCards, setDataTrainingCards] = useState([]);
-    const [dataCardCategory, setDataCardCategory] = useState([]);
+    
 
     useEffect(() => {
         const fetchHomeData = async () => {
             try {
                 const endpoint =  `${slug}home`;
-                const [dataCardSet, dataMenuSet, dataMostViewset, dataNewCardsSet, dataTrainingCardsSet,dataCategoryCardSet] = await Promise.all([
-                    fetchDataCards(endpoint), fetchDataMenu(endpoint), fetchMostView(endpoint), fetchNewCards(endpoint), fetchTrainingCards(endpoint)
+                const [dataCardSet, dataMenuSet, dataNewCardsSet, dataTrainingCardsSet] = await Promise.all([
+                    fetchDataCards(endpoint), fetchDataMenu(endpoint),  fetchNewCards(endpoint), fetchTrainingCards(endpoint)
                 ])
                 setDataCard(dataCardSet);
                 setDataMenu(dataMenuSet);
-                setDataMostView(dataMostViewset);
+                
                 setDataNewCards(dataNewCardsSet);
                 setDataTrainingCards(dataTrainingCardsSet);
             }
@@ -46,7 +46,7 @@ export const ApiProvider = ({ children }) => {
 
     }, [slug])
     return (
-        <ApiContext.Provider value={{ dataCard, dataMenu, dataMostView, dataNewCards, dataTrainingCards ,dataCardCategory}}>
+        <ApiContext.Provider value={{ dataCard, dataMenu, dataNewCards, dataTrainingCards }}>
             {children}
         </ApiContext.Provider>
     );
