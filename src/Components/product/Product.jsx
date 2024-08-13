@@ -1,12 +1,10 @@
 "use client";
 import { Box, Card, CardActionArea, CardContent, Container, Skeleton, Stack, Typography } from "@mui/material";
 import styles from './Product.module.css'
-import React, { useEffect, useState } from "react";
 import { CldVideoPlayer, getCldImageUrl } from "next-cloudinary";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import "next-cloudinary/dist/cld-video-player.css";
-import Cards from "../Card/Cards";
 import dynamic from "next/dynamic";
 import ActionProducts from "../ActionsProduct/ActionsProduct";
 import Link from "next/link";
@@ -56,7 +54,7 @@ export default function Product({ data }) {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
   });
-  return (
+  return  (
     <>
       <Container component="section">
         <Stack

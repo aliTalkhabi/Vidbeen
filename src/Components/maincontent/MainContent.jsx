@@ -15,6 +15,7 @@ import axios from "axios";
 export default function MainContent() {
   const [newVideosData, setNewVideosData] = useState();
   const [mainBoxes ,setMainBoxes] = useState();
+  const [trainingBox,setTrainingBox] = useState()
   const slug = `${process.env.NEXT_PUBLIC_BACKEND_URL}/home`;
   useEffect(() => {
     const getNewVideosData = async () => {
@@ -32,10 +33,16 @@ export default function MainContent() {
         console.log(error);
       })
     }
+    const getTrainingItem = async () =>{
+      await axios.get(slug).then(response=>{
+        setTrainingBox(response.data.tutorialVideo);      
+      })
+    }
     getNewVideosData();
     getBoxCategory();
+    getTrainingItem();
   }, [slug])
-  return (newVideosData && mainBoxes) ? (
+  return (newVideosData && mainBoxes && trainingBox) ? (
     <Grid
       component="section"
       sx={{
@@ -206,7 +213,57 @@ export default function MainContent() {
                 width: { xs: "max-content", sm: "max-content", md: "100%" },
               }}
             >
-              <Cards typeCards="training-items" />
+              {/* <Cards typeCards="training-items" /> */
+                trainingBox.map(item=>{
+                  return (
+                    <Card
+                      key={item.id}
+                      component="article"
+                      sx={{
+                        maxWidth: "250px",
+                        height: "100%",
+                        background: "none",
+                        boxShadow: "none",
+                      }}
+                    >
+                      <Link
+                        href={`${item.category.slug}/${item.url}`}
+                        title={item.title}
+                      >
+                        <CardActionArea component="div">
+                          <picture>
+                            <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                            <img
+                              src={`https://vidbeen.ir/public/${item.poster}`}
+                              alt={item.title}
+                              width={160}
+                              height={90}
+                            />
+                          </picture>
+                          <CardContent sx={{ padding: "0" }}>
+                            <Typography
+                              variant="p"
+                              component="p"
+                              sx={{
+                                fontSize: "16px",
+                                height: { xs: "45px", sm: "60px", md: "60px" },
+                                textAlign: "justify",
+                                color: "#111010",
+                                margin: "10px auto",
+                                fontWeight: "400",
+                                lineHeight: "1.5",
+                                padding: "0 10px",
+                              }}
+                            >
+                              {item.title}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Link>
+                    </Card>
+                  );
+                })
+              }
             </Box>
           </Box>
         </Box>

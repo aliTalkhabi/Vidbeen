@@ -33,9 +33,8 @@ export default function Handler() {
     getData();
   }, [slug]);
 
-  console.log(typeOfData);
 
-  return passData && (
+  return passData &&(
     <>
       {
         typeOfData === "category" ? (
@@ -46,9 +45,7 @@ export default function Handler() {
           <>
             <Product data={passData} />
           </>
-        ) : typeOfData !== "video" || typeOfData !== "category" ? (
-          <Custom404 />
-        ) : null}
+        ):<Custom404 />}
     </>
-  );
+  )
 }
