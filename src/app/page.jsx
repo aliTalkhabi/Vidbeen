@@ -1,8 +1,6 @@
 "use client";
 import { Box, Container, Skeleton } from "@mui/material";
 import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 
 export default function Home() {
   const SideBarDynamic = dynamic(
