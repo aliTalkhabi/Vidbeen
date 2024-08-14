@@ -65,9 +65,9 @@ export default function TopCard() {
           {
             mostViewData.map(item => {
               return (
-                <>
+                <section key={item.id}>
                   <Card
-                    key={item.id}
+                    
                     component="article"
                     sx={{
                       maxWidth: "250px",
@@ -122,7 +122,7 @@ export default function TopCard() {
                       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(mostViewData.data_structure) }} />
                     ) : null
                   }
-                </>
+                </section>
               );
             })
           }
