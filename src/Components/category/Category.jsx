@@ -25,10 +25,7 @@ export default function Category({ data , pathname }) {
     ),
   }
   );
-  // const Card = dynamic(() => import("../Card/Cards"), {
-  //   ssr: false,
-  //   loading: () => <Skeleton animation="wave" variant="rectangular" width={856} sx={{ height: '100vh' }} />,
-  // });
+ 
 
 
   return (
@@ -67,7 +64,7 @@ export default function Category({ data , pathname }) {
               padding: { xs: "0", sm: "0", md: "0 2rem" },
             }}
           >
-            {/* <Card typeCards='categories-page-item' /> */}
+            
             {dataCategoriesItem.map(item => {
                       return (
                         <Card key={item.id} variant="article" component="article" sx={{

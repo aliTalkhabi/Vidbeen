@@ -5,17 +5,21 @@ import {
   CardActionArea,
   CardContent,
   Grid,
+  Skeleton,
   Typography,
 } from "@mui/material";
 import "./MainContent.css";
-import Cards from "../Card/Cards";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";
+import dynamic from "next/dynamic";
+const NewCardsDesktopDynamic = dynamic(()=>import('@mui/material/Card'),{ssr:false,loading:() => <Skeleton animation="wave" variant="rectangular" width={210} height={200}/>})
+const NewCardsMobileDynamic = dynamic(()=>import('@mui/material/Card'),{ssr:false,loading:() => <Skeleton animation="wave" variant="rectangular" width={210} height={200}/>})
+const MainCardDynamic = dynamic(()=>import('@mui/material/Card'),{ssr:false,loading:() => <Skeleton animation="wave" variant="rectangular" width={532} height={365}/>})
 export default function MainContent() {
   const [newVideosData, setNewVideosData] = useState();
   const [mainBoxes ,setMainBoxes] = useState();
-  const [trainingBox,setTrainingBox] = useState()
+  const [trainingBox,setTrainingBox] = useState();
   const slug = `${process.env.NEXT_PUBLIC_BACKEND_URL}/home`;
   useEffect(() => {
     const getNewVideosData = async () => {
@@ -90,7 +94,7 @@ export default function MainContent() {
             {
               newVideosData.map(item => {
                 return (
-                  <Card
+                  <NewCardsMobileDynamic
                     key={item.id}
                     sx={{
                       maxWidth: { xs: "250px", sm: "350px", md: "100%" },
@@ -131,7 +135,7 @@ export default function MainContent() {
                         </CardContent>
                       </CardActionArea>
                     </Link>
-                  </Card>
+                  </NewCardsMobileDynamic>
                 );
               })
             }
@@ -154,7 +158,7 @@ export default function MainContent() {
             return (
               <section key={item.id} className="cards-area">
                 <h2>{item.title}</h2>
-                <Card
+                <MainCardDynamic
                   sx={{
                     maxWidth: "100%",
                     background: "none",
@@ -187,7 +191,7 @@ export default function MainContent() {
                       </CardContent>
                     </CardActionArea>
                   </Link>
-                </Card>
+                </MainCardDynamic>
               </section>
             );
           })
@@ -307,7 +311,7 @@ export default function MainContent() {
             {
               newVideosData.map(item => {
                 return (
-                  <Card
+                  <NewCardsDesktopDynamic
                     key={item.id}
                     sx={{
                       maxWidth: { xs: "350px", sm: "250px", md: "100%" },
@@ -349,7 +353,7 @@ export default function MainContent() {
                         </CardContent>
                       </CardActionArea>
                     </Link>
-                  </Card>
+                  </NewCardsDesktopDynamic>
                 );
               })
             }

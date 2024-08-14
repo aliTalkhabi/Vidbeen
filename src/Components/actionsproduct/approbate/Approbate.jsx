@@ -2,11 +2,12 @@ import { Box, Typography } from "@mui/material";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbUpRoundedIcon from "@mui/icons-material/ThumbUpRounded";
 import { memo, useState } from "react";
+import axios from "axios";
 
-const Approbate = memo(function MyLikes() {
-  const [likes, setLikes] = useState(0);
+const Approbate = memo(function MyLikes(like) {
+  
+  const [likes, setLikes] = useState(Number(like.like));
   const [liked, setLiked] = useState(false);
-
   const handleLikes = () => {
     if (!liked) {
       setLikes(likes + 1);
@@ -15,6 +16,10 @@ const Approbate = memo(function MyLikes() {
       setLikes(likes - 1);
       setLiked(false);
     }
+    // axios.post('https://vidbeen.ir/api/video-door-phone/taba/20-70').then(response=>{
+    //   console.log(response);
+      
+    // })
   };
 
   return (

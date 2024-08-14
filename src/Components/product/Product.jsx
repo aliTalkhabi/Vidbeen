@@ -8,10 +8,22 @@ import "next-cloudinary/dist/cld-video-player.css";
 import dynamic from "next/dynamic";
 import ActionProducts from "../ActionsProduct/ActionsProduct";
 import Link from "next/link";
-export default function Product({ data }) {
+import { lazy, Suspense, useCallback, useState } from "react";
+import { usePathname } from "next/navigation";
+export default function Product({ data}) {
   const dataProductItem = data.video;
   const nextVideoItem = data.videoNext;
   const relatedVideoItem = data.videoRelation;
+  const shareUrl = `https://vidbeen.ir/${usePathname()}`;
+  const [isShareModalOpen, setShareModalOpen] = useState(false);
+  const ShareModal = lazy(() => import('../ActionsProduct/share/Share'))
+  const handleOpenModal = useCallback(() => {
+    setShareModalOpen(true);
+  },[])
+
+  const handleCloseModal = useCallback(() => {
+    setShareModalOpen(false);
+  },[])
   const TypographyDynamic = dynamic(() => import("@mui/material/Typography"), {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
@@ -54,7 +66,7 @@ export default function Product({ data }) {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
   });
-  return  (
+  return (dataProductItem && nextVideoItem && relatedVideoItem) ? (
     <>
       <Container component="section">
         <Stack
@@ -68,8 +80,6 @@ export default function Product({ data }) {
             padding: { xs: "0 .5rem", sm: "0 .5rem" },
           }}
         >
-
-
           <Box
             component="section"
             sx={{ overflowY: { xs: "hidden", sm: "hidden", md: "unset" } }}
@@ -90,7 +100,7 @@ export default function Product({ data }) {
                 <CldVideoPlayer
                   id={dataProductItem.id}
                   src={dataProductItem.video.original}
-                  poster={getCldImageUrl({ src: `${dataProductItem.poster}` })}
+                  // poster={getCldImageUrl({ src: `${dataProductItem.poster}` })}
                   width="1960"
                   height="1080"
                   pictureInPictureToggle
@@ -141,6 +151,7 @@ export default function Product({ data }) {
                     alignItems: "center",
                     margin: "0 .5rem",
                   }}
+                  onClick={handleOpenModal}
                 >
                   <ShareOutlinedIcon
                     sx={{
@@ -155,9 +166,16 @@ export default function Product({ data }) {
                   >
                     اشتراک گذاری
                   </Typography>
-                </Box>
+                  <Suspense fallback={<div>صبر کنید...</div>}>
+                    {
+                      isShareModalOpen && (
+                        <ShareModal isOpen={isShareModalOpen} onClose={handleCloseModal} shareUrl={shareUrl} />
+                      )
+                    }
+                  </Suspense>
 
-                <ActionProducts />
+                </Box>
+                <ActionProducts data={data} />
               </IconsBoxDynamic>
             </Box>
 
@@ -289,5 +307,5 @@ export default function Product({ data }) {
         </Stack>
       </Container>
     </>
-  );
+  ) : null;
 }

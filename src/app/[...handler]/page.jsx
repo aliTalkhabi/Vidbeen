@@ -43,7 +43,7 @@ export default function Handler() {
           </>
         ) : typeOfData === "video" ? (
           <>
-            <Product data={passData} />
+            <Product data={passData}  />
           </>
         ):<Custom404 />}
     </>
