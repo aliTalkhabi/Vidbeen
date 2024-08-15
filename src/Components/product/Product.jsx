@@ -10,7 +10,7 @@ import ActionProducts from "../ActionsProduct/ActionsProduct";
 import Link from "next/link";
 import { lazy, Suspense, useCallback, useState } from "react";
 import { usePathname } from "next/navigation";
-export default function Product({ data}) {
+export default function Product({ data }) {
   const dataProductItem = data.video;
   const nextVideoItem = data.videoNext;
   const relatedVideoItem = data.videoRelation;
@@ -19,11 +19,11 @@ export default function Product({ data}) {
   const ShareModal = lazy(() => import('../ActionsProduct/share/Share'))
   const handleOpenModal = useCallback(() => {
     setShareModalOpen(true);
-  },[])
+  }, [])
 
   const handleCloseModal = useCallback(() => {
     setShareModalOpen(false);
-  },[])
+  }, [])
   const TypographyDynamic = dynamic(() => import("@mui/material/Typography"), {
     ssr: false,
     loading: () => <Skeleton variant="rectangular" animation="wave" />,
@@ -210,37 +210,43 @@ export default function Product({ data}) {
                   {
                     relatedVideoItem.map(item => {
                       return (
-                        <Card
-                          key={item.id}
-                          component="article"
-                          variant="article"
-                          sx={{ padding: "0 1.25rem", margin: ".5rem 0", width: { xs: '250px', sm: '250px', md: 'auto' } }}
-                        >
-                          <Link href={item.url}>
-                            <CardActionArea component="section">
-                              <picture>
-                                <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
-                                <img src={`https://vidbeen.ir/public/${item.poster}`} alt={item.description} />
-                              </picture>
+                        <section key={item.id}>
+                          <Card
+                            component="article"
+                            variant="article"
+                            sx={{ padding: "0 1.25rem", margin: ".5rem 0", width: { xs: '250px', sm: '250px', md: 'auto' } }}
+                          >
+                            <Link href={item.url}>
+                              <CardActionArea component="section">
+                                <picture>
+                                  <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                                  <img src={`https://vidbeen.ir/public/${item.poster}`} alt={item.description} />
+                                </picture>
 
-                              <CardContent sx={{ padding: 0 }}>
-                                <Typography
-                                  component="p"
-                                  variant="p"
-                                  sx={{
-                                    margin: ".5rem 0",
-                                    textAlign: "center",
-                                    fontSize: "16px",
-                                    fontWeight: "400",
-                                    color: "#111010",
-                                  }}
-                                >
-                                  {item.main_name}
-                                </Typography>
-                              </CardContent>
-                            </CardActionArea>
-                          </Link>
-                        </Card>
+                                <CardContent sx={{ padding: 0 }}>
+                                  <Typography
+                                    component="p"
+                                    variant="p"
+                                    sx={{
+                                      margin: ".5rem 0",
+                                      textAlign: "center",
+                                      fontSize: "16px",
+                                      fontWeight: "400",
+                                      color: "#111010",
+                                    }}
+                                  >
+                                    {item.main_name}
+                                  </Typography>
+                                </CardContent>
+                              </CardActionArea>
+                            </Link>
+                          </Card>
+                          {
+                            relatedVideoItem.data_structure != null ? (
+                              <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(relatedVideoItem.data_structure) }} />
+                            ) : null
+                          }
+                        </section>
                       );
                     })
                   }
@@ -270,34 +276,41 @@ export default function Product({ data}) {
               {
                 nextVideoItem.map(item => {
                   return (
-                    <Card
-                      key={item.id}
-                      component="article"
-                      variant="article"
-                      sx={{ padding: "0 .5rem", margin: ".5rem 0" }}
-                    >
-                      <Link href={item.url}>
-                        <CardActionArea component="section">
-                          <picture>
-                            <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
-                            <img
-                              src={`https://vidbeen.ir/public/${item.poster}`}
-                              alt={item.description}
-                            />
-                          </picture>
+                    <section key={item.id}>
+                      <Card
+                        component="article"
+                        variant="article"
+                        sx={{ padding: "0 .5rem", margin: ".5rem 0" }}
+                      >
+                        <Link href={item.url}>
+                          <CardActionArea component="section">
+                            <picture>
+                              <source srcSet={`https://vidbeen.ir/public/${item.poster}`} type="image/jpg" />
+                              <img
+                                src={`https://vidbeen.ir/public/${item.poster}`}
+                                alt={item.description}
+                              />
+                            </picture>
 
-                          <CardContent sx={{ padding: 0 }}>
-                            <Typography
-                              component="p"
-                              variant="p"
-                              sx={{ margin: ".5rem 0", textAlign: "justify", padding: '0 .25rem' }}
-                            >
-                              {item.main_name}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                      </Link>
-                    </Card>
+                            <CardContent sx={{ padding: 0 }}>
+                              <Typography
+                                component="p"
+                                variant="p"
+                                sx={{ margin: ".5rem 0", textAlign: "justify", padding: '0 .25rem' }}
+                              >
+                                {item.main_name}
+                              </Typography>
+                            </CardContent>
+                          </CardActionArea>
+                        </Link>
+                      </Card>
+                      {
+                        nextVideoItem.data_structure != null ? (
+                          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(nextVideoItem.data_structure) }} />
+                        ) : null
+                      }
+                    </section>
+
                   );
                 })
               }
@@ -306,6 +319,11 @@ export default function Product({ data}) {
           </Box>
         </Stack>
       </Container>
+      {
+        dataProductItem.data_structure != null ? (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(dataProductItem.data_structure) }} />
+        ) : null
+      }
     </>
   ) : null;
 }
