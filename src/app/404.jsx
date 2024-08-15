@@ -5,6 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 const BoxDynamic = dynamic(() => import('@mui/material/Box'), { ssr: 'false'})
 const Custom404 = () => {
+    
     return (
         <BoxDynamic component='section' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '1rem', overflow: 'hidden', position: 'relative', width:{xs:'95%',sm:'95%',md:'85%'}, height: '600px', margin: '5rem auto', background: 'rgb(13 166 224) 100%', boxShadow: '0 0 8px rgba(0, 0, 0, 0.6)' }}>
             <Box component='section' >

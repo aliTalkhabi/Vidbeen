@@ -2,13 +2,14 @@
 import { usePathname } from "next/navigation";
 import Category from "@/components/Category/Category";
 import Product from "@/Components/Product/Product";
-import Custom404 from "../404";
+
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import dynamic from "next/dynamic";
+const Not404 = dynamic(() => import('../404'), { ssr: false })
 export default function Handler() {
   const pathname = usePathname();
-  const [typeOfData, setTypeOfData] = useState('');
+  const [typeOfData, setTypeOfData] = useState(null);
   const [passData, setPassData] = useState();
   const slug = `https://vidbeen.ir/api${pathname}`;
   // axios.get(slug).then();
@@ -22,6 +23,8 @@ export default function Handler() {
         })
         .catch((error) => {
           console.log(error);
+          setTypeOfData(null);
+
           // if (error.response.status == 301 || error.response.status == 302) {
           //   router.push(error.response.data.redirect);
           // } else {
@@ -33,19 +36,16 @@ export default function Handler() {
     getData();
   }, [slug]);
 
-
-  return passData &&(
-    <>
-      {
-        typeOfData === "category" ? (
-          <>
-            <Category data={passData} pathname={pathname} />
-          </>
-        ) : typeOfData === "video" ? (
-          <>
-            <Product data={passData}  />
-          </>
-        ):<Custom404 />}
-    </>
-  )
+  console.log(typeOfData);
+  const renderContent = () => {
+    if (typeOfData === "category") {
+      return <Category data={passData} pathname={pathname} />;
+    } else if (typeOfData === "video") {
+      return <Product data={passData} />;
+    } else {
+      return <Not404 />;
+    }
+  };
+  return <>{renderContent()}</>
 }
+

@@ -8,14 +8,11 @@ export const ApiProvider = ({ children }) => {
     const slug = usePathname();
     const [dataMenu, setDataMenu] = useState([]);
 
-    
-    
-
     useEffect(() => {
         const fetchHomeData = async () => {
             try {
-                const endpoint =  `${slug}`;
-                const [ dataMenuSet] = await Promise.all([
+                const endpoint = `${slug}`;
+                const [dataMenuSet] = await Promise.all([
                     fetchDataMenu(endpoint)
                 ])
                 setDataMenu(dataMenuSet);
@@ -24,7 +21,7 @@ export const ApiProvider = ({ children }) => {
                 console.error('Error fetching data:', error);
             }
         }
-            fetchHomeData();
+        fetchHomeData();
     }, [slug])
     return (
         <ApiContext.Provider value={{ dataMenu }}>
