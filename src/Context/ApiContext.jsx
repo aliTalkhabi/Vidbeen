@@ -11,7 +11,7 @@ export const ApiProvider = ({ children }) => {
     useEffect(() => {
         const fetchHomeData = async () => {
             try {
-                const endpoint = `${slug}`;
+                const endpoint = slug === '/' ? `${slug}home` : `${slug}`;
                 const [dataMenuSet] = await Promise.all([
                     fetchDataMenu(endpoint)
                 ])

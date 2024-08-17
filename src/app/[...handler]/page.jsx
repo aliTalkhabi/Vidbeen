@@ -36,7 +36,6 @@ export default function Handler() {
     getData();
   }, [slug]);
 
-  console.log(typeOfData);
   const renderContent = () => {
     if (typeOfData === "category") {
       return <Category data={passData} pathname={pathname} />;
