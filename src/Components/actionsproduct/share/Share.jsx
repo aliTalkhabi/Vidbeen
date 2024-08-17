@@ -12,7 +12,6 @@ import { memo } from 'react';
 const Share = memo(function sharing({ isOpen, onClose, shareUrl }) {
     const handleCopyUrl = () => {
         navigator.clipboard.writeText(shareUrl);
-        alert('URL copied to clipboard!');
     };
     return (
         <Modal open={isOpen} onClose={onClose} disablePortal style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

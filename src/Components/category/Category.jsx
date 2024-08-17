@@ -7,26 +7,23 @@ import Link from "next/link";
 import React from "react";
 import JalaliDate from "../JalaliDate/JalaliDate";
 
-
+const SideBarDynamic = dynamic(
+  () => import("@/components/RightList/RightList"), {
+  ssr: false,
+  loading: () => (
+    <div>
+      <Skeleton
+        animation="wave"
+        variant="rectangular"
+        sx={{ width: '250px', height: '195px' }}
+      />
+    </div>
+  ),
+}
+);
 
 export default function Category({ data, pathname }) {
   const dataCategoriesItem = data.videos;
-  const SideBarDynamic = dynamic(
-    () => import("@/components/RightList/RightList"), {
-    ssr: false,
-    loading: () => (
-      <div>
-        <Skeleton
-          animation="wave"
-          variant="rectangular"
-          sx={{ width: '250px', height: '195px' }}
-        />
-      </div>
-    ),
-  }
-  );
-
-
 
   return (
     <>

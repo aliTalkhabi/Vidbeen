@@ -4,18 +4,20 @@ import styles from "./Footer.module.css";
 import { SocialMediaItems } from "@/constants/constants";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+
+const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
+  ssr: "false",
+  loading: () => (
+    <Skeleton
+      animation="wave"
+      variant="rectangular"
+      height={136}
+      sx={{ width: "100%" }}
+    />
+  ),
+});
+
 export default function Footer() {
-  const BoxDynamic = dynamic(() => import("@mui/material/Box"), {
-    ssr: "false",
-    loading: () => (
-      <Skeleton
-        animation="wave"
-        variant="rectangular"
-        height={136}
-        sx={{ width: "100%" }}
-      />
-    ),
-  });
   return (
     <footer className={styles.footer}>
       <BoxDynamic

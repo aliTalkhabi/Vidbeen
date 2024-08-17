@@ -2,29 +2,31 @@
 import { Box, Container, Skeleton } from "@mui/material";
 import dynamic from "next/dynamic";
 
-export default function Home() {
-  const SideBarDynamic = dynamic(
-    () => import("@/components/RightList/RightList"),
-    {
-      ssr: false,
-      loading: () => (
-        <Skeleton
-          animation="wave"
-          variant="rectangular"
-          sx={{ width: '250px', height: '195px' }}
-        />
+const SideBarDynamic = dynamic(
+  () => import("@/components/RightList/RightList"),
+  {
+    ssr: false,
+    loading: () => (
+      <Skeleton
+        animation="wave"
+        variant="rectangular"
+        sx={{ width: '250px', height: '195px' }}
+      />
 
-      ),
-    }
-  );
-  const MostViewDynamic = dynamic(() => import("@/components/Mostview/MostView"), {
-    ssr: false,
-    loading: () => <Skeleton variant="rectangular" animation="wave" width={856} height={295} />,
-  });
-  const MainContentDynamic = dynamic(() => import("@/components/MainContent/MainContent"), {
-    ssr: false,
-    loading: () => <Skeleton variant="rectangular" animation="wave" width={856} height={1710} sx={{ marginTop: '2rem' }} />,
-  });
+    ),
+  }
+);
+const MostViewDynamic = dynamic(() => import("@/components/Mostview/MostView"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" animation="wave" width={856} height={295} />,
+});
+const MainContentDynamic = dynamic(() => import("@/components/MainContent/MainContent"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" animation="wave" width={856} height={1710} sx={{ marginTop: '2rem' }} />,
+});
+
+export default function Home() {
+  
   return (
     <Container
       component="section"

@@ -10,6 +10,53 @@ import ActionProducts from "../ActionsProduct/ActionsProduct";
 import Link from "next/link";
 import { lazy, Suspense, useCallback, useState } from "react";
 import { usePathname } from "next/navigation";
+
+const TypographyDynamic = dynamic(() => import("@mui/material/Typography"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" animation="wave" />,
+});
+const NextBoxDynamic = dynamic(() => import("@mui/material/Box"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      variant="rectangular"
+      animation="wave"
+      sx={{ height: "750px", width: "186px" }}
+    />
+  ),
+});
+const IconsBoxDynamic = dynamic(() => import("@mui/material/Box"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      variant="rectangular"
+      animation="wave"
+      sx={{
+        margin: "1rem 0",
+        height: "90px",
+      }}
+    />
+  ),
+});
+const VideoBoxDynamic = dynamic(() => import("@mui/material/Box"), {
+  ssr: false,
+  loading: () => (
+    <Skeleton
+      variant="rectangular"
+      animation="wave"
+      sx={{ width: "934px", height: "514px" }}
+    />
+  ),
+});
+
+const RealatedBoxDynamic = dynamic(() => import("@mui/material/Box"), {
+  ssr: false,
+  loading: () => <Skeleton variant="rectangular" animation="wave" />,
+});
+
+
+
+
 export default function Product({ data }) {
   const dataProductItem = data.video;
   const nextVideoItem = data.videoNext;
@@ -24,48 +71,7 @@ export default function Product({ data }) {
   const handleCloseModal = useCallback(() => {
     setShareModalOpen(false);
   }, [])
-  const TypographyDynamic = dynamic(() => import("@mui/material/Typography"), {
-    ssr: false,
-    loading: () => <Skeleton variant="rectangular" animation="wave" />,
-  });
-  const NextBoxDynamic = dynamic(() => import("@mui/material/Box"), {
-    ssr: false,
-    loading: () => (
-      <Skeleton
-        variant="rectangular"
-        animation="wave"
-        sx={{ height: "750px", width: "186px" }}
-      />
-    ),
-  });
-  const IconsBoxDynamic = dynamic(() => import("@mui/material/Box"), {
-    ssr: false,
-    loading: () => (
-      <Skeleton
-        variant="rectangular"
-        animation="wave"
-        sx={{
-          margin: "1rem 0",
-          height: "90px",
-        }}
-      />
-    ),
-  });
-  const VideoBoxDynamic = dynamic(() => import("@mui/material/Box"), {
-    ssr: false,
-    loading: () => (
-      <Skeleton
-        variant="rectangular"
-        animation="wave"
-        sx={{ width: "934px", height: "514px" }}
-      />
-    ),
-  });
-
-  const RealatedBoxDynamic = dynamic(() => import("@mui/material/Box"), {
-    ssr: false,
-    loading: () => <Skeleton variant="rectangular" animation="wave" />,
-  });
+ 
   return (dataProductItem && nextVideoItem && relatedVideoItem) ? (
     <>
       <Container component="section">
