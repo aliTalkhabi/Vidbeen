@@ -2,7 +2,7 @@
 import { Box, Card, CardActionArea, CardContent, Container, Skeleton, Stack, Typography } from "@mui/material";
 import styles from './Product.module.css'
 // import { CldVideoPlayer} from "next-cloudinary";
-import SaveAltIcon from "@mui/icons-material/SaveAlt";
+
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import "next-cloudinary/dist/cld-video-player.css";
 import dynamic from "next/dynamic";
@@ -141,19 +141,7 @@ export default function Product({ data }) {
                     margin: "0 .5rem",
                   }}
                 >
-                  <SaveAltIcon
-                    sx={{
-                      color: { xs: "#B6B3C2", sm: "#B6B3C2", md: "#150578" },
-                      fontSize: "28px",
-                      marginRight: ".5rem",
-                    }}
-                  />
-                  <Typography
-                    component="p"
-                    sx={{ display: { xs: "none", sm: "none", md: "block" } }}
-                  >
-                    کپی کردن
-                  </Typography>
+                  
                 </Box>
                 <Box
                   component="div"
