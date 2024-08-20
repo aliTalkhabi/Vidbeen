@@ -10,6 +10,7 @@ const api = axios.create({
     withXSRFToken: true
 });
 
+  
 export const fetchDataCards = async (endpoint) => {
     try {
         const response = await api.get(endpoint);

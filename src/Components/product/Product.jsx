@@ -1,7 +1,7 @@
 "use client";
 import { Box, Card, CardActionArea, CardContent, Container, Skeleton, Stack, Typography } from "@mui/material";
 import styles from './Product.module.css'
-import { CldVideoPlayer, getCldImageUrl } from "next-cloudinary";
+// import { CldVideoPlayer} from "next-cloudinary";
 import SaveAltIcon from "@mui/icons-material/SaveAlt";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import "next-cloudinary/dist/cld-video-player.css";
@@ -10,6 +10,9 @@ import ActionProducts from "../ActionsProduct/ActionsProduct";
 import Link from "next/link";
 import { lazy, Suspense, useCallback, useState } from "react";
 import { usePathname } from "next/navigation";
+
+
+
 
 const TypographyDynamic = dynamic(() => import("@mui/material/Typography"), {
   ssr: false,
@@ -53,11 +56,13 @@ const RealatedBoxDynamic = dynamic(() => import("@mui/material/Box"), {
   ssr: false,
   loading: () => <Skeleton variant="rectangular" animation="wave" />,
 });
+const CldVideoPlayer = dynamic(() => import('next-cloudinary').then((mod) => mod.CldVideoPlayer), { ssr: false, loading: () => <Skeleton variant="rectangular" animation="wave" width={913} height={515} /> })
 
 
 
 
 export default function Product({ data }) {
+  
   const dataProductItem = data.video;
   const nextVideoItem = data.videoNext;
   const relatedVideoItem = data.videoRelation;
@@ -71,9 +76,10 @@ export default function Product({ data }) {
   const handleCloseModal = useCallback(() => {
     setShareModalOpen(false);
   }, [])
- 
+
   return (dataProductItem && nextVideoItem && relatedVideoItem) ? (
     <>
+      
       <Container component="section">
         <Stack
           component="section"
@@ -106,7 +112,7 @@ export default function Product({ data }) {
                 <CldVideoPlayer
                   id={dataProductItem.id}
                   src={dataProductItem.video.original}
-                  // poster={getCldImageUrl({ src: `${dataProductItem.poster}` })}
+                  // poster={GetCldImageUrl({ src: `${dataProductItem.poster}` })}
                   width="1960"
                   height="1080"
                   pictureInPictureToggle

@@ -16,10 +16,7 @@ const Approbate = memo(function MyLikes(like) {
       setLikes(likes - 1);
       setLiked(false);
     }
-    // axios.post('https://vidbeen.ir/api/video-door-phone/taba/20-70').then(response=>{
-    //   console.log(response);
-      
-    // })
+   
   };
 
   return (
