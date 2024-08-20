@@ -1,8 +1,6 @@
 "use client";
 import { Box, Card, CardActionArea, CardContent, Container, Skeleton, Stack, Typography } from "@mui/material";
 import styles from './Product.module.css'
-// import { CldVideoPlayer} from "next-cloudinary";
-
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import "next-cloudinary/dist/cld-video-player.css";
 import dynamic from "next/dynamic";
@@ -62,13 +60,13 @@ const CldVideoPlayer = dynamic(() => import('next-cloudinary').then((mod) => mod
 
 
 export default function Product({ data }) {
-  
+
   const dataProductItem = data.video;
   const nextVideoItem = data.videoNext;
   const relatedVideoItem = data.videoRelation;
   const shareUrl = `https://vidbeen.ir/${usePathname()}`;
   const [isShareModalOpen, setShareModalOpen] = useState(false);
-  const ShareModal = lazy(() => import('../ActionsProduct/share/Share'))
+  const ShareModal = lazy(() => import('../ActionsProduct/ShareModal/ShareModal'))
   const handleOpenModal = useCallback(() => {
     setShareModalOpen(true);
   }, [])
@@ -79,7 +77,7 @@ export default function Product({ data }) {
 
   return (dataProductItem && nextVideoItem && relatedVideoItem) ? (
     <>
-      
+
       <Container component="section">
         <Stack
           component="section"
@@ -141,7 +139,7 @@ export default function Product({ data }) {
                     margin: "0 .5rem",
                   }}
                 >
-                  
+
                 </Box>
                 <Box
                   component="div"
@@ -158,11 +156,12 @@ export default function Product({ data }) {
                       color: { xs: "#B6B3C2", sm: "#B6B3C2", md: "#150578" },
                       fontSize: "28px",
                       marginRight: ".5rem",
+                      cursor: 'pointer'
                     }}
                   />
                   <Typography
                     component="p"
-                    sx={{ display: { xs: "none", sm: "none", md: "block" } }}
+                    sx={{ display: { xs: "none", sm: "none", md: "block" }, cursor: 'pointer' }}
                   >
                     اشتراک گذاری
                   </Typography>

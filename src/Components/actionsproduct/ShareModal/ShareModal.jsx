@@ -9,7 +9,7 @@ import {
 } from 'react-share';
 import { Modal, Button } from '@mui/material';
 import { memo } from 'react';
-const Share = memo(function sharing({ isOpen, onClose, shareUrl }) {
+const ShareModal = memo(function sharing({ isOpen, onClose, shareUrl }) {
     const handleCopyUrl = () => {
         navigator.clipboard.writeText(shareUrl);
     };
@@ -55,4 +55,4 @@ const buttonContainerStyle = {
     marginTop: '20px',
     alignItems: 'center'
 };
-export default Share
+export default ShareModal
